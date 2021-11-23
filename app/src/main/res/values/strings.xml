@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Washroomato</string>
+    <string name="app_name">Flush</string>
     <string name="button">Button</string>
     <string name="textinput">Hello World!</string>
 </resources>
