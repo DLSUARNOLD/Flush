@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1077322735930",
+    "project_id": "mobdeve-application",
+    "storage_bucket": "mobdeve-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077322735930:android:0f1c43c6ef3a1ce8c27003",
+        "android_client_info": {
+          "package_name": "com.example.mobdeveapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077322735930-u10e83id4n0bkde2gqe23il0h7ftrehq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTXxaj1ZlIkzAkF4MLfrTiMSUiHN9SGJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077322735930-u10e83id4n0bkde2gqe23il0h7ftrehq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
