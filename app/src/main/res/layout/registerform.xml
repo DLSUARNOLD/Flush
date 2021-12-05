@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Registerform"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp"
-    android:background="#f0ff">
+    tools:layout_editor_absoluteY="0dp">
+    #android:background="#f0ff"
 
     <EditText
         android:id="@+id/Usernamebox"
