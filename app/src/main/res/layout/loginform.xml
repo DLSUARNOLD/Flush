@@ -14,7 +14,7 @@
         android:layout_height="57dp"
         android:layout_marginTop="212dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="15sp"

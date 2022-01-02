@@ -27,6 +27,10 @@
             android:name=".Homepage"
             android:label="Home Screen">
         </activity>
+        <activity
+            android:name=".Profile"
+            android:label="Home Screen">
+        </activity>
     </application>
 
 </manifest>

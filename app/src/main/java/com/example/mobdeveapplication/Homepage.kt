@@ -15,15 +15,19 @@ class Homepage : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = Firebase.auth
+        var universal = Globals()
+        auth = universal.auth
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val intent = intent
-        val receivedEmail = intent.getStringExtra("emailAddress")
-        binding.textViewWelcome.text="Welcome "+receivedEmail
+        val receivedUser = intent.getStringExtra("username")
+        binding.textViewWelcome.text="Welcome "+receivedUser
 
         binding.profileBtn.setOnClickListener{
-            updateUI(user)
+          val userid = intent.getStringExtra("userid")
+          val profileintent = Intent(this,Profile::class.java)
+            profileintent.putExtra("username",receivedUser)
+            startActivity(profileintent)
         }
     }
 

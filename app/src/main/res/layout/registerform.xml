@@ -7,10 +7,9 @@
     tools:context=".Registerform"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
-    #android:background="#f0ff"
 
     <EditText
-        android:id="@+id/Usernamebox"
+        android:id="@+id/emailbox"
         android:layout_width="308dp"
         android:layout_height="57dp"
         android:ems="10"
@@ -18,48 +17,66 @@
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/Passwordbox"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Errordisplay"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintTop_toBottomOf="@+id/Errordisplay" />
+
 
     <EditText
         android:id="@+id/namebox"
-        android:layout_width="308dp"
-        android:layout_height="57dp"
+        android:layout_width="301dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Name"
         android:minHeight="48dp"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/Submitbutt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Passwordbox"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toBottomOf="@+id/usernamebox"
+        app:layout_constraintVertical_bias="0.735" />
 
     <EditText
-        android:id="@+id/Passwordbox"
-        android:layout_width="308dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="136dp"
+        android:id="@+id/usernamebox"
+        android:layout_width="301dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:hint="Username"
         android:minHeight="48dp"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/Submitbutt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="80dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Errordisplay"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Passwordbox"
+            android:layout_width="310dp"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:hint="Password" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/Submitbutt"
         android:layout_width="259dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="160dp"
         android:text="Create Account"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,14 +115,15 @@
         android:id="@+id/LoginRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:clickable="true"
+        android:focusable="true"
         android:text="Already Registered? Sign In"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Submitbutt"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/Submitbutt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
