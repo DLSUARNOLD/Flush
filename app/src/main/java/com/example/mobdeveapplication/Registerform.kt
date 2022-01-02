@@ -17,11 +17,11 @@ class Registerform : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?)
     {
-        auth = Firebase.auth
+        var universal = Globals()
+        auth = universal.auth
         super.onCreate(savedInstanceState)
         binding = RegisterformBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.LoginRedirect.setOnClickListener {
             val intent = Intent(this, Loginform::class.java)
             startActivity(intent)
@@ -32,25 +32,21 @@ class Registerform : AppCompatActivity() {
         binding.Submitbutt.setOnClickListener{
             //val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             //inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-            if (binding.Usernamebox.text.toString().isEmpty() || binding.Passwordbox.text.toString()
-                    .isEmpty())
+            if (binding.emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty() || binding.emailbox.text.toString().isEmpty())
                 binding.Errordisplay.text = "Email Address or Password is not provided"
             else {
-                    auth.createUserWithEmailAndPassword(binding.Usernamebox.text.toString(), binding.Passwordbox.text.toString()).addOnCompleteListener(this)
+                    auth.createUserWithEmailAndPassword(binding.emailbox.text.toString(), binding.Passwordbox.text.toString()).addOnCompleteListener(this)
                     { task ->
 
                             if (task.isSuccessful) {
                                 binding.Errordisplay.text = "Sign Up successfull. Email and Password created"
                                 val user = auth.currentUser
-                                var account = UserC(binding.namebox.text.toString(),binding.Usernamebox.text.toString())
+                                var account = UserC(binding.namebox.text.toString(),binding.emailbox.text.toString())
                                 val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
-                                val id = ref.push().key
-                                if (id != null) {
-                                    ref.child(id).setValue(account).addOnCompleteListener(this){
-                                        Toast.makeText(this,"User Saved", Toast.LENGTH_SHORT).show()
-                                    }.addOnFailureListener(this) {
-                                        Toast.makeText(this,"Error", Toast.LENGTH_SHORT).show()
-                                    }
+                                ref.child(binding.usernamebox.text.toString()).setValue(account).addOnCompleteListener(this){
+                                    Toast.makeText(this,"User Saved", Toast.LENGTH_SHORT).show()
+                                }.addOnFailureListener(this) {
+                                    Toast.makeText(this,"Error", Toast.LENGTH_SHORT).show()
                                 }
                                 updateUI(user)
                             } else
