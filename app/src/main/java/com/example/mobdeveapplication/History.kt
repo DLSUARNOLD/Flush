@@ -3,42 +3,40 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mobdeveapplication.databinding.HistoryBinding
 import com.example.mobdeveapplication.databinding.ProfileBinding
+import com.example.mobdeveapplication.datasets.Adapter
 import com.example.mobdeveapplication.datasets.Globals
+import com.example.mobdeveapplication.datasets.Historyobject
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.profile.*
 
 
-private lateinit var binding: ProfileBinding
+private lateinit var binding: HistoryBinding
 private lateinit var auth: FirebaseAuth
-
+private var historylist  = ArrayList<Historyobject>()
 class History : AppCompatActivity() {
+    private lateinit var Adapter : Adapter
     override fun onCreate(savedInstanceState: Bundle?) {
         var universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
-        binding = ProfileBinding.inflate(layoutInflater)
+        binding = HistoryBinding.inflate(layoutInflater)
+        Adapter = Adapter(applicationContext, historylist)
         setContentView(binding.root)
-        var user = intent.getStringExtra("username")
-        var email = ""
-        //Log.i("firebase", "Got value $user")
-        val firebaseDatabase = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        var databaseReference = firebaseDatabase.getReference("User").child("$user").get().addOnSuccessListener{
-                    text_name.setText(it.child("name").value as String)
-                    email = it.child("email").value as String
-                    binding.Greetingbox.text = "Hello ${email}"
-        }
-        Log.i("Firebase","email is $email")
-        save_name.setOnClickListener {
-            var namereference = firebaseDatabase.getReference("User").child("$user").child("name").setValue(binding.textName.text.toString()).addOnSuccessListener {
-                Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
-            }
-        }
-        savepassword.setOnClickListener {
-            auth.sendPasswordResetEmail(email)
-            Toast.makeText(this,"An email has been sent to your email",Toast.LENGTH_LONG).show()
-        }
+        binding.recycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+        binding.recycler.adapter = Adapter
+        historylist.add(Historyobject("profile1",1))
+        historylist.add(Historyobject("profile2",2))
+        historylist.add(Historyobject("profile1",1))
+        historylist.add(Historyobject("profile2",2))
+        historylist.add(Historyobject("profile1",1))
+        historylist.add(Historyobject("profile2",2))
+
+
+
 
     }
 }
