@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.profile.*
 private lateinit var binding: ProfileBinding
 private lateinit var auth: FirebaseAuth
 
-class Profile : AppCompatActivity() {
+class History : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         var universal = Globals()
         auth = universal.auth

@@ -3,10 +3,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.HomepageBinding
+import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 
 private lateinit var binding: HomepageBinding

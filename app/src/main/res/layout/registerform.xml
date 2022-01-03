@@ -13,7 +13,7 @@
         android:layout_width="308dp"
         android:layout_height="57dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textSize="15sp"
@@ -21,16 +21,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Errordisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/Errordisplay"
+        android:autofillHints="emailAddress" />
 
 
     <EditText
         android:id="@+id/namebox"
         android:layout_width="301dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:minHeight="48dp"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/Submitbutt"
@@ -38,20 +39,24 @@
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernamebox"
-        app:layout_constraintVertical_bias="0.735" />
+        app:layout_constraintVertical_bias="0.735"
+        android:autofillHints="name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/usernamebox"
         android:layout_width="301dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:minHeight="48dp"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        android:autofillHints="username"
+        android:inputType="textVisiblePassword|textNoSuggestions" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -68,8 +73,9 @@
             android:id="@+id/Passwordbox"
             android:layout_width="310dp"
             android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:hint="Password" />
+            android:hint="@string/password"
+            android:textColorHint="#616161"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -77,7 +83,7 @@
         android:layout_width="259dp"
         android:layout_height="56dp"
         android:layout_marginBottom="160dp"
-        android:text="Create Account"
+        android:text="@string/create_account"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +94,7 @@
         android:layout_width="326dp"
         android:layout_height="92dp"
         android:layout_marginTop="48dp"
-        android:text="User Registration"
+        android:text="@string/user_registration"
         android:textAlignment="center"
         android:textIsSelectable="false"
         android:textSize="40sp"
@@ -118,7 +124,8 @@
         android:layout_marginTop="40dp"
         android:clickable="true"
         android:focusable="true"
-        android:text="Already Registered? Sign In"
+        android:minHeight="48dp"
+        android:text="@string/already_registered_sign_in"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

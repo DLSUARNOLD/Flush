@@ -20,16 +20,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Loginform"
-            android:label="Sign In">
+            android:name=".Loginform">
         </activity>
         <activity
-            android:name=".Homepage"
-            android:label="Home Screen">
+            android:name=".Homepage">
         </activity>
         <activity
-            android:name=".Profile"
-            android:label="Home Screen">
+            android:name=".Profile">
+        </activity>
+        <activity
+            android:name=".History">
         </activity>
     </application>
 
