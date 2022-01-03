@@ -12,6 +12,10 @@ import com.google.android.material.snackbar.Snackbar
 
 
 
+
+
+
+
 class Adapter(private val context: Context, private var historylist: ArrayList<Historyobject>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 
@@ -31,20 +35,14 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
         fun binder(item:Historyobject,index: Int){
             binding.titleHistory.text = item.location
 
-
-            /*binding.buttonload.setOnClickListener {
-                var loadprofile = Intent(context, Gameactivity::class.java)
-                loadprofile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                val backpack = Bundle()
-                backpack.putString("profilename",item.profilename)
-                backpack.putString("username",item.username)
-                backpack.putString("fatigue",item.fatigue)
-                backpack.putString("hunger",item.hunger)
-                backpack.putString("money",item.money)
-                loadprofile.putExtras(backpack)
-                context.startActivity(loadprofile)
-            }*/
-            binding.buttonview.setOnClickListener {
+            when (item.rating) {
+                1 -> binding.ratingbar.rating = 1F
+                2 -> binding.ratingbar.rating = 2F
+                3 -> binding.ratingbar.rating = 3F
+                4 -> binding.ratingbar.rating = 4F
+                5 -> binding.ratingbar.rating = 5F
+            }
+            binding.viewhistorybtn.setOnClickListener {
                 val information="username is " + item.location + "fatigue is " + item.rating
                 Snackbar.make(itemView, information,LENGTH_LONG).show()
             }

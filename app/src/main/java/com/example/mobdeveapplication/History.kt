@@ -20,7 +20,7 @@ private var historylist  = ArrayList<Historyobject>()
 class History : AppCompatActivity() {
     private lateinit var Adapter : Adapter
     override fun onCreate(savedInstanceState: Bundle?) {
-        var universal = Globals()
+        val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
         binding = HistoryBinding.inflate(layoutInflater)
@@ -30,10 +30,10 @@ class History : AppCompatActivity() {
         binding.recycler.adapter = Adapter
         historylist.add(Historyobject("profile1",1))
         historylist.add(Historyobject("profile2",2))
-        historylist.add(Historyobject("profile1",1))
-        historylist.add(Historyobject("profile2",2))
-        historylist.add(Historyobject("profile1",1))
-        historylist.add(Historyobject("profile2",2))
+        historylist.add(Historyobject("profile1",3))
+        historylist.add(Historyobject("profile2",4))
+        historylist.add(Historyobject("profile1",5))
+        historylist.add(Historyobject("profile2",6))
 
 
 
