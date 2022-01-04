@@ -21,7 +21,7 @@
     <Button
         android:id="@+id/button1"
         android:layout_width="77dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Button"
@@ -33,31 +33,32 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="77dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="16dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button4" />
+        app:layout_constraintStart_toEndOf="@+id/history_btn" />
 
     <Button
         android:id="@+id/profile_btn"
         android:layout_width="77dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="16dp"
+        android:text="@string/profile"
         android:textSize="11sp"
-        android:text="Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/history_btn"
         android:layout_width="77dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="16dp"
-        android:text="Button"
+        android:text="History"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

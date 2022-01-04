@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.ProfileBinding
+import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.profile.*

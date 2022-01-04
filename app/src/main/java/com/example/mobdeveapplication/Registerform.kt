@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.mobdeveapplication.databinding.RegisterformBinding
+import com.example.mobdeveapplication.datasets.Globals
+import com.example.mobdeveapplication.datasets.UserC
 //import com.example.mobdeveapplication.dataRegisterformBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 
 private lateinit var binding: RegisterformBinding
@@ -17,7 +17,7 @@ class Registerform : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?)
     {
-        var universal = Globals()
+        val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
         binding = RegisterformBinding.inflate(layoutInflater)
