@@ -8,6 +8,7 @@ import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
+import kotlin.Exception
 
 private lateinit var binding : LoginformBinding
 class Loginform : AppCompatActivity()  {
@@ -28,24 +29,35 @@ class Loginform : AppCompatActivity()  {
             //inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
 
             val firebaseDatabase = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/")
-            var databaseReference = firebaseDatabase.getReference("User").child(binding.Usernamebox.text.toString()).child("email").get().addOnSuccessListener{
-                val email = it.value
-                if (binding.Usernamebox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty())
-                    binding.Errordisplay.text = "Email Address or Password is not provided"
-                else {
-                    auth.signInWithEmailAndPassword(email as String,binding.Passwordbox.text.toString())
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                binding.Errordisplay.text =  "Sign In successfull. "
-                                val user = auth.currentUser
-                                updateUI(user, binding.Usernamebox.text.toString())
-                            } else
-                                binding.Errordisplay.text = "Invalid Email or Password"
+            try {
+                var databaseReference =
+                    firebaseDatabase.getReference("User").child(binding.Usernamebox.text.toString())
+                        .child("email").get().addOnSuccessListener {
+                        val email = it.value
+                        if (binding.Usernamebox.text.toString()
+                                .isEmpty() || binding.Passwordbox.text.toString().isEmpty()
+                        )
+                            binding.Errordisplay.text = "Username or Password is not provided"
+                        else {
+                            if(email != null)
+                            {
+                            auth.signInWithEmailAndPassword(email as String, binding.Passwordbox.text.toString()).addOnCompleteListener(this) { task ->
+                                    if (task.isSuccessful) {
+                                        binding.Errordisplay.text = "Sign In successfull. "
+                                        val user = auth.currentUser
+                                        updateUI(user, binding.Usernamebox.text.toString())
+                                    } else
+                                        binding.Errordisplay.text = "Invalid Username or Password"
+                                }}
+                            else(Toast.makeText(this, "This username and password combination does not exist", Toast.LENGTH_LONG).show())
                         }
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "This username and password combination does not exist", Toast.LENGTH_LONG).show()
+                    }
                 }
-            }.addOnFailureListener{
-                Toast.makeText(this,"This username and password combination does not exist",Toast.LENGTH_LONG).show()
-            }
+                catch(e: Exception){
+                    Toast.makeText(this,"Invalid username or password. Try Again",Toast.LENGTH_LONG).show()
+                }
 
 
 
