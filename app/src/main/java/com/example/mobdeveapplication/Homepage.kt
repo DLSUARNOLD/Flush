@@ -3,10 +3,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.HomepageBinding
+import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 
 private lateinit var binding: HomepageBinding
@@ -22,14 +21,18 @@ class Homepage : AppCompatActivity() {
         val intent = intent
         val receivedUser = intent.getStringExtra("username")
         binding.textViewWelcome.text="Welcome "+receivedUser
-
         binding.profileBtn.setOnClickListener{
-          val userid = intent.getStringExtra("userid")
-          val profileintent = Intent(this,Profile::class.java)
+            val userid = intent.getStringExtra("userid")
+            val profileintent = Intent(this,Profile::class.java)
             profileintent.putExtra("username",receivedUser)
             startActivity(profileintent)
         }
+        binding.historyBtn.setOnClickListener{
+            val historyintent = Intent(this,History::class.java)
+            startActivity(historyintent)
+        }
     }
+
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if(currentUser !=null){

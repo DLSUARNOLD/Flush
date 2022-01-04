@@ -2,4 +2,17 @@
     <string name="app_name">Flush</string>
     <string name="button">Button</string>
     <string name="textinput">Hello World!</string>
+    <string name="save_name">Save Name</string>
+    <string name="change_password">Change Password</string>
+    <string name="name">Name</string>
+    <string name="profile">Profile</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="user_login">User Login</string>
+    <string name="no_account_yet_register">No Account Yet? Register</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="create_account">Create Account</string>
+    <string name="user_registration">User Registration</string>
+    <string name="already_registered_sign_in">Already Registered? Sign In</string>
 </resources>
