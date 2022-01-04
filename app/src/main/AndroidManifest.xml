@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVEAPPLICATION">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Registerform"
             android:exported="true">
             <intent-filter>
@@ -21,16 +24,13 @@
         </activity>
         <activity
             android:name=".Loginform"
-            android:label="Sign In">
-        </activity>
+            android:label="Sign In"></activity>
         <activity
             android:name=".Homepage"
-            android:label="Home Screen">
-        </activity>
+            android:label="Home Screen"></activity>
         <activity
             android:name=".Profile"
-            android:label="Home Screen">
-        </activity>
+            android:label="Home Screen"></activity>
     </application>
 
 </manifest>
