@@ -9,13 +9,13 @@
     tools:layout_editor_absoluteY="0dp">
 
     <EditText
-        android:id="@+id/Usernamebox"
+        android:id="@+id/emailbox"
         android:layout_width="308dp"
         android:layout_height="57dp"
         android:layout_marginTop="212dp"
         android:ems="10"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/Passwordbox"
