@@ -1,6 +1,7 @@
 package com.example.mobdeveapplication
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.HomepageBinding
 import com.example.mobdeveapplication.datasets.Globals
@@ -14,17 +15,15 @@ class Homepage : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var universal = Globals()
+        val universal = Globals()
         auth = universal.auth
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val intent = intent
         val receivedUser = intent.getStringExtra("username")
-        binding.textViewWelcome.text="Welcome "+receivedUser
+        binding.textViewWelcome.text="Welcome ${auth.currentUser?.displayName}"
         binding.profileBtn.setOnClickListener{
-            val userid = intent.getStringExtra("userid")
             val profileintent = Intent(this,Profile::class.java)
-            profileintent.putExtra("username",receivedUser)
             startActivity(profileintent)
         }
         binding.historyBtn.setOnClickListener{
