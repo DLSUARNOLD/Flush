@@ -1,4 +1,5 @@
 package com.example.mobdeveapplication
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -16,6 +17,7 @@ import kotlin.Exception
 private lateinit var binding : LoginformBinding
 class Loginform : AppCompatActivity()  {
     private lateinit var auth: FirebaseAuth
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val universal = Globals()
@@ -30,7 +32,6 @@ class Loginform : AppCompatActivity()  {
         binding.SigninButton.setOnClickListener {
             //val inputMethodManager =  getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             //inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-            val firebaseDatabase = universal.firebaseDatabase
             try {
                 /*var databaseReference =
                     firebaseDatabase.getReference("User").child(binding.Usernamebox.text.toString())

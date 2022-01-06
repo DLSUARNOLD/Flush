@@ -1,4 +1,5 @@
 package com.example.mobdeveapplication
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -14,6 +15,7 @@ private lateinit var binding: ProfileBinding
 private lateinit var auth: FirebaseAuth
 
 class Profile : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         val universal = Globals()
         auth = universal.auth
@@ -24,13 +26,13 @@ class Profile : AppCompatActivity() {
         //Log.i("firebase", "Got value $user")
         val firebaseDatabase = universal.firebaseDatabase
         binding.Greetingbox.text = auth.currentUser!!.email
-        var databaseReference = firebaseDatabase.getReference("User").child(auth.currentUser!!.uid).get().addOnSuccessListener{
+        firebaseDatabase.getReference("User").child(auth.currentUser!!.uid).get().addOnSuccessListener{
                     text_name.setText(it.child("name").value as String)
                     email = it.child("email").value as String
                     binding.Greetingbox.text = "Hello ${email}"
         }
         save_name.setOnClickListener {
-            var namereference = firebaseDatabase.getReference("User").child(auth.uid.toString()).child("name").setValue(binding.textName.text.toString()).addOnSuccessListener {
+            firebaseDatabase.getReference("User").child(auth.uid.toString()).child("name").setValue(binding.textName.text.toString()).addOnSuccessListener {
                 Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
             }
         }

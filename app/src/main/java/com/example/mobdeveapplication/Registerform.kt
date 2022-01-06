@@ -1,5 +1,6 @@
 package com.example.mobdeveapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.registerform.*
 private lateinit var binding: RegisterformBinding
 class Registerform : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         val universal = Globals()
@@ -57,7 +59,5 @@ class Registerform : AppCompatActivity() {
                     }
                 }
         }
-    }
-    fun updateUI(currentUser: FirebaseUser?) {
     }
 }
