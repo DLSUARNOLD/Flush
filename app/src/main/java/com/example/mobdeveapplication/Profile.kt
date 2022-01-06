@@ -22,8 +22,9 @@ class Profile : AppCompatActivity() {
         setContentView(binding.root)
         var email = ""
         //Log.i("firebase", "Got value $user")
-        val firebaseDatabase = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        var databaseReference = firebaseDatabase.getReference("User").child(auth.uid.toString()).get().addOnSuccessListener{
+        val firebaseDatabase = universal.firebaseDatabase
+        binding.Greetingbox.text = auth.currentUser!!.email
+        var databaseReference = firebaseDatabase.getReference("User").child(auth.currentUser!!.uid).get().addOnSuccessListener{
                     text_name.setText(it.child("name").value as String)
                     email = it.child("email").value as String
                     binding.Greetingbox.text = "Hello ${email}"

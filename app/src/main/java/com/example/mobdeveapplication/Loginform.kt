@@ -48,10 +48,10 @@ class Loginform : AppCompatActivity()  {
                             updateUI(user)
                         } else
                             binding.Errordisplay.text = "Invalid Email or Password"
-                    }.addOnFailureListener{ Toast.makeText(this, "This Email and password combination does not exist", Toast.LENGTH_LONG).show()}
+                    }.addOnFailureListener{ binding.Errordisplay.text ="This Email and password combination does not exist"}
                     }
             }
-            catch(e: Exception){ Toast.makeText(this,"Invalid Email or password. Try Again",Toast.LENGTH_LONG).show() }
+            catch(e: Exception){ binding.Errordisplay.text = "Invalid Email or password. Try Again"}
         }
     }
     private fun updateUI(currentUser: FirebaseUser?) {

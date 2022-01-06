@@ -43,13 +43,6 @@ class Registerform : AppCompatActivity() {
                                 if (task.isSuccessful) {
                                 binding.Errordisplay.text = "Sign Up successfull. Email and Password created"
                                 val user = auth.currentUser
-                                val account = UserC(binding.namebox.text.toString(),binding.emailbox.text.toString())
-                                val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
-                                ref.child(auth.currentUser!!.uid).setValue(account).addOnCompleteListener(this){
-                                    Toast.makeText(this,"User Saved", Toast.LENGTH_SHORT).show()
-                                }.addOnFailureListener(this) {
-                                    Toast.makeText(this,"Error", Toast.LENGTH_SHORT).show()
-                                }
                                 val profileupdate = userProfileChangeRequest {displayName = binding.namebox.text.toString()}
                                 user?.updateProfile(profileupdate)!!
                                 //updateUI(user)
