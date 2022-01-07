@@ -1,5 +1,4 @@
 package com.example.mobdeveapplication
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -17,7 +16,6 @@ import kotlin.Exception
 private lateinit var binding : LoginformBinding
 class Loginform : AppCompatActivity()  {
     private lateinit var auth: FirebaseAuth
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val universal = Globals()
@@ -32,6 +30,7 @@ class Loginform : AppCompatActivity()  {
         binding.SigninButton.setOnClickListener {
             //val inputMethodManager =  getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             //inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            val firebaseDatabase = universal.firebaseDatabase
             try {
                 /*var databaseReference =
                     firebaseDatabase.getReference("User").child(binding.Usernamebox.text.toString())
@@ -49,10 +48,10 @@ class Loginform : AppCompatActivity()  {
                             updateUI(user)
                         } else
                             binding.Errordisplay.text = "Invalid Email or Password"
-                    }.addOnFailureListener{ binding.Errordisplay.text ="This Email and password combination does not exist"}
+                    }.addOnFailureListener{ Toast.makeText(this, "This Email and password combination does not exist", Toast.LENGTH_LONG).show()}
                     }
             }
-            catch(e: Exception){ binding.Errordisplay.text = "Invalid Email or password. Try Again"}
+            catch(e: Exception){ Toast.makeText(this,"Invalid Email or password. Try Again",Toast.LENGTH_LONG).show() }
         }
     }
     private fun updateUI(currentUser: FirebaseUser?) {
