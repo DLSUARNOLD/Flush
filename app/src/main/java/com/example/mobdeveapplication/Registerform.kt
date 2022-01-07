@@ -47,6 +47,12 @@ class Registerform : AppCompatActivity() {
                                 val user = auth.currentUser
                                 val profileupdate = userProfileChangeRequest {displayName = binding.namebox.text.toString()}
                                 user?.updateProfile(profileupdate)!!
+                                val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
+                                    ref.child(auth.currentUser!!.uid).setValue("").addOnCompleteListener(this){
+                                        Toast.makeText(this,"User Saved", Toast.LENGTH_SHORT).show()
+                                    }.addOnFailureListener(this) {
+                                        Toast.makeText(this,"Error", Toast.LENGTH_SHORT).show()
+                                    }
                                 //updateUI(user)
                             } else
                             {

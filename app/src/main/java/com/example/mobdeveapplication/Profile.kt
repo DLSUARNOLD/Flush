@@ -1,5 +1,6 @@
 package com.example.mobdeveapplication
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.ProfileBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.profile.*
 
@@ -31,14 +33,20 @@ class Profile : AppCompatActivity() {
                     email = it.child("email").value as String
                     binding.Greetingbox.text = "Hello ${email}"
         }
-        save_name.setOnClickListener {
-            firebaseDatabase.getReference("User").child(auth.uid.toString()).child("name").setValue(binding.textName.text.toString()).addOnSuccessListener {
-                Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
-            }
+        binding.savepassword.setOnClickListener {
+            val profileupdate = userProfileChangeRequest {displayName = binding.textName.text.toString()}
+            auth.currentUser?.updateProfile(profileupdate)!!
         }
-        savepassword.setOnClickListener {
+        binding.savepassword.setOnClickListener {
             auth.sendPasswordResetEmail(email)
             Toast.makeText(this,"An email has been sent to your email",Toast.LENGTH_LONG).show()
+        }
+        binding.delAcc.setOnClickListener {
+            firebaseDatabase.getReference("User").child(auth.currentUser!!.uid).removeValue()
+            auth.currentUser!!.delete()
+            auth.signOut()
+            val okays = Intent(this,Registerform::class.java)
+            startActivity(okays)
         }
 
     }
