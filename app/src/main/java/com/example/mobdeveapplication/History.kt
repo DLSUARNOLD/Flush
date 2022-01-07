@@ -63,8 +63,6 @@ class History : AppCompatActivity() {
                     }
                     callbackobject.returnvaluepls(templist)
                 }
-
-
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
     }
