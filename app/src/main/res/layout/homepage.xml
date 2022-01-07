@@ -61,4 +61,19 @@
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_btn" />
+
+    <Button
+        android:id="@+id/qr_btn"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        app:icon="@drawable/ic_qr"
+        app:iconGravity="textStart"
+        app:iconPadding="-5dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@id/button1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/circle_button"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
