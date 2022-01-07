@@ -23,10 +23,6 @@ import com.google.firebase.database.ValueEventListener
 
 import com.google.firebase.database.FirebaseDatabase
 
-
-
-
-
 private lateinit var binding: HistoryBinding
 private lateinit var auth: FirebaseAuth
 private var historylist  = ArrayList<Historyobject>()
@@ -42,17 +38,17 @@ class History : AppCompatActivity() {
         setContentView(binding.root)
         binding.recycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
         binding.recycler.adapter = Adapter
-        database.getReference("User").child(auth.currentUser!!.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (snapshot in dataSnapshot.children) {
-                        val user: Historyobject? = snapshot.getValue(Historyobject::class.java)
-                       Log.i("Firebase",user!!.location)
-                    }
+        val ref = database.getReference("User").child(auth.currentUser!!.uid)
+        val eventListener: ValueEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (ds in dataSnapshot.children) {
+                    val list = Historyobject(ds.key.toString(),2)
+                    historylist.add(list)
                 }
 
-                override fun onCancelled(databaseError: DatabaseError) {}
-            })
+            }
+            override fun onCancelled(databaseError: DatabaseError) {}
+        }
         //val unit = Historyobject("Resorts World Manila", 5)
         //val unit2 = Historyobject("Makati Shangrila", 2)
         //val ref = database.getReference(auth.currentUser!!.uid)
