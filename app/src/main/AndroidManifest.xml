@@ -31,5 +31,8 @@
         <activity
             android:name=".History">
         </activity>
+        <activity
+            android:name=".QrScanner">
+        </activity>
     </application>
 </manifest>
