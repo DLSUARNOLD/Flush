@@ -14,8 +14,7 @@
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
         app:flashButtonVisible="true"
-        app:maskColor="#66000000">
-    </com.budiyev.android.codescanner.CodeScannerView>
+        app:maskColor="#66000000"></com.budiyev.android.codescanner.CodeScannerView>
 
     <TextView
         android:id="@+id/ScanText"
@@ -23,9 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/scanner_view"
         android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:text="Scan QR Code"
-        android:textColor="@color/black">
-    </TextView>
+        android:textColor="@color/white"></TextView>
 
 </RelativeLayout>
