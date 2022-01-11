@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
@@ -13,6 +14,7 @@
         android:layout_marginTop="60dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
+        android:textColor = "?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,4 +78,9 @@
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/circle_button"
         />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/Map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
