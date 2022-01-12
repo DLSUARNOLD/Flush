@@ -1,25 +1,18 @@
 package com.example.mobdeveapplication
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import com.example.mobdeveapplication.databinding.RegisterformBinding
 import com.example.mobdeveapplication.datasets.Globals
-import com.example.mobdeveapplication.datasets.UserC
-//import com.example.mobdeveapplication.dataRegisterformBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.registerform.*
 
 private lateinit var binding: RegisterformBinding
 class Registerform : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         val universal = Globals()
@@ -45,14 +38,10 @@ class Registerform : AppCompatActivity() {
                                 if (task.isSuccessful) {
                                 binding.Errordisplay.text = "Sign Up successfull. Email and Password created"
                                 val user = auth.currentUser
+                                val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
+                                    ref.child(auth.currentUser!!.uid)
                                 val profileupdate = userProfileChangeRequest {displayName = binding.namebox.text.toString()}
                                 user?.updateProfile(profileupdate)!!
-                                val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
-                                    ref.child(auth.currentUser!!.uid).setValue("").addOnCompleteListener(this){
-                                        Toast.makeText(this,"User Saved", Toast.LENGTH_SHORT).show()
-                                    }.addOnFailureListener(this) {
-                                        Toast.makeText(this,"Error", Toast.LENGTH_SHORT).show()
-                                    }
                                 //updateUI(user)
                             } else
                             {
@@ -65,5 +54,7 @@ class Registerform : AppCompatActivity() {
                     }
                 }
         }
+    }
+    fun updateUI(currentUser: FirebaseUser?) {
     }
 }

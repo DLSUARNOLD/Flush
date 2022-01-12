@@ -1,19 +1,11 @@
 package com.example.mobdeveapplication.datasets
 
 import android.content.Context
-import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveapplication.databinding.HistoryitemBinding
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
-
-
-
-
-
 
 
 class Adapter(private val context: Context, private var historylist: ArrayList<Historyobject>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -44,7 +36,7 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
             }
             binding.viewhistorybtn.setOnClickListener {
                 val information="username is " + item.location + "fatigue is " + item.rating
-                Snackbar.make(itemView, information,LENGTH_LONG).show()
+                Snackbar.make(itemView, information,Snackbar.LENGTH_LONG).show()
             }
         }
     }
