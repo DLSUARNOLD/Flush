@@ -2,18 +2,11 @@ package com.example.mobdeveapplication.datasets
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobdeveapplication.Facebook
 import com.example.mobdeveapplication.databinding.HistoryitemBinding
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
-import com.google.android.material.snackbar.Snackbar
-
-
-
-
-
 
 
 class Adapter(private val context: Context, private var historylist: ArrayList<Historyobject>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -34,6 +27,7 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
     {
         fun binder(item:Historyobject,index: Int){
             binding.titleHistory.text = item.location
+            var shareBtn = binding.shareBtn
 
             when (item.rating) {
                 1 -> binding.ratingbar.rating = 1F
@@ -42,9 +36,12 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
                 4 -> binding.ratingbar.rating = 4F
                 5 -> binding.ratingbar.rating = 5F
             }
-            binding.viewhistorybtn.setOnClickListener {
-                val information="username is " + item.location + "fatigue is " + item.rating
-                Snackbar.make(itemView, information,LENGTH_LONG).show()
+
+            shareBtn.setOnClickListener {
+
+                val facebookintent = Intent(context, Facebook::class.java)
+                facebookintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(facebookintent)
             }
         }
     }

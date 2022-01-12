@@ -50,4 +50,5 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.2')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation 'com.facebook.android:facebook-share:latest.release'
 }
