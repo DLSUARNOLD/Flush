@@ -1,4 +1,5 @@
 package com.example.mobdeveapplication
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -14,14 +15,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 
 import com.google.firebase.database.ValueEventListener
-
-
-
-
-
-
-
-
 
 
 
@@ -43,6 +36,8 @@ class History : AppCompatActivity() {
                 binding.recycler.adapter = Adapter
             }
         })
+
+
     }
     interface Callbacker {
         fun returnvaluepls(value: ArrayList<Historyobject>){
