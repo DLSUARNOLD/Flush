@@ -27,7 +27,6 @@ import com.google.firebase.database.ValueEventListener
 
 private lateinit var binding: HistoryBinding
 private lateinit var auth: FirebaseAuth
-//private var historylist  = ArrayList<Historyobject>()
 class History : AppCompatActivity() {
     private lateinit var Adapter : Adapter
     override fun onCreate(savedInstanceState: Bundle?) {
