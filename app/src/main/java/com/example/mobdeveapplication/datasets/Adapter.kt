@@ -1,6 +1,7 @@
 package com.example.mobdeveapplication.datasets
 
 import android.content.Context
+
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -36,9 +37,7 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
                 4 -> binding.ratingbar.rating = 4F
                 5 -> binding.ratingbar.rating = 5F
             }
-
             shareBtn.setOnClickListener {
-
                 val facebookintent = Intent(context, Facebook::class.java)
                 facebookintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(facebookintent)

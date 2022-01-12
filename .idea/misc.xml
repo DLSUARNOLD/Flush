@@ -3,28 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/drawable-anydpi/ic_qr.xml" value="0.3828125" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/drawable-anydpi/ic_share.xml" value="0.3828125" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/drawable/circle_button.xml" value="0.3828125" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/history.xml" value="0.4215568862275449" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/historyitem.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/homepage.xml" value="0.2164855072463768" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/loginfacebook.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/loginform.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/share_facebook.xml" value="0.22" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/layout/homepage.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/layout/loginform.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/layout/registerform.xml" value="0.25" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2359375" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/drawable/custom_background.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/History.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/establishment.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/history.xml" value="0.33" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/historyitem.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/homepage.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/loginform.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/profile.xml" value="0.33" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/registerform.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/scanner_qr.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/layout/searchitem.xml" value="0.360054347826087" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/menu/menu.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/menu/menu_main.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Mobdeve-Flush-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21875" />
       </map>

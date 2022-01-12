@@ -75,6 +75,7 @@
 
     <TextView
         android:id="@+id/textView"
+        android:textColor = "?android:textColorPrimary"
         android:layout_width="326dp"
         android:layout_height="92dp"
         android:layout_marginTop="48dp"

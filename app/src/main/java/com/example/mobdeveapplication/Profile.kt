@@ -21,13 +21,9 @@ class Profile : AppCompatActivity() {
         binding = ProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var email = ""
-        //Log.i("firebase", "Got value $user")
         val firebaseDatabase = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        var databaseReference = firebaseDatabase.getReference("User").child(auth.uid.toString()).get().addOnSuccessListener{
-                    text_name.setText(it.child("name").value as String)
-                    email = it.child("email").value as String
-                    binding.Greetingbox.text = "Hello ${email}"
-        }
+                    text_name.setText(auth.currentUser?.displayName)
+                    binding.Greetingbox.text = "Hello ${auth.currentUser?.email}"
         save_name.setOnClickListener {
             var namereference = firebaseDatabase.getReference("User").child(auth.uid.toString()).child("name").setValue(binding.textName.text.toString()).addOnSuccessListener {
                 Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
