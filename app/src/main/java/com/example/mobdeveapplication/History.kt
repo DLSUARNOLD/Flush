@@ -28,7 +28,6 @@ class History : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = HistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         readData(object : Callbacker {
             override fun returnvaluepls(value: ArrayList<Historyobject>) {
                 Adapter = Adapter(applicationContext, value)

@@ -8,17 +8,21 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
-import kotlinx.android.synthetic.main.scanner_qr.*
+import com.example.mobdeveapplication.databinding.ProfileBinding
+import com.example.mobdeveapplication.databinding.ScannerQrBinding
+
+//import kotlinx.android.synthetic.main.scanner_qr.*
 
 private const val CAMERA_CODE = 101
-
+private lateinit var binding: ScannerQrBinding
 class QrScanner : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.scanner_qr)
+        binding = ScannerQrBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupPermissions()
         codeScanner()
@@ -26,7 +30,7 @@ class QrScanner : AppCompatActivity() {
 
     private fun codeScanner()
     {
-        codeScanner = CodeScanner(this, scanner_view)
+        codeScanner = CodeScanner(this,binding.scannerView)
 
         codeScanner.apply {
             camera = CodeScanner.CAMERA_BACK
@@ -40,7 +44,7 @@ class QrScanner : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    ScanText.text = it.text
+                    binding.ScanText.text = it.text
                 }
             }
 

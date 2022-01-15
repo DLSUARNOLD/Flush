@@ -95,7 +95,7 @@ class Homepage : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main,menu)
         val itemz = menu?.findItem(R.id.cloud_search)
-        val searchview = MenuItemCompat.getActionView(itemz) as SearchView
+        val searchview = itemz?.actionView as SearchView
         searchview.setOnCloseListener {
             binding.searchResults.visibility = View.INVISIBLE
             false

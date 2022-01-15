@@ -3,14 +3,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import com.example.mobdeveapplication.databinding.LoginformBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.registerform.*
 import kotlin.Exception
 
 private lateinit var binding : LoginformBinding
@@ -30,7 +26,6 @@ class Loginform : AppCompatActivity()  {
         binding.SigninButton.setOnClickListener {
             //val inputMethodManager =  getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             //inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-            val firebaseDatabase = universal.firebaseDatabase
             try {
                 /*var databaseReference =
                     firebaseDatabase.getReference("User").child(binding.Usernamebox.text.toString())
