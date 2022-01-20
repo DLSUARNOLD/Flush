@@ -26,6 +26,12 @@ class Registerform : AppCompatActivity() {
             finish()
              }
 
+        if (auth.currentUser != null) {
+            val intent = Intent(this, Homepage::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
 
         binding.Submitbutt.setOnClickListener{
             //val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

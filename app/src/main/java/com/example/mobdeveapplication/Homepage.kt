@@ -1,5 +1,4 @@
 package com.example.mobdeveapplication
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,33 +10,12 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.HomepageBinding
-import com.example.mobdeveapplication.datasets.Adapter
-import com.example.mobdeveapplication.datasets.Globals
-import com.example.mobdeveapplication.datasets.SearchAdapter
-import com.example.mobdeveapplication.datasets.searchobject
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import androidx.annotation.NonNull
-
-import com.google.android.gms.tasks.OnFailureListener
-
-import com.google.firebase.firestore.QueryDocumentSnapshot
-
-import com.google.firebase.firestore.QuerySnapshot
-
-import com.google.android.gms.tasks.OnSuccessListener
-
-
-
+import com.example.mobdeveapplication.datasets.*
 
 
 private lateinit var binding: HomepageBinding
@@ -46,8 +24,10 @@ lateinit var mapFragment: SupportMapFragment
 lateinit var googleMap : GoogleMap
 class Homepage : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var Adapter : SearchAdapter
+    private lateinit var Adapter: SearchAdapter
+
     @SuppressLint("SetTextI18n")
+    private lateinit var featuredadapter: featuredadapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +50,30 @@ class Homepage : AppCompatActivity() {
             val estab = Intent(this, Establishment::class.java)
             startActivity(estab)
         }
+        binding.button1.setOnClickListener {
+            auth.signOut()
+            val signout = Intent(this, Registerform::class.java)
+            startActivity(signout)
+        }
+
+
+        readhome(object : homepagecallback {
+            override fun returnvalueplx(value: ArrayList<listingobject>) {
+                featuredadapter = featuredadapter(applicationContext, value)
+                binding.featuredcarousel.layoutManager =
+                    LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+                binding.featuredcarousel.adapter = featuredadapter
+            }
+        },"Featured")
+        readhome(object : homepagecallback {
+            override fun returnvalueplx(value: ArrayList<listingobject>) {
+                featuredadapter = featuredadapter(applicationContext, value)
+                binding.popularcarousel.layoutManager =
+                    LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+                binding.popularcarousel.adapter = featuredadapter
+            }
+        },"Popular")
+        /*
         mapFragment = supportFragmentManager.findFragmentById(binding.Map.id) as SupportMapFragment
         mapFragment.getMapAsync(OnMapReadyCallback {
             googleMap = it
@@ -84,13 +88,25 @@ class Homepage : AppCompatActivity() {
             )
             //googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15F))
             return@OnMapReadyCallback
-        })
+        })*/
     }
-
-
-
-
-
+    interface homepagecallback {
+        fun returnvalueplx(value: ArrayList<listingobject>){
+        }
+    }
+    fun readhome(homecallback : homepagecallback,filter: String) {
+        val universal = Globals()
+        val database = universal.db
+        database.collection("Establishments").whereEqualTo(filter, "True").get()
+            .addOnSuccessListener { result ->
+                val featuredlist = ArrayList<listingobject>()
+                for (document in result) {
+                    val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                    featuredlist.add(list)
+                }
+                homecallback.returnvalueplx(featuredlist)
+            }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main,menu)
@@ -144,13 +160,6 @@ class Homepage : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-    private fun updateUI(currentUser: FirebaseUser?) {
-        if(currentUser !=null){
-            val intent = Intent(this, Homepage::class.java)
-            startActivity(intent)
-            finish()
-        }
-    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
     {
@@ -162,3 +171,4 @@ class Homepage : AppCompatActivity() {
         }
     }
 }
+

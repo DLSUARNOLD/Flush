@@ -36,7 +36,8 @@
             android:name=".Loginform">
         </activity>
         <activity
-            android:name=".Homepage">
+            android:name=".Homepage"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".Profile">
