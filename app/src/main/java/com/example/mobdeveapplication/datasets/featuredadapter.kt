@@ -1,10 +1,13 @@
 package com.example.mobdeveapplication.datasets
 
 import android.content.Context
+import android.content.Intent
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobdeveapplication.Establishment
 import com.example.mobdeveapplication.databinding.HomepageitemBinding
 import com.squareup.picasso.Picasso
 
@@ -27,7 +30,16 @@ class featuredadapter(private val context: Context, private var listing: ArrayLi
         RecyclerView.ViewHolder(binding.root) {
         fun binder(item: listingobject, index: Int) {
             binding.descriptiontxt.text = item.name
-            Picasso.get().load(item.picture).fit().into(binding.imageView)
+            Picasso.get().load(item.picture).fit().into(binding.displaypicture)
+            binding.displaypicture.setOnClickListener {
+                val selectedlisting = Intent(context, Establishment::class.java)
+                selectedlisting.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                selectedlisting.putExtra("name", item.name)
+                selectedlisting.putExtra("rating", item.rating)
+                selectedlisting.putExtra("picture", item.picture)
+                context.startActivity(selectedlisting)
+            }
+
         }
     }
 }  
