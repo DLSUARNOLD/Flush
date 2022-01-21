@@ -1,4 +1,5 @@
 package com.example.mobdeveapplication
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,12 @@ class Profile : AppCompatActivity() {
             auth.sendPasswordResetEmail(auth.currentUser?.email.toString())
             Toast.makeText(this,"An email has been sent to your email",Toast.LENGTH_LONG).show()
         }
-
+        binding.deleteAccount.setOnClickListener {
+            firebaseDatabase.getReference("User").child(auth.uid.toString()).removeValue()
+            auth.currentUser?.delete()
+            auth.signOut()
+            val signedout = Intent(this, Profile::class.java)
+            startActivity(signedout)
+        }
     }
 }
