@@ -19,6 +19,32 @@ class Profile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+            when (menu.itemId) {
+                R.id.homenavbar -> {
+                    val intent1 = Intent(this, Homepage::class.java)
+                    startActivity(intent1)
+                    true
+                }
+                R.id.historynavbar -> {
+                    val intent2 = Intent(this, History::class.java)
+                    startActivity(intent2)
+                    true
+                }
+                R.id.qrnavbar -> {
+                    val intent3 = Intent(this, QrScanner::class.java)
+                    startActivity(intent3)
+                    true
+                }
+                R.id.profilenavbar -> {
+                    val intent4 = Intent(this, Profile::class.java)
+                    startActivity(intent4)
+                    true
+                }
+                else -> {throw IllegalStateException("something bad happened")}
+            }
+        }
         val firebaseDatabase = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/")
                     binding.textName.setText(auth.currentUser?.displayName)
                     binding.Greetingbox.text = "Hello ${auth.currentUser?.email}"

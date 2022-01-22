@@ -11,30 +11,27 @@
         android:id="@+id/button1"
         android:layout_width="77dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="56dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toEndOf="@+id/estab" />
 
     <Button
         android:id="@+id/estab"
         android:layout_width="77dp"
         android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="56dp"
         android:text="Estab"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/history_btn" />
+        app:layout_constraintStart_toEndOf="@+id/qr_btn" />
 
     <Button
         android:id="@+id/profile_btn"
         android:layout_width="77dp"
         android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="56dp"
         android:text="@string/profile"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,8 +41,8 @@
         android:id="@+id/history_btn"
         android:layout_width="77dp"
         android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="56dp"
         android:text="History"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,17 +51,18 @@
     <Button
         android:id="@+id/qr_btn"
         style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginRight="184dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/circle_button"
         app:icon="@drawable/ic_qr"
         app:iconGravity="textStart"
         app:iconPadding="-5dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="3dp"
-        app:layout_constraintBottom_toTopOf="@id/button1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@drawable/circle_button"
-        />
+        app:layout_constraintStart_toEndOf="@+id/history_btn" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popularcarousel"
@@ -96,20 +94,6 @@
         app:layout_constraintVertical_bias="0.224"
         tools:listitem="@layout/homepageitem" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_results"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#99C0C0C0"
-        android:scrollbars="horizontal"
-        android:translationZ="90dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/popularlabel"
@@ -141,5 +125,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/popularcarousel"
         app:layout_constraintVertical_bias="0.562" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_results"
+        android:layout_width="409dp"
+        android:layout_height="679dp"
+        android:background="#99C0C0C0"
+        android:scrollbars="horizontal"
+        android:translationZ="90dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:theme="@style/Theme.Apirtayo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/nav_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

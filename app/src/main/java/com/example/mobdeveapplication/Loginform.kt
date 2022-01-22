@@ -56,14 +56,6 @@ class Loginform : AppCompatActivity()  {
             }
             catch(e: Exception){ Toast.makeText(this,"Invalid Email or password. Try Again",Toast.LENGTH_LONG).show() }
         }
-        val authStateListener = AuthStateListener { firebaseAuth ->
-                val firebaseUser = firebaseAuth.currentUser
-                if (firebaseUser != null) {
-                    val intent = Intent(this, Homepage::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
     }
     private fun updateUI() {
         val intent = Intent(this, Homepage::class.java)

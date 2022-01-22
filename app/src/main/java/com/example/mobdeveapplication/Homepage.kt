@@ -12,10 +12,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.HomepageBinding
+import com.example.mobdeveapplication.datasets.*
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.firebase.auth.FirebaseAuth
-import com.example.mobdeveapplication.datasets.*
 
 
 private lateinit var binding: HomepageBinding
@@ -34,6 +34,7 @@ class Homepage : AppCompatActivity() {
         auth = Globals().auth
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         binding.profileBtn.setOnClickListener {
             val profileintent = Intent(this, Profile::class.java)
             startActivity(profileintent)
@@ -55,6 +56,31 @@ class Homepage : AppCompatActivity() {
             val signout = Intent(this, Registerform::class.java)
             startActivity(signout)
         }
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+            when (menu.itemId) {
+                R.id.homenavbar -> {
+                    val intent1 = Intent(this, Homepage::class.java)
+                    startActivity(intent1)
+                    true
+                }
+                R.id.historynavbar -> {
+                    val intent2 = Intent(this, History::class.java)
+                    startActivity(intent2)
+                    true
+                }
+                R.id.qrnavbar -> {
+                    val intent3 = Intent(this, QrScanner::class.java)
+                    startActivity(intent3)
+                    true
+                }
+                R.id.profilenavbar -> {
+                    val intent4 = Intent(this, Profile::class.java)
+                    startActivity(intent4)
+                    true
+                }
+                else -> {throw IllegalStateException("something bad happened")}
+            }
+        }
 
 
         readhome(object : homepagecallback {
@@ -73,22 +99,6 @@ class Homepage : AppCompatActivity() {
                 binding.popularcarousel.adapter = featuredadapter
             }
         },"Popular")
-        /*
-        mapFragment = supportFragmentManager.findFragmentById(binding.Map.id) as SupportMapFragment
-        mapFragment.getMapAsync(OnMapReadyCallback {
-            googleMap = it
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), 69420)
-            }
-                googleMap.isMyLocationEnabled = true
-
-            val sydney = LatLng(-33.852, 151.211)
-            googleMap.addMarker(
-                MarkerOptions().position(sydney).title("Marker in Sydney")
-            )
-            //googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15F))
-            return@OnMapReadyCallback
-        })*/
     }
     interface homepagecallback {
         fun returnvalueplx(value: ArrayList<listingobject>){
@@ -134,8 +144,8 @@ class Homepage : AppCompatActivity() {
                         arrayrecycler.add(searchobject(document.data["Name"].toString()))
                         Log.i("panalo",document.data["Name"].toString())
                     }
-                }.addOnFailureListener{ e ->
-                        // do something with e (aka error)
+                }.addOnFailureListener{
+                    // do something with e (aka error)
                     }
                 Adapter = SearchAdapter(applicationContext,arrayrecycler)
                 binding.searchResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
@@ -145,22 +155,12 @@ class Homepage : AppCompatActivity() {
         })
         return super.onCreateOptionsMenu(menu)
     }
-    /*fun searchData(input : String){
-        val db = Globals().db
-        db.collection("Establishments").whereEqualTo("Name",input).get().addOnCompleteListener { document ->
-            Toast.makeText(applicationContext, "value is $document", Toast.LENGTH_LONG).show()
-        }.addOnFailureListener {
-            Toast.makeText(applicationContext, "failure result", Toast.LENGTH_LONG).show()
-        }
-    }*/
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_settings){
             Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
