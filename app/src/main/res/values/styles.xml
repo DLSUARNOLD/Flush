@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Apirtayo" parent="Theme.MaterialComponents">
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
+        <item name="colorPrimary">@color/maroon</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="itemTextAppearanceActive">@color/white</item>
+        <item name="itemTextAppearanceInactive">@color/white</item>
+    </style>
+</resources>

@@ -35,42 +35,21 @@ class Homepage : AppCompatActivity() {
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
-        binding.profileBtn.setOnClickListener {
-            val profileintent = Intent(this, Profile::class.java)
-            startActivity(profileintent)
-        }
-        binding.historyBtn.setOnClickListener {
-            val historyintent = Intent(this, History::class.java)
-            startActivity(historyintent)
-        }
-        binding.qrBtn.setOnClickListener {
-            val qrintent = Intent(this, QrScanner::class.java)
-            startActivity(qrintent)
-        }
-        binding.estab.setOnClickListener {
-            val estab = Intent(this, Establishment::class.java)
-            startActivity(estab)
-        }
-        binding.button1.setOnClickListener {
-            auth.signOut()
-            val signout = Intent(this, Registerform::class.java)
-            startActivity(signout)
-        }
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
             when (menu.itemId) {
                 R.id.homenavbar -> {
-                    val intent1 = Intent(this, Homepage::class.java)
-                    startActivity(intent1)
+                    val intentforhomepage = Intent(this, Homepage::class.java)
+                    startActivity(intentforhomepage)
                     true
                 }
                 R.id.historynavbar -> {
-                    val intent2 = Intent(this, History::class.java)
-                    startActivity(intent2)
+                    val intentforhistory = Intent(this, History::class.java)
+                    startActivity(intentforhistory)
                     true
                 }
                 R.id.qrnavbar -> {
-                    val intent3 = Intent(this, QrScanner::class.java)
-                    startActivity(intent3)
+                    val intentforqr = Intent(this, QrScanner::class.java)
+                    startActivity(intentforqr)
                     true
                 }
                 R.id.profilenavbar -> {
@@ -157,7 +136,10 @@ class Homepage : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_settings){
-            Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show()
+            auth.signOut()
+            val intent1 = Intent(this, Registerform::class.java)
+            startActivity(intent1)
+            //Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
