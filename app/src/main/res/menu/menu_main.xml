@@ -11,5 +11,5 @@
 
     <item
         android:id="@+id/action_settings"
-        android:title="Settings"/>
+        android:title="Logout"/>
 </menu>

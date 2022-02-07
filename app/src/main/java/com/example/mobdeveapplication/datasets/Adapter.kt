@@ -2,7 +2,6 @@ package com.example.mobdeveapplication.datasets
 
 import android.app.Activity
 import android.content.Context
-
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,7 +13,7 @@ import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareDialog
 
 
-class Adapter(private val context: Context, private var historylist: ArrayList<Historyobject>, private val Activity : Activity) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(private val context: Context, private var historylist: ArrayList<Historyobject>,private val activity : Activity) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.ViewHolder {
@@ -43,7 +42,6 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
             }
 
             shareBtn.setOnClickListener {
-
                 val db = Globals().db
                 db.collection("Establishments").whereEqualTo("Name",item.location).get().addOnSuccessListener{ documents ->
                     var link = ""
@@ -52,15 +50,11 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
                         link = document.data["link"].toString()
                         Log.i("panalo",document.data["Name"].toString())
                     }
-
                     var hashTag = ShareHashtag.Builder().setHashtag("#FlushApp").build()
-
-
                     var sharecontent = ShareLinkContent.Builder().setQuote("Try one of Flush's Washrooms")
                         .setShareHashtag(hashTag)
                         .setContentUrl(Uri.parse(link))
                         .build()
-
                     ShareDialog.show(Activity, sharecontent)
                 }
             }
