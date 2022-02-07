@@ -17,7 +17,5 @@
     <string name="already_registered_sign_in">Already Registered? Sign In</string>
     <string name="logout">Logout</string>
     <string name="delete_account">Delete Account</string>
-    <string name="facebook_app_id">1319944051785586</string>
-    <string name="fb_login_protocol_scheme">fb1319944051785586</string>
 
 </resources>

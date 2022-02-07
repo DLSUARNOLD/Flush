@@ -32,7 +32,7 @@ class History : AppCompatActivity() {
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         readData(object : Callbacker {
             override fun returnvaluepls(value: ArrayList<Historyobject>) {
-                Adapter = Adapter(applicationContext, value)
+                Adapter = Adapter(applicationContext, value, this@History)
                 binding.recycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
                 binding.recycler.adapter = Adapter
             }
@@ -62,6 +62,7 @@ class History : AppCompatActivity() {
                 else -> {throw IllegalStateException("something bad happened")}
             }
         }
+
 
     }
     interface Callbacker {
