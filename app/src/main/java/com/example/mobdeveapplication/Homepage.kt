@@ -1,5 +1,4 @@
 package com.example.mobdeveapplication
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,33 +10,12 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.HomepageBinding
-import com.example.mobdeveapplication.datasets.Adapter
-import com.example.mobdeveapplication.datasets.Globals
-import com.example.mobdeveapplication.datasets.SearchAdapter
-import com.example.mobdeveapplication.datasets.searchobject
+import com.example.mobdeveapplication.datasets.*
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import androidx.annotation.NonNull
-
-import com.google.android.gms.tasks.OnFailureListener
-
-import com.google.firebase.firestore.QueryDocumentSnapshot
-
-import com.google.firebase.firestore.QuerySnapshot
-
-import com.google.android.gms.tasks.OnSuccessListener
-
-
-
 
 
 private lateinit var binding: HomepageBinding
@@ -46,14 +24,17 @@ lateinit var mapFragment: SupportMapFragment
 lateinit var googleMap : GoogleMap
 class Homepage : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var Adapter : SearchAdapter
+    private lateinit var Adapter: SearchAdapter
+
     @SuppressLint("SetTextI18n")
+    private lateinit var featuredadapter: featuredadapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Globals().auth
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         binding.profileBtn.setOnClickListener {
             val profileintent = Intent(this, Profile::class.java)
             startActivity(profileintent)
@@ -70,27 +51,72 @@ class Homepage : AppCompatActivity() {
             val estab = Intent(this, Establishment::class.java)
             startActivity(estab)
         }
-        mapFragment = supportFragmentManager.findFragmentById(binding.Map.id) as SupportMapFragment
-        mapFragment.getMapAsync(OnMapReadyCallback {
-            googleMap = it
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), 69420)
+        binding.button1.setOnClickListener {
+            auth.signOut()
+            val signout = Intent(this, Registerform::class.java)
+            startActivity(signout)
+        }
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+            when (menu.itemId) {
+                R.id.homenavbar -> {
+                    val intent1 = Intent(this, Homepage::class.java)
+                    startActivity(intent1)
+                    true
+                }
+                R.id.historynavbar -> {
+                    val intent2 = Intent(this, History::class.java)
+                    startActivity(intent2)
+                    true
+                }
+                R.id.qrnavbar -> {
+                    val intent3 = Intent(this, QrScanner::class.java)
+                    startActivity(intent3)
+                    true
+                }
+                R.id.profilenavbar -> {
+                    val intent4 = Intent(this, Profile::class.java)
+                    startActivity(intent4)
+                    true
+                }
+                else -> {throw IllegalStateException("something bad happened")}
             }
-                googleMap.isMyLocationEnabled = true
+        }
 
-            val sydney = LatLng(-33.852, 151.211)
-            googleMap.addMarker(
-                MarkerOptions().position(sydney).title("Marker in Sydney")
-            )
-            //googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15F))
-            return@OnMapReadyCallback
-        })
+
+        readhome(object : homepagecallback {
+            override fun returnvalueplx(value: ArrayList<listingobject>) {
+                featuredadapter = featuredadapter(applicationContext, value)
+                binding.featuredcarousel.layoutManager =
+                    LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+                binding.featuredcarousel.adapter = featuredadapter
+            }
+        },"Featured")
+        readhome(object : homepagecallback {
+            override fun returnvalueplx(value: ArrayList<listingobject>) {
+                featuredadapter = featuredadapter(applicationContext, value)
+                binding.popularcarousel.layoutManager =
+                    LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+                binding.popularcarousel.adapter = featuredadapter
+            }
+        },"Popular")
     }
-
-
-
-
-
+    interface homepagecallback {
+        fun returnvalueplx(value: ArrayList<listingobject>){
+        }
+    }
+    fun readhome(homecallback : homepagecallback,filter: String) {
+        val universal = Globals()
+        val database = universal.db
+        database.collection("Establishments").whereEqualTo(filter, "True").get()
+            .addOnSuccessListener { result ->
+                val featuredlist = ArrayList<listingobject>()
+                for (document in result) {
+                    val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                    featuredlist.add(list)
+                }
+                homecallback.returnvalueplx(featuredlist)
+            }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main,menu)
@@ -118,8 +144,8 @@ class Homepage : AppCompatActivity() {
                         arrayrecycler.add(searchobject(document.data["Name"].toString()))
                         Log.i("panalo",document.data["Name"].toString())
                     }
-                }.addOnFailureListener{ e ->
-                        // do something with e (aka error)
+                }.addOnFailureListener{
+                    // do something with e (aka error)
                     }
                 Adapter = SearchAdapter(applicationContext,arrayrecycler)
                 binding.searchResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
@@ -129,29 +155,12 @@ class Homepage : AppCompatActivity() {
         })
         return super.onCreateOptionsMenu(menu)
     }
-    /*fun searchData(input : String){
-        val db = Globals().db
-        db.collection("Establishments").whereEqualTo("Name",input).get().addOnCompleteListener { document ->
-            Toast.makeText(applicationContext, "value is $document", Toast.LENGTH_LONG).show()
-        }.addOnFailureListener {
-            Toast.makeText(applicationContext, "failure result", Toast.LENGTH_LONG).show()
-        }
-    }*/
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_settings){
             Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
-    private fun updateUI(currentUser: FirebaseUser?) {
-        if(currentUser !=null){
-            val intent = Intent(this, Homepage::class.java)
-            startActivity(intent)
-            finish()
-        }
-    }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -162,3 +171,4 @@ class Homepage : AppCompatActivity() {
         }
     }
 }
+

@@ -8,6 +8,9 @@ import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlin.Exception
+import androidx.annotation.NonNull
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+
 
 private lateinit var binding : LoginformBinding
 class Loginform : AppCompatActivity()  {
@@ -18,6 +21,12 @@ class Loginform : AppCompatActivity()  {
         auth = universal.auth
         binding = LoginformBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (auth.currentUser != null) {
+            val intent = Intent(this, Homepage::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
         binding.registerredirect.setOnClickListener {
             val intent = Intent(this, Registerform::class.java)
             startActivity(intent)
@@ -39,8 +48,7 @@ class Loginform : AppCompatActivity()  {
                     auth.signInWithEmailAndPassword(binding.emailbox.text.toString(),binding.Passwordbox.text.toString()).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             binding.Errordisplay.text = "Sign In successfull. "
-                            val user = auth.currentUser
-                            updateUI(user)
+                            updateUI()
                         } else
                             binding.Errordisplay.text = "Invalid Email or Password"
                     }.addOnFailureListener{ Toast.makeText(this, "This Email and password combination does not exist", Toast.LENGTH_LONG).show()}
@@ -49,11 +57,9 @@ class Loginform : AppCompatActivity()  {
             catch(e: Exception){ Toast.makeText(this,"Invalid Email or password. Try Again",Toast.LENGTH_LONG).show() }
         }
     }
-    private fun updateUI(currentUser: FirebaseUser?) {
-        if(currentUser !=null){
-            val intent = Intent(this, Homepage::class.java)
-            startActivity(intent)
-            finish()
+    private fun updateUI() {
+        val intent = Intent(this, Homepage::class.java)
+        startActivity(intent)
+        finish()
         }
-    }
 }

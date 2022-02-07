@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".QrScanner">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="141dp"
+        android:layout_marginBottom="0dp"
+        android:theme="@style/Theme.Apirtayo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/nav_menu" />
+
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner_view"
         android:layout_width="match_parent"
@@ -14,7 +28,7 @@
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
         app:flashButtonVisible="true"
-        app:maskColor="#66000000"></com.budiyev.android.codescanner.CodeScannerView>
+        app:maskColor="#66000000" />
 
     <TextView
         android:id="@+id/ScanText"
@@ -27,6 +41,9 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:text="Scan QR Code"
-        android:textColor="@color/white"></TextView>
+        android:textColor="@color/white" />
+
+
+
 
 </RelativeLayout>
