@@ -42,7 +42,7 @@ class Registerform : AppCompatActivity() {
                     auth.createUserWithEmailAndPassword(binding.emailbox.text.toString(), binding.Passwordbox.text.toString()).addOnCompleteListener(this)
                     { task ->
                                 if (task.isSuccessful) {
-                                binding.Errordisplay.text = "Sign Up successfull. Email and Password created"
+                                binding.Errordisplay.text = "Sign Up successfull. Click Sign in to Continue"
                                 val user = auth.currentUser
                                 val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
                                     ref.child(auth.currentUser!!.uid)

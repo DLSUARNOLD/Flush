@@ -9,6 +9,7 @@ import com.example.mobdeveapplication.databinding.HistoryBinding
 import com.example.mobdeveapplication.datasets.Adapter
 import com.example.mobdeveapplication.datasets.Globals
 import com.example.mobdeveapplication.datasets.Historyobject
+import com.facebook.FacebookSdk
 import com.google.firebase.auth.FirebaseAuth
 import kotlin.collections.ArrayList
 import com.google.firebase.database.DatabaseError
@@ -27,12 +28,13 @@ class History : AppCompatActivity() {
         val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
+        FacebookSdk.sdkInitialize(applicationContext)
         binding = HistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         readData(object : Callbacker {
             override fun returnvaluepls(value: ArrayList<Historyobject>) {
-                Adapter = Adapter(applicationContext, value)
+                Adapter = Adapter(applicationContext, value,this@History)
                 binding.recycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
                 binding.recycler.adapter = Adapter
             }

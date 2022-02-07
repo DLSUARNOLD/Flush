@@ -19,10 +19,8 @@
             android:value="@string/facebook_app_id" />
         <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:authorities="com.facebook.app.FacebookContentProvider(417263033432697)"
+            android:authorities="com.facebook.app.FacebookContentProvider(${FB_KEY2})"
             android:exported="true" />
-        <activity android:name=".Facebook"
-            android:exported="true"/>
         <activity
             android:name=".Registerform"
             android:exported="true">
