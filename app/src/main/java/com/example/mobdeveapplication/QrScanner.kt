@@ -71,7 +71,11 @@ class QrScanner : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    binding.ScanText.text = it.text
+                    if(useRegex(it.text))
+                        binding.ScanText.text = it.text
+                    else
+                        binding.ScanText.text = "Failed"
+                    //binding.ScanText.text = it.text
                 }
             }
 
@@ -87,6 +91,11 @@ class QrScanner : AppCompatActivity() {
     {
         super.onResume()
         codeScanner.startPreview()
+    }
+
+    fun useRegex(input: String): Boolean {
+        val regex = Regex(pattern = "^[a-zA-Z0-9_.-]*\$", options = setOf(RegexOption.IGNORE_CASE))
+        return input.length == 20 && regex.matches(input)
     }
 
     override fun onPause()
