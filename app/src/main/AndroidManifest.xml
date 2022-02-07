@@ -36,7 +36,8 @@
             android:name=".Loginform">
         </activity>
         <activity
-            android:name=".Homepage">
+            android:name=".Homepage"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".Profile">
@@ -52,7 +53,7 @@
         </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB-ETky4aqPzi11NO_PpA89NqPya0K4vLc"/>
+            android:value="${API_KEY}"/>
     </application>
 
 </manifest>

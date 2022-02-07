@@ -1,32 +1,63 @@
 package com.example.mobdeveapplication
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
-import kotlinx.android.synthetic.main.scanner_qr.*
+import com.example.mobdeveapplication.databinding.ProfileBinding
+import com.example.mobdeveapplication.databinding.ScannerQrBinding
+
+//import kotlinx.android.synthetic.main.scanner_qr.*
 
 private const val CAMERA_CODE = 101
-
+private lateinit var binding: ScannerQrBinding
 class QrScanner : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.scanner_qr)
+        binding = ScannerQrBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+            when (menu.itemId) {
+                R.id.homenavbar -> {
+                    val intent1 = Intent(this, Homepage::class.java)
+                    startActivity(intent1)
+                    true
+                }
+                R.id.historynavbar -> {
+                    val intent2 = Intent(this, History::class.java)
+                    startActivity(intent2)
+                    true
+                }
+                R.id.qrnavbar -> {
+                    val intent3 = Intent(this, QrScanner::class.java)
+                    startActivity(intent3)
+                    true
+                }
+                R.id.profilenavbar -> {
+                    val intent4 = Intent(this, Profile::class.java)
+                    startActivity(intent4)
+                    true
+                }
+                else -> {throw IllegalStateException("something bad happened")}
+            }
+        }
 
         setupPermissions()
         codeScanner()
     }
-
     private fun codeScanner()
     {
-        codeScanner = CodeScanner(this, scanner_view)
+        codeScanner = CodeScanner(this,binding.scannerView)
 
         codeScanner.apply {
             camera = CodeScanner.CAMERA_BACK
@@ -40,7 +71,11 @@ class QrScanner : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    ScanText.text = it.text
+                    if(useRegex(it.text))
+                        binding.ScanText.text = it.text
+                    else
+                        binding.ScanText.text = "Failed"
+                    //binding.ScanText.text = it.text
                 }
             }
 
@@ -56,6 +91,11 @@ class QrScanner : AppCompatActivity() {
     {
         super.onResume()
         codeScanner.startPreview()
+    }
+
+    fun useRegex(input: String): Boolean {
+        val regex = Regex(pattern = "^[a-zA-Z0-9_.-]*\$", options = setOf(RegexOption.IGNORE_CASE))
+        return input.length == 20 && regex.matches(input)
     }
 
     override fun onPause()

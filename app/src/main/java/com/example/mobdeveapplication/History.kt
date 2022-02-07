@@ -2,6 +2,7 @@ package com.example.mobdeveapplication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.HistoryBinding
@@ -28,7 +29,7 @@ class History : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = HistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         readData(object : Callbacker {
             override fun returnvaluepls(value: ArrayList<Historyobject>) {
                 Adapter = Adapter(applicationContext, value)
@@ -36,7 +37,31 @@ class History : AppCompatActivity() {
                 binding.recycler.adapter = Adapter
             }
         })
-
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+            when (menu.itemId) {
+                R.id.homenavbar -> {
+                    val intent1 = Intent(this, Homepage::class.java)
+                    startActivity(intent1)
+                    true
+                }
+                R.id.historynavbar -> {
+                    val intent2 = Intent(this, History::class.java)
+                    startActivity(intent2)
+                    true
+                }
+                R.id.qrnavbar -> {
+                    val intent3 = Intent(this, QrScanner::class.java)
+                    startActivity(intent3)
+                    true
+                }
+                R.id.profilenavbar -> {
+                    val intent4 = Intent(this, Profile::class.java)
+                    startActivity(intent4)
+                    true
+                }
+                else -> {throw IllegalStateException("something bad happened")}
+            }
+        }
 
     }
     interface Callbacker {
