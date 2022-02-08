@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_rating_screen.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_settings.xml" value="0.1859375" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/establishment.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/facebook.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/history.xml" value="0.25" />
@@ -15,8 +17,10 @@
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/registerform.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/scanner_qr.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/searchitem.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/settings.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/menu/menu_main.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/menu/nav_menu.xml" value="0.24598930481283424" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3635" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/layout/homepage.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/MOBDEVEAPPLICATION/app/src/main/res/layout/loginform.xml" value="0.3625" />

@@ -57,6 +57,11 @@ class Homepage : AppCompatActivity() {
                     startActivity(intent4)
                     true
                 }
+                R.id.settingsnavbar -> {
+                    val intent5 = Intent(this, Settings::class.java)
+                    startActivity(intent5)
+                    true
+                }
                 else -> {throw IllegalStateException("something bad happened")}
             }
         }
@@ -117,11 +122,9 @@ class Homepage : AppCompatActivity() {
                 binding.searchResults.visibility = View.VISIBLE
                 val arrayrecycler  = ArrayList<searchobject>()
                 db.collection("Establishments").whereEqualTo("Name",newText!!).get().addOnSuccessListener{ documents ->
-                    Log.i("panalo", documents.size().toString())
                     for (document in documents)
                     {
                         arrayrecycler.add(searchobject(document.data["Name"].toString()))
-                        Log.i("panalo",document.data["Name"].toString())
                     }
                 }.addOnFailureListener{
                     // do something with e (aka error)
@@ -133,15 +136,6 @@ class Homepage : AppCompatActivity() {
             }
         })
         return super.onCreateOptionsMenu(menu)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.action_settings){
-            auth.signOut()
-            val intent1 = Intent(this, Registerform::class.java)
-            startActivity(intent1)
-            //Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show()
-        }
-        return super.onOptionsItemSelected(item)
     }
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
     {

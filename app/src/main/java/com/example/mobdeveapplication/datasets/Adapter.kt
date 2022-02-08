@@ -32,13 +32,7 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
             binding.titleHistory.text = item.location
             val shareBtn = binding.shareBtn
 
-            when (item.rating) {
-                1 -> binding.ratingbar.rating = 1F
-                2 -> binding.ratingbar.rating = 2F
-                3 -> binding.ratingbar.rating = 3F
-                4 -> binding.ratingbar.rating = 4F
-                5 -> binding.ratingbar.rating = 5F
-            }
+            binding.ratingbar.rating = item.rating
             /*shareBtn.setOnClickListener {
                 val db = Globals().db
                 db.collection("Establishments").whereEqualTo("Name", item.location).get()

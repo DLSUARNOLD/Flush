@@ -42,6 +42,11 @@ class Profile : AppCompatActivity() {
                     startActivity(intent4)
                     true
                 }
+                R.id.settingsnavbar -> {
+                    val intent5 = Intent(this, Settings::class.java)
+                    startActivity(intent5)
+                    true
+                }
                 else -> {throw IllegalStateException("something bad happened")}
             }
         }
