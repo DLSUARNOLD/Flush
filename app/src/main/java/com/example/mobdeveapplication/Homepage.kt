@@ -3,9 +3,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
@@ -13,21 +11,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.HomepageBinding
 import com.example.mobdeveapplication.datasets.*
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.firebase.auth.FirebaseAuth
 
 
 private lateinit var binding: HomepageBinding
 
-lateinit var mapFragment: SupportMapFragment
-lateinit var googleMap : GoogleMap
-class Homepage : AppCompatActivity() {
+class Homepage : AppCompatActivity(){
     private lateinit var auth: FirebaseAuth
-    private lateinit var Adapter: SearchAdapter
+    private lateinit var searchAdapter: SearchAdapter
 
     @SuppressLint("SetTextI18n")
-    private lateinit var featuredadapter: featuredadapter
+    private lateinit var Featuredadapter: Featuredadapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,28 +62,38 @@ class Homepage : AppCompatActivity() {
         }
 
 
-        readhome(object : homepagecallback {
+        readhome(object : Homepagecallback {
             override fun returnvalueplx(value: ArrayList<listingobject>) {
-                featuredadapter = featuredadapter(applicationContext, value)
+                Featuredadapter = Featuredadapter(applicationContext, value)
                 binding.featuredcarousel.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-                binding.featuredcarousel.adapter = featuredadapter
+                binding.featuredcarousel.adapter = Featuredadapter
             }
         },"Featured")
-        readhome(object : homepagecallback {
+        readhome(object : Homepagecallback {
             override fun returnvalueplx(value: ArrayList<listingobject>) {
-                featuredadapter = featuredadapter(applicationContext, value)
+                Featuredadapter = Featuredadapter(applicationContext, value)
                 binding.popularcarousel.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-                binding.popularcarousel.adapter = featuredadapter
+                binding.popularcarousel.adapter = Featuredadapter
             }
         },"Popular")
+
+        binding.btnCategories.setOnClickListener {
+            val intentcategories = Intent(this, Filterscategories::class.java)
+            startActivity(intentcategories)
+        }
+        binding.btnNearme.setOnClickListener {
+            val intentnearme = Intent(this, Filtersnearme::class.java)
+            startActivity(intentnearme)
+        }
+
     }
-    interface homepagecallback {
+    interface Homepagecallback {
         fun returnvalueplx(value: ArrayList<listingobject>){
         }
     }
-    fun readhome(homecallback : homepagecallback,filter: String) {
+    private fun readhome(homecallback : Homepagecallback, filter: String) {
         val universal = Globals()
         val database = universal.db
         database.collection("Establishments").whereEqualTo(filter, "True").get()
@@ -113,7 +118,7 @@ class Homepage : AppCompatActivity() {
         searchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-                binding.searchResults.adapter = Adapter
+                binding.searchResults.adapter = searchAdapter
                 return false
             }
 
@@ -129,9 +134,17 @@ class Homepage : AppCompatActivity() {
                 }.addOnFailureListener{
                     // do something with e (aka error)
                     }
-                Adapter = SearchAdapter(applicationContext,arrayrecycler)
+                searchAdapter = SearchAdapter(applicationContext,arrayrecycler)
                 binding.searchResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-                binding.searchResults.adapter = Adapter
+                binding.searchResults.adapter = searchAdapter
+                searchAdapter.setOnItemClickListener(object : SearchAdapter.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        val searchresultintent = Intent(applicationContext, Establishment::class.java)
+                        searchresultintent.putExtra("name",arrayrecycler[position].name)
+                        startActivity(searchresultintent)
+                    }
+
+                })
                 return false
             }
         })

@@ -1,6 +1,7 @@
 package com.example.mobdeveapplication
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mobdeveapplication.databinding.RegisterformBinding
@@ -46,7 +47,10 @@ class Registerform : AppCompatActivity() {
                                 val user = auth.currentUser
                                 val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
                                     ref.child(auth.currentUser!!.uid)
-                                val profileupdate = userProfileChangeRequest {displayName = binding.namebox.text.toString()}
+                                val profileupdate = userProfileChangeRequest {
+                                    displayName = binding.namebox.text.toString()
+                                    photoUri = Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png")
+                                }
                                 user?.updateProfile(profileupdate)!!
                                 //updateUI(user)
                             } else

@@ -14,6 +14,7 @@ import com.facebook.share.widget.ShareDialog
 class Adapter(private val context: Context, private var historylist: ArrayList<Historyobject>,private val activity : Activity) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.ViewHolder {
         val binding = HistoryitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -26,27 +27,13 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
     override fun getItemCount() = historylist.size
 
 
-    inner class ViewHolder(private val binding: HistoryitemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder( val binding: HistoryitemBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun binder(item: Historyobject, index: Int) {
             binding.titleHistory.text = item.location
             val shareBtn = binding.shareBtn
 
             binding.ratingbar.rating = item.rating
-            /*shareBtn.setOnClickListener {
-                val db = Globals().db
-                db.collection("Establishments").whereEqualTo("Name", item.location).get()
-                    .addOnSuccessListener { documents ->
-                        Log.i("panalo", documents.size().toString())
-                        for (document in documents) {
-                            //arrayrecycler.add(searchobject(document.data["Name"].toString()))
-                            //Log.i("panalo",document.data["Name"].toString())
-                        }
-                        val facebookintent = Intent(context, Facebook::class.java)
-                        facebookintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        context.startActivity(facebookintent)
-                    }
-            }*/
             shareBtn.setOnClickListener {
 
                 val db = Globals().db

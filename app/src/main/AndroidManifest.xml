@@ -19,6 +19,12 @@
         android:theme="@style/Theme.MOBDEVEAPPLICATION"
         tools:targetApi="s">
         <activity
+            android:name=".Filterscategories"
+            android:exported="false" />
+        <activity
+            android:name=".Filtersnearme"
+            android:exported="false" />
+        <activity
             android:name=".RatingScreen"
             android:exported="false" />
 

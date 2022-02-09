@@ -5,19 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popularcarousel"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="152dp"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/homepageitem" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/featuredcarousel"
@@ -32,9 +35,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/popularcarousel"
-        app:layout_constraintVertical_bias="0.224"
+        app:layout_constraintVertical_bias="0.454"
         tools:listitem="@layout/homepageitem" />
-
 
     <TextView
         android:id="@+id/popularlabel"
@@ -47,10 +49,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/popularcarousel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.889" />
 
     <TextView
         android:id="@+id/popularlabel2"
@@ -62,25 +64,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/featuredcarousel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/popularcarousel"
-        app:layout_constraintVertical_bias="0.562" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_results"
-        android:layout_width="409dp"
-        android:layout_height="679dp"
-        android:background="#99C0C0C0"
-        android:scrollbars="horizontal"
-        android:translationZ="90dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintVertical_bias="0.584" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -92,5 +79,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/nav_menu"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_results"
+        android:layout_width="414dp"
+        android:layout_height="675dp"
+        android:background="#99C0C0C0"
+        android:scrollbars="horizontal"
+        android:translationZ="90dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_categories"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Categories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_nearme"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="Near Me"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

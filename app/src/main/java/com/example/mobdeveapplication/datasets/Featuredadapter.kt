@@ -5,16 +5,15 @@ import android.content.Intent
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveapplication.Establishment
 import com.example.mobdeveapplication.databinding.HomepageitemBinding
 import com.squareup.picasso.Picasso
 
-class featuredadapter(private val context: Context, private var listing: ArrayList<listingobject>) : RecyclerView.Adapter<featuredadapter.ViewHolder>() {
+class Featuredadapter(private val context: Context, private var listing: ArrayList<listingobject>) : RecyclerView.Adapter<Featuredadapter.ViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): featuredadapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Featuredadapter.ViewHolder {
         val binding = HomepageitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }

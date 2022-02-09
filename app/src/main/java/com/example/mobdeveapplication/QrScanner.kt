@@ -81,7 +81,7 @@ class QrScanner : AppCompatActivity() {
                         startActivity(intentforrate)
                     }
                     else
-                        binding.ScanText.text = "Not a valid QR"
+                        binding.ScanText.text = it.text
                     //binding.ScanText.text = it.text
                 }
             }
@@ -100,7 +100,7 @@ class QrScanner : AppCompatActivity() {
         codeScanner.startPreview()
     }
 
-    fun useRegex(input: String): Boolean {
+    private fun useRegex(input: String): Boolean {
         val regex = Regex(pattern = "^[a-zA-Z0-9_.-]*\$", options = setOf(RegexOption.IGNORE_CASE))
         return input.length == 20 && regex.matches(input)
     }
