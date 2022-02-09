@@ -7,6 +7,7 @@ import com.example.mobdeveapplication.databinding.ProfileBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 
 
 private lateinit var binding: ProfileBinding
@@ -42,6 +43,11 @@ class Profile : AppCompatActivity() {
                     startActivity(intent4)
                     true
                 }
+                R.id.settingsnavbar -> {
+                    val intent5 = Intent(this, Settings::class.java)
+                    startActivity(intent5)
+                    true
+                }
                 else -> {throw IllegalStateException("something bad happened")}
             }
         }
@@ -53,16 +59,6 @@ class Profile : AppCompatActivity() {
                 Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
             }
         }
-        binding.savepassword.setOnClickListener {
-            auth.sendPasswordResetEmail(auth.currentUser?.email.toString())
-            Toast.makeText(this,"An email has been sent to your email",Toast.LENGTH_LONG).show()
-        }
-        binding.deleteAccount.setOnClickListener {
-            firebaseDatabase.getReference("User").child(auth.uid.toString()).removeValue()
-            auth.currentUser?.delete()
-            auth.signOut()
-            val signedout = Intent(this, Profile::class.java)
-            startActivity(signedout)
-        }
+        Picasso.get().load(auth.currentUser?.photoUrl).fit().into(binding.profilepicture)
     }
 }

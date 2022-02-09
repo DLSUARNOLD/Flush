@@ -2,7 +2,6 @@ package com.example.mobdeveapplication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.HistoryBinding
@@ -74,19 +73,24 @@ class History : AppCompatActivity() {
     fun readData(callbackobject : Callbacker) {
         val universal = Globals()
         val database = universal.firebaseDatabase
-        val ref = database.getReference("User").child(auth.currentUser!!.uid)
-            ref.addListenerForSingleValueEvent(object : ValueEventListener {
+        val ref = database.reference
+            ref.addValueEventListener(object : ValueEventListener {
                 var templist  = ArrayList<Historyobject>()
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (ds in dataSnapshot.children) {
-                         val list = Historyobject(ds.key.toString(), ds.getValue(Int::class.java)!!)
-                         templist.add(list)
-
+                        Log.i("resultstab",ds.child("Reviewer").value.toString())
+                        if(ds.child("Reviewer").value.toString() == auth.uid)
+                        {
+                            val list =
+                                Historyobject(ds.key.toString(), ds.child("Rating").value.toString().toFloatOrNull()!!)
+                            templist.add(list)
+                        }
                     }
                     callbackobject.returnvaluepls(templist)
                 }
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
     }
+
 
 }

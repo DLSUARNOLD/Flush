@@ -2,15 +2,13 @@ package com.example.mobdeveapplication
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
-import com.example.mobdeveapplication.databinding.ProfileBinding
 import com.example.mobdeveapplication.databinding.ScannerQrBinding
 
 //import kotlinx.android.synthetic.main.scanner_qr.*
@@ -48,6 +46,11 @@ class QrScanner : AppCompatActivity() {
                     startActivity(intent4)
                     true
                 }
+                R.id.settingsnavbar -> {
+                    val intent5 = Intent(this, Settings::class.java)
+                    startActivity(intent5)
+                    true
+                }
                 else -> {throw IllegalStateException("something bad happened")}
             }
         }
@@ -71,10 +74,14 @@ class QrScanner : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    if(useRegex(it.text))
+                    if(useRegex(it.text)) {
                         binding.ScanText.text = it.text
+                        val intentforrate = Intent(this@QrScanner, RatingScreen::class.java)
+                        intentforrate.putExtra("establishment", it.text)
+                        startActivity(intentforrate)
+                    }
                     else
-                        binding.ScanText.text = "Failed"
+                        binding.ScanText.text = it.text
                     //binding.ScanText.text = it.text
                 }
             }
@@ -93,7 +100,7 @@ class QrScanner : AppCompatActivity() {
         codeScanner.startPreview()
     }
 
-    fun useRegex(input: String): Boolean {
+    private fun useRegex(input: String): Boolean {
         val regex = Regex(pattern = "^[a-zA-Z0-9_.-]*\$", options = setOf(RegexOption.IGNORE_CASE))
         return input.length == 20 && regex.matches(input)
     }

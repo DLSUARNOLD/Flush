@@ -28,12 +28,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:isIndicator="false"
             android:max="5"
             android:textColor = "?android:textColorPrimary"
             android:scaleX=".8"
             android:progressTint="#FFD700"
-            android:scaleY=".8" />
+            android:scaleY=".8"
+            android:isIndicator="true"
+            />
+
 
         <Button
             android:id="@+id/share_btn"
