@@ -45,28 +45,28 @@ class Filtersnearme : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
             when (menu.itemId) {
                 R.id.homenavbar -> {
-                    val intentforhomepage = Intent(this, Homepage::class.java)
-                    startActivity(intentforhomepage)
+                    val homepageIntent = Intent(this, Homepage::class.java)
+                    startActivity(homepageIntent)
                     true
                 }
                 R.id.historynavbar -> {
-                    val intentforhistory = Intent(this, History::class.java)
-                    startActivity(intentforhistory)
+                    val historyIntent = Intent(this, History::class.java)
+                    startActivity(historyIntent)
                     true
                 }
                 R.id.qrnavbar -> {
-                    val intentforqr = Intent(this, QrScanner::class.java)
-                    startActivity(intentforqr)
+                    val qrIntent = Intent(this, QrScanner::class.java)
+                    startActivity(qrIntent)
                     true
                 }
                 R.id.profilenavbar -> {
-                    val intent4 = Intent(this, Profile::class.java)
-                    startActivity(intent4)
+                    val profileIntent = Intent(this, Profile::class.java)
+                    startActivity(profileIntent)
                     true
                 }
                 R.id.settingsnavbar -> {
-                    val intent5 = Intent(this, Settings::class.java)
-                    startActivity(intent5)
+                    val settingIntent = Intent(this, Settings::class.java)
+                    startActivity(settingIntent)
                     true
                 }
                 else -> {throw IllegalStateException("something bad happened")}

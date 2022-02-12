@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings">
+    tools:context=".Settings"
+    android:background="@color/primarywhite">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -18,40 +19,53 @@
         app:menu="@menu/nav_menu"/>
 
     <Button
-        android:id="@+id/savepassword"
+        android:id="@+id/add_establishment"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/change_password"
+        android:layout_marginTop="60dp"
+        android:text="@string/add_establishment"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/delete_account"
-        android:layout_width="154dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/delete_account"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/savepassword" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:text="Account and Security"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/edit_establishment"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="568dp"
+        android:text="@string/edit_establishment"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@id/add_establishment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/delete_establishment"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="444dp"
+        android:text="@string/delete_establishment"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@id/edit_establishment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/request_access"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="88dp"
+        android:text="@string/request_access"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

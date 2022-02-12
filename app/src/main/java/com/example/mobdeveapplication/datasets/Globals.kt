@@ -11,5 +11,4 @@ class Globals {
     var auth: FirebaseAuth = Firebase.auth
     val firebaseDatabase = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/")
     val db = Firebase.firestore
-
 }

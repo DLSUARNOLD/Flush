@@ -4,16 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primarywhite">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popularcarousel"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="220dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="148dp"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,11 +22,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/homepageitem" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/featuredcarousel"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="220dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:scrollbars="horizontal"
@@ -35,7 +35,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/popularcarousel"
-        app:layout_constraintVertical_bias="0.454"
+        app:layout_constraintVertical_bias="0.391"
         tools:listitem="@layout/homepageitem" />
 
     <TextView
@@ -47,6 +47,7 @@
         android:text="Popular"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/popularcarousel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
@@ -62,6 +63,7 @@
         android:text="Featured"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/featuredcarousel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"

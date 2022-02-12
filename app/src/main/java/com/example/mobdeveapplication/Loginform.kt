@@ -40,9 +40,7 @@ class Loginform : AppCompatActivity()  {
                     firebaseDatabase.getReference("User").child(binding.Usernamebox.text.toString())
                         .child("email").get().addOnSuccessListener {
                         val email = it.value*/
-                if (binding.emailbox.text.toString()
-                        .isEmpty() || binding.Passwordbox.text.toString().isEmpty()
-                )
+                if (binding.emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty())
                     binding.Errordisplay.text = "Email or Password is not provided"
                 else{
                     auth.signInWithEmailAndPassword(binding.emailbox.text.toString(),binding.Passwordbox.text.toString()).addOnCompleteListener(this) { task ->

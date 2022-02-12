@@ -62,9 +62,23 @@ class Registerform : AppCompatActivity() {
                                 else binding.Errordisplay.text = "Sign Up Error: Please chose a different Email"
                             }
                     }
+                    val email = binding.emailbox.text.toString()
+                    val access = "False"
+                    adminaccess(email, access)
                 }
         }
     }
     fun updateUI(currentUser: FirebaseUser?) {
+    }
+
+    fun adminaccess(email: String, access: String)
+    {
+        val db = Globals().db
+        val admin: MutableMap<String, Any> = HashMap()
+        admin["access"] = access
+        admin["email"] = email
+
+        db.collection("AdminAccess")
+            .add(admin)
     }
 }
