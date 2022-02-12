@@ -15,7 +15,20 @@
     <string name="create_account">Create Account</string>
     <string name="user_registration">User Registration</string>
     <string name="already_registered_sign_in">Already Registered? Sign In</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Log Out</string>
     <string name="delete_account">Delete Account</string>
-
+    <string name="request_access">Request Access</string>
+    <string name="form_establishment">Establishment Form</string>
+    <string name="rating_establishment">Rating</string>
+    <string name="longitude_establishment">Longitude</string>
+    <string name="latitude_establishment">Latitude</string>
+    <string name="location_establishment">Location</string>
+    <string name="picture_establishment">Picture Link</string>
+    <string name="submit_form">Submit Form</string>
+    <string name="add_establishment">Add Establishment</string>
+    <string name="edit_establishment">Edit Establishment</string>
+    <string name="delete_establishment">Delete Establishment</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="facebook_app_id">1319944051785586</string>
+    <string name="fb_login_protocol_scheme">fb1319944051785586</string>
 </resources>

@@ -41,23 +41,28 @@ class History : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
             when (menu.itemId) {
                 R.id.homenavbar -> {
-                    val intent1 = Intent(this, Homepage::class.java)
-                    startActivity(intent1)
+                    val homepageIntent = Intent(this, Homepage::class.java)
+                    startActivity(homepageIntent)
                     true
                 }
                 R.id.historynavbar -> {
-                    val intent2 = Intent(this, History::class.java)
-                    startActivity(intent2)
+                    val historyIntent = Intent(this, History::class.java)
+                    startActivity(historyIntent)
                     true
                 }
                 R.id.qrnavbar -> {
-                    val intent3 = Intent(this, QrScanner::class.java)
-                    startActivity(intent3)
+                    val qrIntent = Intent(this, QrScanner::class.java)
+                    startActivity(qrIntent)
                     true
                 }
                 R.id.profilenavbar -> {
-                    val intent4 = Intent(this, Profile::class.java)
-                    startActivity(intent4)
+                    val profileIntent = Intent(this, Profile::class.java)
+                    startActivity(profileIntent)
+                    true
+                }
+                R.id.settingsnavbar -> {
+                    val settingIntent = Intent(this, Settings::class.java)
+                    startActivity(settingIntent)
                     true
                 }
                 else -> {throw IllegalStateException("something bad happened")}

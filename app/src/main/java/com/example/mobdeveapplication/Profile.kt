@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.ProfileBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 
@@ -24,40 +25,54 @@ class Profile : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
             when (menu.itemId) {
                 R.id.homenavbar -> {
-                    val intent1 = Intent(this, Homepage::class.java)
-                    startActivity(intent1)
+                    val homepageIntent = Intent(this, Homepage::class.java)
+                    startActivity(homepageIntent)
                     true
                 }
                 R.id.historynavbar -> {
-                    val intent2 = Intent(this, History::class.java)
-                    startActivity(intent2)
+                    val historyIntent = Intent(this, History::class.java)
+                    startActivity(historyIntent)
                     true
                 }
                 R.id.qrnavbar -> {
-                    val intent3 = Intent(this, QrScanner::class.java)
-                    startActivity(intent3)
+                    val qrIntent = Intent(this, QrScanner::class.java)
+                    startActivity(qrIntent)
                     true
                 }
                 R.id.profilenavbar -> {
-                    val intent4 = Intent(this, Profile::class.java)
-                    startActivity(intent4)
+                    val profileIntent = Intent(this, Profile::class.java)
+                    startActivity(profileIntent)
                     true
                 }
                 R.id.settingsnavbar -> {
-                    val intent5 = Intent(this, Settings::class.java)
-                    startActivity(intent5)
+                    val settingIntent = Intent(this, Settings::class.java)
+                    startActivity(settingIntent)
                     true
                 }
                 else -> {throw IllegalStateException("something bad happened")}
             }
         }
-        val firebaseDatabase = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        val firebaseDatabase = Globals().firebaseDatabase
                     binding.textName.setText(auth.currentUser?.displayName)
                     binding.Greetingbox.text = "Hello ${auth.currentUser?.email}"
         binding.saveName.setOnClickListener {
-            firebaseDatabase.getReference("User").child(auth.uid.toString()).child("name").setValue(binding.textName.text.toString()).addOnSuccessListener {
-                Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
+            val profileupdate = userProfileChangeRequest {
+                displayName = binding.textName.text.toString()
             }
+            auth.currentUser?.updateProfile(profileupdate)
+            Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
+        }
+        binding.savepassword.setOnClickListener {
+            auth.sendPasswordResetEmail(auth.currentUser?.email.toString())
+            Toast.makeText(this,"An email has been sent to your email", Toast.LENGTH_LONG).show()
+        }
+
+        binding.deleteAccount.setOnClickListener {
+            firebaseDatabase.getReference("User").child(auth.uid.toString()).removeValue()
+            auth.currentUser?.delete()
+            auth.signOut()
+            val signedout = Intent(this, Registerform::class.java)
+            startActivity(signedout)
         }
         Picasso.get().load(auth.currentUser?.photoUrl).fit().into(binding.profilepicture)
     }

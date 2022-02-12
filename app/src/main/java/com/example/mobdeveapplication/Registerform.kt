@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.mobdeveapplication.databinding.RegisterformBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
@@ -37,19 +38,23 @@ class Registerform : AppCompatActivity() {
         binding.Submitbutt.setOnClickListener{
             //val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             //inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-            if (binding.emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty() || binding.emailbox.text.toString().isEmpty())
+            if (binding.emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty() || binding.namebox.text.toString().isEmpty())
                 binding.Errordisplay.text = "Email Address or Password is not provided"
             else {
                     auth.createUserWithEmailAndPassword(binding.emailbox.text.toString(), binding.Passwordbox.text.toString()).addOnCompleteListener(this)
                     { task ->
                                 if (task.isSuccessful) {
-                                binding.Errordisplay.text = "Sign Up successfull. Click Sign in to Continue"
-                                val user = auth.currentUser
-                                val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
-                                    ref.child(auth.currentUser!!.uid)
-                                val profileupdate = userProfileChangeRequest {
-                                    displayName = binding.namebox.text.toString()
-                                    photoUri = Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png")
+                                    binding.Errordisplay.text = "Sign Up successful. Click Sign in to Continue"
+                                    val user = auth.currentUser
+                                    val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
+                                        ref.child(auth.currentUser!!.uid)
+                                    val profileupdate = userProfileChangeRequest {
+                                        displayName = binding.namebox.text.toString()
+                                        photoUri = Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png")
+
+                                    val email = binding.emailbox.text.toString()
+                                    val access = "No"
+                                    adminaccess(email, access)
                                 }
                                 user?.updateProfile(profileupdate)!!
                                 //updateUI(user)
@@ -62,9 +67,21 @@ class Registerform : AppCompatActivity() {
                                 else binding.Errordisplay.text = "Sign Up Error: Please chose a different Email"
                             }
                     }
+
                 }
         }
     }
     fun updateUI(currentUser: FirebaseUser?) {
+    }
+
+    fun adminaccess(email: String, access: String)
+    {
+        val db = Globals().db
+        val admin: MutableMap<String, Any> = HashMap()
+        admin["access"] = access
+        admin["email"] = email
+
+        db.collection("AdminAccess")
+            .add(admin)
     }
 }

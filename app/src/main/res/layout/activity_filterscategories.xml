@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Filterscategories">
+    tools:context=".Filterscategories"
+    android:background="@color/primarywhite">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popularcarousel"
         android:layout_width="match_parent"
-        android:layout_height="564dp"
+        android:layout_height="520dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -33,42 +34,42 @@
         app:menu="@menu/nav_menu"/>
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/Bidet"
+        android:id="@+id/sw_bidet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
         android:text="Bidet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/sw_aircon" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_powerflush"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="10dp"
         android:text="Power Flush"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/sw_airdryer" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_aircon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:text="Air Conditioned"
-        app:layout_constraintEnd_toStartOf="@+id/sw_powerflush"
-        app:layout_constraintTop_toBottomOf="@+id/Bidet" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_airdryer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
         android:text="Air Dryer"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sw_aircon"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

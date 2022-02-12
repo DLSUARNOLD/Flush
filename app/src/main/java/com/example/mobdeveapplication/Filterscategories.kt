@@ -38,28 +38,28 @@ class Filterscategories : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
             when (menu.itemId) {
                 R.id.homenavbar -> {
-                    val intentforhomepage = Intent(this, Homepage::class.java)
-                    startActivity(intentforhomepage)
+                    val homepageIntent = Intent(this, Homepage::class.java)
+                    startActivity(homepageIntent)
                     true
                 }
                 R.id.historynavbar -> {
-                    val intentforhistory = Intent(this, History::class.java)
-                    startActivity(intentforhistory)
+                    val historyIntent = Intent(this, History::class.java)
+                    startActivity(historyIntent)
                     true
                 }
                 R.id.qrnavbar -> {
-                    val intentforqr = Intent(this, QrScanner::class.java)
-                    startActivity(intentforqr)
+                    val qrIntent = Intent(this, QrScanner::class.java)
+                    startActivity(qrIntent)
                     true
                 }
                 R.id.profilenavbar -> {
-                    val intent4 = Intent(this, Profile::class.java)
-                    startActivity(intent4)
+                    val profileIntent = Intent(this, Profile::class.java)
+                    startActivity(profileIntent)
                     true
                 }
                 R.id.settingsnavbar -> {
-                    val intent5 = Intent(this, Settings::class.java)
-                    startActivity(intent5)
+                    val settingIntent = Intent(this, Settings::class.java)
+                    startActivity(settingIntent)
                     true
                 }
                 else -> {throw IllegalStateException("something bad happened")}
@@ -72,7 +72,7 @@ interface Filtercategories {
     }
 }
 private fun updatereadcategories(homecallback : Filtercategories) {
-        binding.Bidet.setOnCheckedChangeListener { _, _ ->
+        binding.swBidet.setOnCheckedChangeListener { _, _ ->
 
         Updatelist(homecallback)
     }
@@ -91,7 +91,7 @@ private fun Updatelist(homecallback : Filtercategories)
 {
     val universal = Globals()
     val database = universal.db
-    if(binding.Bidet.isChecked && binding.swAircon.isChecked && binding.swAirdryer.isChecked && binding.swPowerflush.isChecked){
+    if(binding.swBidet.isChecked && binding.swAircon.isChecked && binding.swAirdryer.isChecked && binding.swPowerflush.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("Aircon","Yes").whereEqualTo("AirDryer","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<listingobject>()
             for (document in result) {
@@ -101,7 +101,7 @@ private fun Updatelist(homecallback : Filtercategories)
             homecallback.returnvalueplx(filterlist)
         }
     }
-    else if(binding.Bidet.isChecked && binding.swAircon.isChecked && binding.swAirdryer.isChecked){
+    else if(binding.swBidet.isChecked && binding.swAircon.isChecked && binding.swAirdryer.isChecked){
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("Bidet","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<listingobject>()
             for (document in result) {
@@ -121,7 +121,7 @@ private fun Updatelist(homecallback : Filtercategories)
             homecallback.returnvalueplx(filterlist)
         }
     }
-    else if(binding.Bidet.isChecked && binding.swAircon.isChecked){
+    else if(binding.swBidet.isChecked && binding.swAircon.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("Aircon","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<listingobject>()
             for (document in result) {
@@ -131,7 +131,7 @@ private fun Updatelist(homecallback : Filtercategories)
             homecallback.returnvalueplx(filterlist)
         }
     }
-    else if(binding.Bidet.isChecked && binding.swPowerflush.isChecked){
+    else if(binding.swBidet.isChecked && binding.swPowerflush.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<listingobject>()
             for (document in result) {
@@ -141,7 +141,7 @@ private fun Updatelist(homecallback : Filtercategories)
             homecallback.returnvalueplx(filterlist)
         }
     }
-    else if(binding.Bidet.isChecked && binding.swAirdryer.isChecked){
+    else if(binding.swBidet.isChecked && binding.swAirdryer.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<listingobject>()
             for (document in result) {
@@ -191,7 +191,7 @@ private fun Updatelist(homecallback : Filtercategories)
             homecallback.returnvalueplx(filterlist)
         }
     }
-    else if(binding.Bidet.isChecked){
+    else if(binding.swBidet.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<listingobject>()
             for (document in result) {

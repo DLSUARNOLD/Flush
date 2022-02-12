@@ -6,78 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".Registerform"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp">
+    tools:layout_editor_absoluteY="0dp"
+    android:background="@color/colorbrandprimary">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="280dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/toilet" />
+
+    <Button
+        android:id="@+id/SigninButton"
+        android:layout_width="259dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="112dp"
+        android:backgroundTint="@color/primarywhite"
+        android:text="@string/sign_in"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/emailbox"
         android:layout_width="308dp"
         android:layout_height="57dp"
         android:layout_marginTop="212dp"
+        android:autofillHints="emailAddress"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:textColor="@color/primarywhite"
+        android:textColorHint="@color/primarywhite"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/Passwordbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.655"
-        android:autofillHints="emailAddress" />
+        app:layout_constraintVertical_bias="0.956" />
 
     <EditText
         android:id="@+id/Passwordbox"
         android:layout_width="308dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="32dp"
+        android:autofillHints="password"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textColor="@color/primarywhite"
+        android:textColorHint="@color/primarywhite"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/SigninButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="password" />
-
-    <Button
-        android:id="@+id/SigninButton"
-        android:layout_width="259dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="292dp"
-        android:text="@string/sign_in"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/logintitle"
-        android:layout_width="326dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/user_login"
-        android:textAlignment="center"
-        android:textIsSelectable="false"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:textColor = "?android:textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Errordisplay"
-        android:layout_width="308dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="508dp"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="?android:textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
@@ -86,15 +74,29 @@
         android:id="@+id/registerredirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:clickable="true"
         android:focusable="true"
         android:minHeight="48dp"
         android:text="@string/no_account_yet_register"
+        android:textColor="@color/primarywhite"
         android:textSize="15sp"
-        android:textColor = "?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SigninButton" />
+
+    <TextView
+        android:id="@+id/Errordisplay"
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="304dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/primarywhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
