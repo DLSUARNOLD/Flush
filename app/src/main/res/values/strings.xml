@@ -15,7 +15,7 @@
     <string name="create_account">Create Account</string>
     <string name="user_registration">User Registration</string>
     <string name="already_registered_sign_in">Already Registered? Sign In</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Log Out</string>
     <string name="delete_account">Delete Account</string>
     <string name="request_access">Request Access</string>
     <string name="form_establishment">Establishment Form</string>

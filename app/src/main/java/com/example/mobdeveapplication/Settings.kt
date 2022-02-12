@@ -19,6 +19,7 @@ class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Globals().auth
+        val db = Globals().db
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
@@ -53,8 +54,7 @@ class Settings : AppCompatActivity() {
             }
         }
         binding.addEstablishment.setOnClickListener {
-            val auth = Globals().auth
-            val db = Globals().db
+
             val email = auth.currentUser?.email
 
             db.collection("AdminAccess").whereEqualTo("email", email).get()
@@ -83,8 +83,6 @@ class Settings : AppCompatActivity() {
 
         binding.requestAccess.setOnClickListener {
 
-            val auth = Globals().auth
-            val db = Globals().db
             val email = auth.currentUser?.email
 
             db.collection("AdminAccess").whereEqualTo("email", email).get()
@@ -105,6 +103,12 @@ class Settings : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
                 }
+        }
+
+        binding.logout.setOnClickListener {
+            auth.signOut()
+            val registerIntent = Intent(this, Registerform::class.java)
+            startActivity(registerIntent)
         }
     }
 }

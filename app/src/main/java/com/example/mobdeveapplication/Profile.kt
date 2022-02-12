@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.ProfileBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 
@@ -55,9 +56,11 @@ class Profile : AppCompatActivity() {
                     binding.textName.setText(auth.currentUser?.displayName)
                     binding.Greetingbox.text = "Hello ${auth.currentUser?.email}"
         binding.saveName.setOnClickListener {
-            firebaseDatabase.getReference("User").child(auth.uid.toString()).child("name").setValue(binding.textName.text.toString()).addOnSuccessListener {
-                Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
+            val profileupdate = userProfileChangeRequest {
+                displayName = binding.textName.text.toString()
             }
+            auth.currentUser?.updateProfile(profileupdate)
+            Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
         }
         binding.savepassword.setOnClickListener {
             auth.sendPasswordResetEmail(auth.currentUser?.email.toString())

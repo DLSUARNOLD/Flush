@@ -14,6 +14,7 @@ class AddEstablishment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddEstablishmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
             when (menu.itemId) {
@@ -46,6 +47,8 @@ class AddEstablishment : AppCompatActivity() {
             }
         }
         binding.submitEstablishment.setOnClickListener {
+
+            val auth = Globals().auth
             val name = binding.Establishmentname.text.toString()
             val rating = binding.Establishmentrating.text.toString()
             val longitude = binding.Establishmentlongitude.text.toString()
@@ -53,6 +56,7 @@ class AddEstablishment : AppCompatActivity() {
             val location = binding.Establishmentlocation.text.toString()
             val picture = binding.Establishmentpicture.text.toString()
             val about = binding.Establishmentabout.text.toString()
+            val owner = auth.currentUser?.email.toString()
             val featured = "False"
             val popular = "False"
             var aircon = "No"
@@ -73,14 +77,14 @@ class AddEstablishment : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Please fill up all fields.", Toast.LENGTH_SHORT).show()
             else
             {
-                saveEstablishment(name, rating, longitude, latitude, location, picture, about, featured, popular, aircon, bidet, dryer, flush)
+                saveEstablishment(name, rating, longitude, latitude, location, picture, about, owner, featured, popular, aircon, bidet, dryer, flush)
                 val settingIntent = Intent(this, Settings::class.java)
                 startActivity(settingIntent)
             }
         }
     }
 
-    fun saveEstablishment(name: String, rating: String, longitude: String, latitude: String, location: String, picture: String, about: String, featured: String, popular: String, aircon: String, bidet: String, dryer: String, flush: String)
+    fun saveEstablishment(name: String, rating: String, longitude: String, latitude: String, location: String, picture: String, about: String, owner: String, featured: String, popular: String, aircon: String, bidet: String, dryer: String, flush: String)
     {
         val db = Globals().db
         val establishment: MutableMap<String, Any> = HashMap()
@@ -93,6 +97,7 @@ class AddEstablishment : AppCompatActivity() {
         establishment["Location"] = location
         establishment["Longitude"] = longitude
         establishment["Name"] = name
+        establishment["Owner"] = owner
         establishment["Popular"] = popular
         establishment["PowerFlush"] = flush
         establishment["Rating"] = rating
