@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/primarywhite">
 
-
     <TextView
         android:id="@+id/Titletext"
         android:layout_width="match_parent"

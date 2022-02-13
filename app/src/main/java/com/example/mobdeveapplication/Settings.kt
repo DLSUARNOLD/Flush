@@ -84,7 +84,7 @@ class Settings : AppCompatActivity() {
 
                     if (admin == "Yes")
                     {
-                        val editEstablishmentIntent = Intent(this, AddEstablishment::class.java)
+                        val editEstablishmentIntent = Intent(this, EditEstablishment::class.java)
                         startActivity(editEstablishmentIntent)
                     }
                     else
