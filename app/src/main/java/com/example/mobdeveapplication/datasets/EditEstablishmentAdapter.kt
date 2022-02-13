@@ -5,19 +5,18 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobdeveapplication.AddEstablishment
-import com.example.mobdeveapplication.EditEstablishment
+import com.example.mobdeveapplication.EditSpecificEstablishment
 import com.example.mobdeveapplication.databinding.EstablishmentitemBinding
 
 
-class EstablishmentAdapter (private val context: Context, private val establishmentList: ArrayList<Establishmentobject>) : RecyclerView.Adapter<EstablishmentAdapter.ViewHolder>()
+class EditEstablishmentAdapter (private val context: Context, private val establishmentList: ArrayList<Establishmentobject>) : RecyclerView.Adapter<EditEstablishmentAdapter.ViewHolder>()
 {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EstablishmentAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditEstablishmentAdapter.ViewHolder {
         val binding = EstablishmentitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: EstablishmentAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EditEstablishmentAdapter.ViewHolder, position: Int) {
         holder.binder(establishmentList[position], position)
     }
 
@@ -32,7 +31,7 @@ class EstablishmentAdapter (private val context: Context, private val establishm
                 binding.tvEstablishmentname.text = item.Name
                 binding.tvOwner.text = item.Owner
                 binding.editEstablishment.setOnClickListener {
-                    val selectedestablishment = Intent (context, AddEstablishment::class.java)
+                    val selectedestablishment = Intent (context, EditSpecificEstablishment::class.java)
                     selectedestablishment.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     selectedestablishment.putExtra("Name", item.Name)
                     selectedestablishment.putExtra("Owner", item.Owner)

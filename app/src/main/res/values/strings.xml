@@ -12,6 +12,13 @@
     <string name="no_account_yet_register">No Account Yet? Register</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
+    <string name="delete">Delete</string>
+    <string name="bidet">Bidet</string>
+    <string name="powerflush">Power Flush</string>
+    <string name="aircon">Air Conditioned</string>
+    <string name="dryer">Air Dryer</string>
+    <string name="establishment_details">Enter establishment details</string>
+    <string name="owner_establishment">Owner:</string>
     <string name="create_account">Create Account</string>
     <string name="user_registration">User Registration</string>
     <string name="already_registered_sign_in">Already Registered? Sign In</string>
@@ -25,6 +32,8 @@
     <string name="location_establishment">Location</string>
     <string name="picture_establishment">Picture Link</string>
     <string name="submit_form">Submit Form</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="establishment_name">Establishment Name:</string>
     <string name="add_establishment">Add Establishment</string>
     <string name="edit_establishment">Edit Establishment</string>
     <string name="delete_establishment">Delete Establishment</string>
