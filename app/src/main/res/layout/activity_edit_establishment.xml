@@ -4,19 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditEstablishment"
-    android:background="@color/primarywhite">
+    android:background="@color/primarywhite"
+    tools:context=".EditEstablishment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:theme="@style/Theme.Apirtayo"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/nav_menu"/>
+        app:menu="@menu/nav_menu" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/establishmentrecycler"
+        android:layout_width="391dp"
+        android:layout_height="773dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/establishmentitem" />
 
 
 
