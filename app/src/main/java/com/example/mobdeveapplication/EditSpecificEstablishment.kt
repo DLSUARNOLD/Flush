@@ -106,44 +106,45 @@ class EditSpecificEstablishment : AppCompatActivity() {
 
         binding.saveChanges.setOnClickListener {
 
-            val establishment: MutableMap<String, Any> = HashMap()
-            establishment["About"] = binding.Establishmentabout.text.toString()
-            establishment["Featured"] = Featured
-            establishment["Latitude"] = binding.Establishmentlatitude.text.toString()
-            establishment["Location"] = binding.Establishmentlocation.text.toString()
-            establishment["Longitude"] = binding.Establishmentlocation.text.toString()
-            establishment["Name"] = binding.Establishmentname.text.toString()
-            establishment["Owner"] = Owner
-            establishment["Popular"] = Popular
-            establishment["Rating"] = binding.Establishmentrating.text.toString()
-            establishment["link"] = binding.Establishmentpicture.text.toString()
+                val establishment: MutableMap<String, Any> = HashMap()
+                establishment["About"] = binding.Establishmentabout.text.toString()
+                establishment["Featured"] = Featured
+                establishment["Latitude"] = binding.Establishmentlatitude.text.toString()
+                establishment["Location"] = binding.Establishmentlocation.text.toString()
+                establishment["Longitude"] = binding.Establishmentlocation.text.toString()
+                establishment["Name"] = binding.Establishmentname.text.toString()
+                establishment["Owner"] = Owner
+                establishment["Popular"] = Popular
+                establishment["Rating"] = binding.Establishmentrating.text.toString()
+                establishment["link"] = binding.Establishmentpicture.text.toString()
 
-            if (binding.swAircon.isChecked)
-                establishment["Aircon"] = "Yes"
-            else
-                establishment["Aircon"] = "No"
-            if (binding.swAirdryer.isChecked)
-                establishment["AirDryer"] = "Yes"
-            else
-                establishment["AirDryer"] = "No"
-            if (binding.swBidet.isChecked)
-                establishment["Bidet"] = "Yes"
-            else
-                establishment["Bidet"] ="No"
-            if (binding.swPowerflush.isChecked)
-                establishment["PowerFlush"] = "Yes"
-            else
-                establishment["PowerFlush"] = "No"
+                if (binding.swAircon.isChecked)
+                    establishment["Aircon"] = "Yes"
+                else
+                    establishment["Aircon"] = "No"
+                if (binding.swAirdryer.isChecked)
+                    establishment["AirDryer"] = "Yes"
+                else
+                    establishment["AirDryer"] = "No"
+                if (binding.swBidet.isChecked)
+                    establishment["Bidet"] = "Yes"
+                else
+                    establishment["Bidet"] ="No"
+                if (binding.swPowerflush.isChecked)
+                    establishment["PowerFlush"] = "Yes"
+                else
+                    establishment["PowerFlush"] = "No"
+
 
                     db.collection("Establishments").whereEqualTo("Name", name).get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        db.collection("Establishments").document(document.id).set(establishment, SetOptions.merge())
-                    }
-                    Toast.makeText(applicationContext, "The establishment is now updated", Toast.LENGTH_SHORT).show()
-                    val editEstablishmentIntent = Intent(this, EditEstablishment::class.java)
-                    startActivity(editEstablishmentIntent)
+                        .addOnSuccessListener { result ->
+                            for (document in result) {
+                                db.collection("Establishments").document(document.id).set(establishment, SetOptions.merge())
+                            }
+                            Toast.makeText(applicationContext, "The establishment is now updated", Toast.LENGTH_SHORT).show()
+                            val editEstablishmentIntent = Intent(this, EditEstablishment::class.java)
+                            startActivity(editEstablishmentIntent)
+                        }
                 }
         }
     }
-}

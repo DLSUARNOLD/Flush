@@ -64,23 +64,24 @@ class AddEstablishment : AppCompatActivity() {
             var dryer = "No"
             var flush = "No"
 
-            if (binding.swAircon.isChecked)
-                aircon = "Yes"
-            if (binding.swAirdryer.isChecked)
-                dryer = "Yes"
-            if (binding.swBidet.isChecked)
-                bidet = "Yes"
-            if (binding.swPowerflush.isChecked)
-                flush = "Yes"
+                if (binding.swAircon.isChecked)
+                    aircon = "Yes"
+                if (binding.swAirdryer.isChecked)
+                    dryer = "Yes"
+                if (binding.swBidet.isChecked)
+                    bidet = "Yes"
+                if (binding.swPowerflush.isChecked)
+                    flush = "Yes"
 
-            if (name.isEmpty() || rating.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty())
-                Toast.makeText(applicationContext, "Please fill up all fields.", Toast.LENGTH_SHORT).show()
-            else
-            {
-                saveEstablishment(name, rating, longitude, latitude, location, picture, about, owner, featured, popular, aircon, bidet, dryer, flush)
-                val settingIntent = Intent(this, Settings::class.java)
-                startActivity(settingIntent)
-            }
+                if (name.isEmpty() || rating.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty())
+                    Toast.makeText(applicationContext, "Please fill up all fields.", Toast.LENGTH_SHORT).show()
+                else
+                {
+                    saveEstablishment(name, rating, longitude, latitude, location, picture, about, owner, featured, popular, aircon, bidet, dryer, flush)
+                    val settingIntent = Intent(this, Settings::class.java)
+                    startActivity(settingIntent)
+                }
+
         }
     }
 
