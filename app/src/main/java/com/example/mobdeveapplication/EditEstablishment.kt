@@ -17,6 +17,13 @@ class EditEstablishment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditEstablishmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        readestablishment(object : Establishmentcallback {
+            override fun returnvalue(value: ArrayList<Establishmentobject>) {
+                Establishmentadapter = EstablishmentAdapter(applicationContext, value)
+                binding.establishmentrecycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+                binding.establishmentrecycler.adapter = Establishmentadapter
+            }
+        })
 
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
