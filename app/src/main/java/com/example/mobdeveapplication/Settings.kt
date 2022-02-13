@@ -65,8 +65,8 @@ class Settings : AppCompatActivity() {
 
                     if (admin == "Yes")
                     {
-                        val establishmentIntent = Intent(this, AddEstablishment::class.java)
-                        startActivity(establishmentIntent)
+                        val addEstablishmentIntent = Intent(this, AddEstablishment::class.java)
+                        startActivity(addEstablishmentIntent)
                     }
                     else
                         Toast.makeText(applicationContext, "Please Request Admin Access.", Toast.LENGTH_SHORT).show()
@@ -74,7 +74,8 @@ class Settings : AppCompatActivity() {
         }
 
         binding.editEstablishment.setOnClickListener {
-
+            val editEstablishmentIntent = Intent(this, EditEstablishment::class.java)
+            startActivity(editEstablishmentIntent)
         }
 
         binding.deleteEstablishment.setOnClickListener{
