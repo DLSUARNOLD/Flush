@@ -18,6 +18,8 @@
     <string name="aircon">Air Conditioned</string>
     <string name="dryer">Air Dryer</string>
     <string name="establishment_details">Enter establishment details</string>
+    <string name="admin_settings">Administration Settings</string>
+    <string name="customer_settings">Customer Settings</string>
     <string name="owner_establishment">Owner:</string>
     <string name="create_account">Create Account</string>
     <string name="user_registration">User Registration</string>

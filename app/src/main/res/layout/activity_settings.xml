@@ -18,23 +18,36 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/nav_menu"/>
 
+    <TextView
+        android:id="@+id/text_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/admin_settings"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/add_establishment"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:text="@string/add_establishment"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/text_admin" />
 
     <Button
         android:id="@+id/edit_establishment"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="568dp"
+        android:layout_marginTop="30dp"
         android:text="@string/edit_establishment"
         android:textSize="11sp"
         app:layout_constraintTop_toBottomOf="@id/add_establishment"
@@ -47,7 +60,7 @@
         android:id="@+id/delete_establishment"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="444dp"
+        android:layout_marginTop="30dp"
         android:text="@string/delete_establishment"
         android:textSize="11sp"
         app:layout_constraintTop_toBottomOf="@id/edit_establishment"
@@ -55,14 +68,27 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/text_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/customer_settings"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delete_establishment" />
+
     <Button
         android:id="@+id/request_access"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginTop="30dp"
         android:text="@string/request_access"
         android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_customer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
@@ -71,7 +97,7 @@
         android:id="@+id/logout"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="30dp"
         android:text="@string/logout"
         android:textSize="11sp"
         app:layout_constraintTop_toBottomOf="@id/request_access"
