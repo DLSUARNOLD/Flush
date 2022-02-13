@@ -74,8 +74,22 @@ class Settings : AppCompatActivity() {
         }
 
         binding.editEstablishment.setOnClickListener {
-            val editEstablishmentIntent = Intent(this, EditEstablishment::class.java)
-            startActivity(editEstablishmentIntent)
+            val email = auth.currentUser?.email
+
+            db.collection("AdminAccess").whereEqualTo("email", email).get()
+                .addOnSuccessListener { documents ->
+                    var admin = ""
+                    for (document in documents)
+                        admin = document.data["access"].toString()
+
+                    if (admin == "Yes")
+                    {
+                        val editEstablishmentIntent = Intent(this, AddEstablishment::class.java)
+                        startActivity(editEstablishmentIntent)
+                    }
+                    else
+                        Toast.makeText(applicationContext, "Please Request Admin Access.", Toast.LENGTH_SHORT).show()
+                }
         }
 
         binding.deleteEstablishment.setOnClickListener{
