@@ -7,7 +7,6 @@ import com.example.mobdeveapplication.databinding.ProfileBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 
 
@@ -68,6 +67,30 @@ class Profile : AppCompatActivity() {
         }
 
         binding.deleteAccount.setOnClickListener {
+            val db = Globals().db
+
+            /*db.collection("Establishments").whereEqualTo("Owner", auth.currentUser?.email).get()
+                .addOnSuccessListener {
+                    Toast.makeText(applicationContext, auth.currentUser?.email.toString(), Toast.LENGTH_SHORT).show()
+                    for (document in it)
+                        db.collection("Establishments").document(document.id).delete()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(applicationContext, "YOOO", Toast.LENGTH_SHORT).show()
+                }*/
+
+            db.collection("AdminAccess").whereEqualTo("email", auth.currentUser?.email.toString()).get()
+                .addOnSuccessListener { result ->
+                    Toast.makeText(applicationContext, auth.currentUser?.email.toString(), Toast.LENGTH_SHORT).show()
+                    for (document in result)
+                    {
+                        db.collection("AdminAccess").document(document.id).delete()
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(applicationContext, "YOOO", Toast.LENGTH_SHORT).show()
+                }
+
             firebaseDatabase.getReference("User").child(auth.uid.toString()).removeValue()
             auth.currentUser?.delete()
             auth.signOut()

@@ -12,7 +12,7 @@ private lateinit var binding: ActivityEditEstablishmentBinding
 
 class EditEstablishment : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var Establishmentadapter: EstablishmentAdapter
+    private lateinit var Establishmentadapter: EditEstablishmentAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditEstablishmentBinding.inflate(layoutInflater)
@@ -52,7 +52,9 @@ class EditEstablishment : AppCompatActivity() {
 
         readestablishment(object : Establishmentcallback {
             override fun returnvalue(value: ArrayList<Establishmentobject>) {
-                Establishmentadapter = EstablishmentAdapter(applicationContext, value)
+                Establishmentadapter = EditEstablishmentAdapter(applicationContext, value)
+                binding.establishmentrecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+                binding.establishmentrecycler.adapter = Establishmentadapter
             }
         })
     }

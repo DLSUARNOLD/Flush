@@ -18,6 +18,9 @@
         android:theme="@style/Theme.MOBDEVEAPPLICATION"
         tools:targetApi="s">
         <activity
+            android:name=".EditSpecificEstablishment"
+            android:exported="false" />
+        <activity
             android:name=".RequestAccess"
             android:exported="false" />
         <activity
