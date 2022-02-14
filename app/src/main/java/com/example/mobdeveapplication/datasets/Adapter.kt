@@ -32,7 +32,7 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
 
         fun binder(item: Historyobject, index: Int) {
             binding.titleHistory.text = item.location
-            var shareBtn = binding.shareBtn
+            val shareBtn = binding.shareBtn
             binding.ratingbar.rating = item.rating
             shareBtn.setOnClickListener {
                 shareBtn.setOnClickListener {
@@ -43,8 +43,8 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
                             for (document in documents) {
                                 link = document.data["link"].toString()
                             }
-                            var hashTag = ShareHashtag.Builder().setHashtag("#FlushApp").build()
-                            var sharecontent =
+                            val hashTag = ShareHashtag.Builder().setHashtag("#FlushApp").build()
+                            val sharecontent =
                                 ShareLinkContent.Builder().setQuote("Try one of Flush's Washrooms")
                                     .setShareHashtag(hashTag)
                                     .setContentUrl(Uri.parse(link))

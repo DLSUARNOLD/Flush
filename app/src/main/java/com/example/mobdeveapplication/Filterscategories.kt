@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.ActivityFilterscategoriesBinding
 import com.example.mobdeveapplication.datasets.Filteradapter
 import com.example.mobdeveapplication.datasets.Globals
-import com.example.mobdeveapplication.datasets.listingobject
+import com.example.mobdeveapplication.datasets.Listingobject
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlin.collections.ArrayList
@@ -27,7 +27,7 @@ class Filterscategories : AppCompatActivity() {
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         updatereadcategories(object : Filtercategories {
-            override fun returnvalueplx(value: ArrayList<listingobject>) {
+            override fun returnvalueplx(value: ArrayList<Listingobject>) {
                 filteradapter = Filteradapter(applicationContext, value)
                 binding.popularcarousel.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
                 binding.popularcarousel.adapter = filteradapter
@@ -68,7 +68,7 @@ class Filterscategories : AppCompatActivity() {
     }
 }
 interface Filtercategories {
-    fun returnvalueplx(value: ArrayList<listingobject>){
+    fun returnvalueplx(value: ArrayList<Listingobject>){
     }
 }
 private fun updatereadcategories(homecallback : Filtercategories) {
@@ -93,9 +93,9 @@ private fun Updatelist(homecallback : Filtercategories)
     val database = universal.db
     if(binding.swBidet.isChecked && binding.swAircon.isChecked && binding.swAirdryer.isChecked && binding.swPowerflush.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("Aircon","Yes").whereEqualTo("AirDryer","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -103,9 +103,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swBidet.isChecked && binding.swAircon.isChecked && binding.swAirdryer.isChecked){
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("Bidet","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -113,9 +113,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swAircon.isChecked && binding.swAirdryer.isChecked && binding.swPowerflush.isChecked){
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("AirDryer","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -123,9 +123,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swBidet.isChecked && binding.swAircon.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("Aircon","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -133,9 +133,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swBidet.isChecked && binding.swPowerflush.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -143,9 +143,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swBidet.isChecked && binding.swAirdryer.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -153,9 +153,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swAircon.isChecked && binding.swAirdryer.isChecked){
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -163,9 +163,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swAircon.isChecked && binding.swPowerflush.isChecked){
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -173,9 +173,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swPowerflush.isChecked && binding.swAirdryer.isChecked){
         database.collection("Establishments").whereEqualTo("PowerFlush","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -183,9 +183,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swAirdryer.isChecked){
         database.collection("Establishments").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -193,9 +193,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swBidet.isChecked){
         database.collection("Establishments").whereEqualTo("Bidet","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -203,9 +203,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swPowerflush.isChecked){
         database.collection("Establishments").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -213,9 +213,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else if(binding.swAircon.isChecked){
         database.collection("Establishments").whereEqualTo("Aircon","Yes").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)
@@ -223,9 +223,9 @@ private fun Updatelist(homecallback : Filtercategories)
     }
     else{
         database.collection("Establishments").get().addOnSuccessListener { result ->
-            val filterlist = ArrayList<listingobject>()
+            val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalueplx(filterlist)

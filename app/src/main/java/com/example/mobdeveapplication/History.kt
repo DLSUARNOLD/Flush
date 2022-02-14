@@ -83,11 +83,11 @@ class History : AppCompatActivity() {
                 var templist  = ArrayList<Historyobject>()
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (ds in dataSnapshot.children) {
-                        Log.i("resultstab",ds.child("Reviewer").value.toString())
-                        if(ds.child("Reviewer").value.toString() == auth.uid)
+                        //Log.i("resultstab",ds.child("Reviewer").value.toString())
+                        if(ds.key.toString() == auth.uid)
                         {
                             val list =
-                                Historyobject(ds.key.toString(), ds.child("Rating").value.toString().toFloatOrNull()!!)
+                                Historyobject(ds.child("Place").value.toString(), ds.child("Rating").value.toString().toFloatOrNull()!!)
                             templist.add(list)
                         }
                     }

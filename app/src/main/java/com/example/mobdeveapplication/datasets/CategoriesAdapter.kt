@@ -10,7 +10,7 @@ import com.example.mobdeveapplication.Establishment
 import com.example.mobdeveapplication.databinding.FilteritemBinding
 import com.squareup.picasso.Picasso
 
-class CategoriesAdapter(private val context: Context, private var listing: ArrayList<listingobject>) : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
+class CategoriesAdapter(private val context: Context, private var listing: ArrayList<Listingobject>) : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesAdapter.ViewHolder {
@@ -27,7 +27,7 @@ class CategoriesAdapter(private val context: Context, private var listing: Array
 
     inner class ViewHolder(private val binding: FilteritemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun binder(item: listingobject, index: Int) {
+        fun binder(item: Listingobject, index: Int) {
             binding.descriptiontxt.text = item.name
             Picasso.get().load(item.picture).fit().into(binding.displaypicture)
             binding.displaypicture.setOnClickListener {

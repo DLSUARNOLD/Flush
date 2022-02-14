@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.ActivityFiltersnearmeBinding
 import com.example.mobdeveapplication.datasets.Filteradapter
 import com.example.mobdeveapplication.datasets.Globals
-import com.example.mobdeveapplication.datasets.listingobject
+import com.example.mobdeveapplication.datasets.Listingobject
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.SphericalUtil
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -34,7 +34,7 @@ class Filtersnearme : AppCompatActivity() {
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         readfilter(object : Filternearinterface {
-            override fun returnvalueplx(value: ArrayList<listingobject>) {
+            override fun returnvalueplx(value: ArrayList<Listingobject>) {
                 filteradapter = Filteradapter(applicationContext, value)
                 binding.popularcarousel.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
                 binding.popularcarousel.adapter = filteradapter
@@ -84,7 +84,7 @@ class Filtersnearme : AppCompatActivity() {
     }
 }
 interface Filternearinterface {
-    fun returnvalueplx(value: ArrayList<listingobject>){
+    fun returnvalueplx(value: ArrayList<Listingobject>){
     }
 }
 private fun readfilter(homecallback : Filternearinterface, activity : Activity) {
@@ -97,13 +97,13 @@ private fun readfilter(homecallback : Filternearinterface, activity : Activity) 
     }
     fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
             database.collection("Establishments").get().addOnSuccessListener { result ->
-                val filterlist = ArrayList<listingobject>()
+                val filterlist = ArrayList<Listingobject>()
                 for (document in result) {
                     val currentloc = LatLng(location!!.latitude,location.longitude)
                     val restroomlocation = LatLng(document.data["Latitude"].toString().toDouble(), document.data["Longitude"].toString().toDouble())
                     if(SphericalUtil.computeDistanceBetween(currentloc,restroomlocation)<=25.0)
                     {
-                        val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                        val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                         filterlist.add(list)
                     }
                 }

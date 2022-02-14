@@ -25,7 +25,7 @@
         android:id="@+id/descriptiontxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="30dp"
         android:text="Description"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,8 +34,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="303dp"
-        android:layout_height="164dp"
+        android:layout_width="410dp"
+        android:layout_height="230dp"
         android:layout_marginTop="24dp"
         android:maxWidth="360dp"
         android:maxHeight="200dp"
@@ -75,8 +75,8 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="371dp"
-        android:layout_height="190dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toTopOf="@+id/directionsbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

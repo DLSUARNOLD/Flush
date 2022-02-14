@@ -34,19 +34,21 @@ class Establishment : AppCompatActivity() {
             }*/
         val intent = intent
         binding.Titletext.text = intent.getStringExtra("name")
-        binding.descriptiontxt.text =  intent.getIntExtra("rating",1).toString() + "is the rating"
+        binding.descriptiontxt.text = intent.getStringExtra("description")
         Picasso.get().load(intent.getStringExtra("picture")).fit().into(binding.imageView)
-        when (intent.getIntExtra("rating",0)) {
-            1 -> binding.ratingbar.rating = 1F
-            2 -> binding.ratingbar.rating = 2F
-            3 -> binding.ratingbar.rating = 3F
-            4 -> binding.ratingbar.rating = 4F
-            5 -> binding.ratingbar.rating = 5F
-        }
-        binding.directionsbutton.setOnClickListener {
-            val mapsintent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/dir/?api=1&origin=&destination=14.5814%2C121.0571"))
-            startActivity(mapsintent)
-        }
+        binding.ratingbar.rating = intent.getDoubleExtra("rating", 0.0).toFloat()
+
+        var directionslink = ""
+        firestore.collection("Establishments").whereEqualTo("Name", binding.Titletext.text).get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    directionslink = document.data["Location"].toString()
+                }
+                binding.directionsbutton.setOnClickListener {
+                    val mapsintent = Intent(Intent.ACTION_VIEW, Uri.parse(directionslink))
+                    startActivity(mapsintent)
+                }
+            }
     }
 }
 
