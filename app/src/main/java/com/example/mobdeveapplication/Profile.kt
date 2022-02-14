@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 import kotlin.coroutines.*
 
 
@@ -70,7 +71,7 @@ class Profile : AppCompatActivity() {
         }
 
         binding.deleteAccount.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO) {
+            CoroutineScope(IO).launch{
                 val job1 = async{deleteuserinfo()}
                 val job2 = async{logoutanddelete()}
                 job1.await()
@@ -79,7 +80,8 @@ class Profile : AppCompatActivity() {
         }
         Picasso.get().load(auth.currentUser?.photoUrl).fit().into(binding.profilepicture)
     }
-     suspend fun deleteuserinfo(){
+     private suspend fun deleteuserinfo(){
+         delay(100)
         val db = Globals().db
         db.collection("Establishments").whereEqualTo("Owner", auth.currentUser?.email).get().addOnSuccessListener {
             Toast.makeText(applicationContext, auth.currentUser?.email.toString(), Toast.LENGTH_SHORT).show()
@@ -100,9 +102,9 @@ class Profile : AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(applicationContext, "YOOO2", Toast.LENGTH_SHORT).show()
             }
-        logoutanddelete()
     }
-     fun logoutanddelete(){
+     private suspend fun logoutanddelete(){
+         delay(1700)
         auth.currentUser?.delete()
         auth.signOut()
         val signedout = Intent(this, Registerform::class.java)
