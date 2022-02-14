@@ -63,7 +63,7 @@ class Homepage : AppCompatActivity(){
 
 
         readhome(object : Homepagecallback {
-            override fun returnvalueplx(value: ArrayList<listingobject>) {
+            override fun returnvalueplx(value: ArrayList<Listingobject>) {
                 Featuredadapter = Featuredadapter(applicationContext, value)
                 binding.featuredcarousel.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
@@ -71,7 +71,7 @@ class Homepage : AppCompatActivity(){
             }
         },"Featured")
         readhome(object : Homepagecallback {
-            override fun returnvalueplx(value: ArrayList<listingobject>) {
+            override fun returnvalueplx(value: ArrayList<Listingobject>) {
                 Featuredadapter = Featuredadapter(applicationContext, value)
                 binding.popularcarousel.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
@@ -90,7 +90,7 @@ class Homepage : AppCompatActivity(){
 
     }
     interface Homepagecallback {
-        fun returnvalueplx(value: ArrayList<listingobject>){
+        fun returnvalueplx(value: ArrayList<Listingobject>){
         }
     }
     private fun readhome(homecallback : Homepagecallback, filter: String) {
@@ -98,9 +98,9 @@ class Homepage : AppCompatActivity(){
         val database = universal.db
         database.collection("Establishments").whereEqualTo(filter, "True").get()
             .addOnSuccessListener { result ->
-                val featuredlist = ArrayList<listingobject>()
+                val featuredlist = ArrayList<Listingobject>()
                 for (document in result) {
-                    val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
+                    val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                     featuredlist.add(list)
                 }
                 homecallback.returnvalueplx(featuredlist)
@@ -125,11 +125,11 @@ class Homepage : AppCompatActivity(){
             override fun onQueryTextChange(newText: String?): Boolean {
                 val db = Globals().db
                 binding.searchResults.visibility = View.VISIBLE
-                val arrayrecycler  = ArrayList<searchobject>()
+                val arrayrecycler  = ArrayList<Searchobject>()
                 db.collection("Establishments").whereEqualTo("Name",newText!!).get().addOnSuccessListener{ documents ->
                     for (document in documents)
                     {
-                        arrayrecycler.add(searchobject(document.data["Name"].toString()))
+                        arrayrecycler.add(Searchobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString()))
                     }
                 }.addOnFailureListener{
                     // do something with e (aka error)
@@ -141,6 +141,9 @@ class Homepage : AppCompatActivity(){
                     override fun onItemClick(position: Int) {
                         val searchresultintent = Intent(applicationContext, Establishment::class.java)
                         searchresultintent.putExtra("name",arrayrecycler[position].name)
+                        searchresultintent.putExtra("rating", arrayrecycler[position].rating)
+                        searchresultintent.putExtra("description",arrayrecycler[position].description)
+                        searchresultintent.putExtra("picture", arrayrecycler[position].picture)
                         startActivity(searchresultintent)
                     }
 

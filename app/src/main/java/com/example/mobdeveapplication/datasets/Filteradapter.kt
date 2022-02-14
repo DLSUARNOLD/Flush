@@ -10,7 +10,7 @@ import com.example.mobdeveapplication.Establishment
 import com.example.mobdeveapplication.databinding.FilteritemBinding
 import com.squareup.picasso.Picasso
 
-class Filteradapter(private val context: Context, private var listing: ArrayList<listingobject>) : RecyclerView.Adapter<Filteradapter.ViewHolder>() {
+class Filteradapter(private val context: Context, private var listing: ArrayList<Listingobject>) : RecyclerView.Adapter<Filteradapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Filteradapter.ViewHolder {
@@ -27,7 +27,7 @@ class Filteradapter(private val context: Context, private var listing: ArrayList
 
     inner class ViewHolder(private val binding: FilteritemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun binder(item: listingobject, index: Int) {
+        fun binder(item: Listingobject, index: Int) {
             binding.descriptiontxt.text = item.name
             Picasso.get().load(item.picture).fit().into(binding.displaypicture)
             binding.displaypicture.setOnClickListener {
@@ -35,6 +35,7 @@ class Filteradapter(private val context: Context, private var listing: ArrayList
                 selectedlisting.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 selectedlisting.putExtra("name", item.name)
                 selectedlisting.putExtra("rating", item.rating)
+                selectedlisting.putExtra("description",item.description)
                 selectedlisting.putExtra("picture", item.picture)
                 context.startActivity(selectedlisting)
             }

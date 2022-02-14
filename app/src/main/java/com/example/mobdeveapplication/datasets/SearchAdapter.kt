@@ -4,11 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobdeveapplication.databinding.HistoryitemBinding
 import com.example.mobdeveapplication.databinding.SearchitemBinding
 
 
-class SearchAdapter(private val context: Context, private var searchlist: ArrayList<searchobject>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(private val context: Context, private var searchlist: ArrayList<Searchobject>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     private  lateinit var  mListener : onItemClickListener
 
     interface onItemClickListener{
@@ -37,7 +36,7 @@ class SearchAdapter(private val context: Context, private var searchlist: ArrayL
                 listener.onItemClick(adapterPosition)
             }
         }
-        fun binder(item: searchobject, index: Int){
+        fun binder(item: Searchobject, index: Int){
             binding.titleHistory.text = item.name
         }
     }
