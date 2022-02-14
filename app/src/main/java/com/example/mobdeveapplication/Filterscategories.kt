@@ -182,7 +182,7 @@ private fun Updatelist(homecallback : Filtercategories)
         }
     }
     else if(binding.swAirdryer.isChecked){
-        database.collection("Establishments").whereEqualTo("Airdryer","Yes").get().addOnSuccessListener { result ->
+        database.collection("Establishments").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<listingobject>()
             for (document in result) {
                 val list = listingobject(document.data["Name"].toString(), Integer.parseInt(document.data["Rating"] as String), document.data["link"].toString())
