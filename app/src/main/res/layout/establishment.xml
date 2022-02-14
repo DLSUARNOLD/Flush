@@ -10,22 +10,23 @@
         android:id="@+id/Titletext"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="0dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:text="Title"
         android:textColor="?android:textColorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/descriptiontxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="Description"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,13 +37,14 @@
         android:id="@+id/imageView"
         android:layout_width="410dp"
         android:layout_height="230dp"
-        android:layout_marginTop="24dp"
         android:maxWidth="360dp"
         android:maxHeight="200dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Titletext"
+        tools:layout_editor_absoluteY="3dp"
         tools:srcCompat="@tools:sample/avatars" />
+
 
     <Button
         android:id="@+id/directionsbutton"
@@ -54,7 +56,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <RatingBar
         android:id="@+id/ratingbar"
@@ -70,15 +71,18 @@
         android:textColor="?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/Titletext" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toTopOf="@+id/directionsbutton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptiontxt" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptiontxt"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
