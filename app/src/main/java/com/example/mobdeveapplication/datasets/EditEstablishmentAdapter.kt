@@ -30,7 +30,7 @@ class EditEstablishmentAdapter (private val context: Context, private val establ
             {
                 binding.tvEstablishmentname.text = item.Name
                 binding.tvOwner.text = item.Owner
-                binding.editEstablishment.setOnClickListener {
+                binding.btnEditEstablishment.setOnClickListener {
                     val selectedestablishment = Intent (context, EditSpecificEstablishment::class.java)
                     selectedestablishment.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     selectedestablishment.putExtra("Name", item.Name)

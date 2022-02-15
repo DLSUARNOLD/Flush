@@ -22,9 +22,9 @@
         app:menu="@menu/nav_menu" />
 
     <com.budiyev.android.codescanner.CodeScannerView
-        android:id="@+id/scanner_view"
+        android:id="@+id/csv_scanner"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="560dp"
         app:autoFocusButtonColor="@android:color/white"
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
@@ -32,20 +32,18 @@
         app:maskColor="#66000000" />
 
     <TextView
-        android:id="@+id/ScanText"
+        android:id="@+id/tv_scantext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scanner_view"
+        android:layout_below="@+id/csv_scanner"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="49dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:text="@string/qr"
-        android:textSize="20sp"
-        android:textColor="@color/black" />
-
-
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

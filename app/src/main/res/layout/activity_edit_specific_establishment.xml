@@ -19,7 +19,7 @@
         app:menu="@menu/nav_menu"/>
 
     <TextView
-        android:id="@+id/text_establishment"
+        android:id="@+id/tv_establishment"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/Establishmentname"
+        android:id="@+id/et_establishmentname"
         android:layout_width="308dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -47,10 +47,10 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_establishment" />
+        app:layout_constraintTop_toBottomOf="@id/tv_establishment" />
 
     <EditText
-        android:id="@+id/Establishmentlongitude"
+        android:id="@+id/et_establishmentlongitude"
         android:layout_width="308dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -65,10 +65,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="176dp"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentname"/>
+        app:layout_constraintTop_toBottomOf="@id/et_establishmentname"/>
 
     <EditText
-        android:id="@+id/Establishmentlatitude"
+        android:id="@+id/et_establishmentlatitude"
         android:layout_width="308dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -82,10 +82,10 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentlongitude" />
+        app:layout_constraintTop_toBottomOf="@id/et_establishmentlongitude" />
 
     <EditText
-        android:id="@+id/Establishmentlocation"
+        android:id="@+id/et_establishmentlocation"
         android:layout_width="308dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -99,10 +99,10 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentlatitude" />
+        app:layout_constraintTop_toBottomOf="@id/et_establishmentlatitude" />
 
     <EditText
-        android:id="@+id/Establishmentpicture"
+        android:id="@+id/et_establishmentpicture"
         android:layout_width="308dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -116,7 +116,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentlocation" />
+        app:layout_constraintTop_toBottomOf="@id/et_establishmentlocation" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_bidet"
@@ -129,7 +129,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.361"
         app:layout_constraintStart_toEndOf="@+id/sw_aircon"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentpicture" />
+        app:layout_constraintTop_toBottomOf="@id/et_establishmentpicture" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_powerflush"
@@ -153,7 +153,7 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Establishmentpicture" />
+        app:layout_constraintTop_toBottomOf="@+id/et_establishmentpicture" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_airdryer"
@@ -169,7 +169,7 @@
         app:layout_constraintTop_toBottomOf="@id/sw_aircon" />
 
     <EditText
-        android:id="@+id/Establishmentabout"
+        android:id="@+id/et_establishmentabout"
         android:layout_width="309dp"
         android:layout_height="85dp"
         android:ems="10"

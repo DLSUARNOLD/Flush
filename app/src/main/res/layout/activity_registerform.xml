@@ -17,10 +17,10 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Errordisplay">
+        app:layout_constraintTop_toBottomOf="@+id/tv_error_display">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Emailbox"
+            android:id="@+id/et_email"
             android:layout_width="310dp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/primarywhite"
@@ -38,7 +38,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Errordisplay">
+        app:layout_constraintTop_toBottomOf="@+id/tv_error_display">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Namebox"
@@ -59,11 +59,11 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Errordisplay"
+        app:layout_constraintTop_toBottomOf="@+id/tv_error_display"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Passwordbox"
+            android:id="@+id/et_password"
             android:layout_width="310dp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/primarywhite"
@@ -74,7 +74,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/create_account"
+        android:id="@+id/btn_create_account"
         android:layout_width="259dp"
         android:layout_height="56dp"
         android:layout_marginBottom="160dp"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Errordisplay"
+        android:id="@+id/tv_error_display"
         android:layout_width="308dp"
         android:layout_height="58dp"
         android:layout_marginBottom="508dp"
@@ -117,7 +117,7 @@
         app:layout_constraintVertical_bias="0.84" />
 
     <TextView
-        android:id="@+id/LoginRedirect"
+        android:id="@+id/tv_LoginRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -130,7 +130,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_account" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_account" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

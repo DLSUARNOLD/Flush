@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
@@ -24,7 +31,9 @@ import kotlin.collections.ArrayList
 private lateinit var binding: ActivityFiltersnearmeBinding
 
 
-
+/**
+ * Represents the activity screen in which the user is show a list of establishments that are within at most 25kilometers away
+ */
 class Filtersnearme : AppCompatActivity() {
     private lateinit var filteradapter: Filteradapter
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -36,8 +45,8 @@ class Filtersnearme : AppCompatActivity() {
         readfilter(object : Filternearinterface {
             override fun returnvalue(value: ArrayList<Listingobject>) {
                 filteradapter = Filteradapter(applicationContext, value)
-                binding.nearmeRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-                binding.nearmeRecycler.adapter = filteradapter
+                binding.rvNearmeresults.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+                binding.rvNearmeresults.adapter = filteradapter
             }
         },this)
 

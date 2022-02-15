@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +17,9 @@ import com.google.firebase.firestore.SetOptions
 
 private lateinit var binding: ActivityEditSpecificEstablishmentBinding
 
+/**
+ * Represents the activity screen of editing the information on the user's selected establishment
+ */
 class EditSpecificEstablishment : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,11 +95,11 @@ class EditSpecificEstablishment : AppCompatActivity() {
                 Popular = document.data.getValue("Popular").toString()
                 Owner = document.data.getValue("Owner").toString()
             }
-            binding.Establishmentname.setText(Name)
-            binding.Establishmentlongitude.setText(Longitude)
-            binding.Establishmentlatitude.setText(Latitude)
-            binding.Establishmentlocation.setText(Location)
-            binding.Establishmentpicture.setText(link)
+            binding.etEstablishmentname.setText(Name)
+            binding.etEstablishmentlongitude.setText(Longitude)
+            binding.etEstablishmentlatitude.setText(Latitude)
+            binding.etEstablishmentlocation.setText(Location)
+            binding.etEstablishmentpicture.setText(link)
             if (Aircon == "Yes")
                 binding.swAircon.isChecked = true
             if (AirDryer == "Yes")
@@ -98,21 +108,21 @@ class EditSpecificEstablishment : AppCompatActivity() {
                 binding.swBidet.isChecked = true
             if (PowerFlush == "Yes")
                 binding.swPowerflush.isChecked = true
-            binding.Establishmentabout.setText(About)
+            binding.etEstablishmentabout.setText(About)
         }
 
         binding.saveChanges.setOnClickListener {
 
                 val establishment: MutableMap<String, Any> = HashMap()
-                establishment["About"] = binding.Establishmentabout.text.toString()
+                establishment["About"] = binding.etEstablishmentabout.text.toString()
                 establishment["Featured"] = Featured
-                establishment["Latitude"] = binding.Establishmentlatitude.text.toString()
-                establishment["Location"] = binding.Establishmentlocation.text.toString()
-                establishment["Longitude"] = binding.Establishmentlocation.text.toString()
-                establishment["Name"] = binding.Establishmentname.text.toString()
+                establishment["Latitude"] = binding.etEstablishmentlatitude.text.toString()
+                establishment["Location"] = binding.etEstablishmentlocation.text.toString()
+                establishment["Longitude"] = binding.etEstablishmentlongitude.text.toString()
+                establishment["Name"] = binding.etEstablishmentname.text.toString()
                 establishment["Owner"] = Owner
                 establishment["Popular"] = Popular
-                establishment["link"] = binding.Establishmentpicture.text.toString()
+                establishment["link"] = binding.etEstablishmentpicture.text.toString()
 
                 if (binding.swAircon.isChecked)
                     establishment["Aircon"] = "Yes"

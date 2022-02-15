@@ -1,4 +1,12 @@
 package com.example.mobdeveapplication
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -18,6 +26,9 @@ import com.squareup.picasso.Picasso
 private lateinit var binding: ActivityRatingScreenBinding
 private lateinit var auth: FirebaseAuth
 
+/**
+ * Represents the activity screen for users to rate a specific establishment
+ */
 class RatingScreen : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +41,8 @@ class RatingScreen : AppCompatActivity() {
         val db = universal.db
         db.collection("Establishments").document(intent.getStringExtra("establishment").toString())
             .get().addOnSuccessListener { documents ->
-            binding.Titletext.text = documents.data!!["Name"].toString()
-            Picasso.get().load(documents.data!!["link"].toString()).fit().into(binding.imageView)
+            binding.tvTitle.text = documents.data!!["Name"].toString()
+            Picasso.get().load(documents.data!!["link"].toString()).fit().into(binding.ivProfile)
             binding.tvRatingquestion.text =
                 "How would you rate your experience with " + documents.data!!["Name"].toString()
         }
@@ -71,9 +82,9 @@ class RatingScreen : AppCompatActivity() {
         binding.btnSubmit.setOnClickListener {
             val ratingsdatabase = universal.firebaseDatabase
             val map: MutableMap<String, String> = HashMap()
-            map["Place"] = binding.Titletext.text.toString()
-            map["Rating"] = binding.ratingbar.rating.toString()
-            map["Comments"] = binding.comments.text.toString()
+            map["Place"] = binding.tvTitle.text.toString()
+            map["Rating"] = binding.rbHistoryItemRating.rating.toString()
+            map["Comments"] = binding.etComments.text.toString()
             ratingsdatabase.reference.child(auth.uid.toString()).setValue(map)
             updateratings()
         }
@@ -88,17 +99,17 @@ class RatingScreen : AppCompatActivity() {
             var sum = 0.0
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (ds in dataSnapshot.children) {
-                    if (ds.child("Place").value.toString() == binding.Titletext.text.toString()) {
+                    if (ds.child("Place").value.toString() == binding.tvTitle.text.toString()) {
                         Log.i("minecraft","+1 rating")
                            counter+=1
                             sum += ds.child("Rating").value.toString().toDouble()
                 }
             }
                 val newrating = sum/counter
-                firestore.collection("Establishments").whereEqualTo("Name",binding.Titletext.text).get().addOnSuccessListener { result ->
+                firestore.collection("Establishments").whereEqualTo("Name",binding.tvTitle.text).get().addOnSuccessListener { result ->
                     for(document in result)
                     {
-                        Log.i("minecraft", binding.Titletext.text.toString())
+                        Log.i("minecraft", binding.tvTitle.text.toString())
                         Log.i("minecraft", document.id)
                         Log.i("minecraft", newrating.toString())
                         Log.i("minecraft","adding new rating")

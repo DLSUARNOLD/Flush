@@ -1,4 +1,12 @@
 package com.example.mobdeveapplication
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -16,8 +24,11 @@ import kotlin.coroutines.*
 private lateinit var binding: ActivityProfileBinding
 private lateinit var auth: FirebaseAuth
 
+/**
+ * Represents the profile page of the app in which they can change their name, change their password, or even delete their account
+ */
 class Profile : AppCompatActivity() {
-    @OptIn(DelicateCoroutinesApi::class)
+   //@OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         val universal = Globals()
         auth = universal.auth
@@ -55,21 +66,21 @@ class Profile : AppCompatActivity() {
                 else -> {throw IllegalStateException("Error")}
             }
         }
-                    binding.textName.setText(auth.currentUser?.displayName)
-                    binding.Greetingbox.text = "Hello ${auth.currentUser?.email}"
-        binding.saveName.setOnClickListener {
+                    binding.etTextName.setText(auth.currentUser?.displayName)
+                    binding.tvGreeting.text = "Hello ${auth.currentUser?.email}"
+        binding.btnSaveName.setOnClickListener {
             val profileupdate = userProfileChangeRequest {
-                displayName = binding.textName.text.toString()
+                displayName = binding.etTextName.text.toString()
             }
             auth.currentUser?.updateProfile(profileupdate)
             Toast.makeText(this,"Name change has been saved",Toast.LENGTH_LONG).show()
         }
-        binding.savepassword.setOnClickListener {
+        binding.btnSavepassword.setOnClickListener {
             auth.sendPasswordResetEmail(auth.currentUser?.email.toString())
             Toast.makeText(this,"An email has been sent to your email", Toast.LENGTH_LONG).show()
         }
 
-        binding.deleteAccount.setOnClickListener {
+        binding.btnDeleteAccount.setOnClickListener {
             CoroutineScope(IO).launch{
                 val job1 = async{deleteuserinfo()}
                 val job2 = async{logoutanddelete()}
@@ -77,7 +88,7 @@ class Profile : AppCompatActivity() {
                 job2.await()
             }
         }
-        Picasso.get().load(auth.currentUser?.photoUrl).fit().into(binding.profilepicture)
+        Picasso.get().load(auth.currentUser?.photoUrl).fit().into(binding.ivProfilepicture)
     }
      private suspend fun deleteuserinfo(){
          delay(100)

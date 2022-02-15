@@ -9,7 +9,7 @@
     android:background="@color/colorbrandsecondary">
 
   <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/establishmentrecycler"
+      android:id="@+id/rv_establishments"
       android:layout_width="391dp"
       android:layout_height="773dp"
       android:layout_marginTop="130dp"

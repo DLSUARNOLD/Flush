@@ -20,7 +20,7 @@
         app:cardBackgroundColor="@color/colorbrandprimary">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_profile"
             android:layout_width="280dp"
             android:layout_height="250dp"
             android:layout_marginStart="-60dp"
@@ -33,7 +33,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/SigninButton"
+        android:id="@+id/btn_signin"
         android:layout_width="259dp"
         android:layout_height="56dp"
         android:layout_marginBottom="112dp"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/Emailbox"
+        android:id="@+id/et_email"
         android:layout_width="308dp"
         android:layout_height="57dp"
         android:layout_marginTop="212dp"
@@ -59,7 +59,7 @@
         android:textColorHint="@color/hintcolor"
         android:backgroundTint="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/Passwordbox"
+        app:layout_constraintBottom_toTopOf="@+id/et_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.956" />
 
     <EditText
-        android:id="@+id/Passwordbox"
+        android:id="@+id/et_password"
         android:layout_width="308dp"
         android:layout_height="57dp"
         android:layout_marginBottom="32dp"
@@ -80,13 +80,13 @@
         android:textColorHint="@color/hintcolor"
         android:backgroundTint="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/SigninButton"
+        app:layout_constraintBottom_toTopOf="@+id/btn_signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/registerredirect"
+        android:id="@+id/tv_register_redirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -99,10 +99,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SigninButton" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
 
     <TextView
-        android:id="@+id/Errordisplay"
+        android:id="@+id/tv_error_display"
         android:layout_width="308dp"
         android:layout_height="58dp"
         android:layout_marginBottom="304dp"

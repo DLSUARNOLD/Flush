@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +16,9 @@ import com.example.mobdeveapplication.datasets.Globals
 
 private lateinit var binding: ActivityAddEstablishmentBinding
 
+/**
+ * represents the activity page in which an privileged user can input and submit his own establishment to the database
+ */
 class AddEstablishment : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,16 +59,16 @@ class AddEstablishment : AppCompatActivity() {
         binding.submitEstablishment.setOnClickListener {
             val db = Globals().db
             db.collection("Establishments")
-                .whereEqualTo("Name", binding.Establishmentname.text.toString())
+                .whereEqualTo("Name", binding.etEstablishmentname.text.toString())
                 .get().addOnCompleteListener { result ->
                     if (result.result.isEmpty) {
                         val auth = Globals().auth
-                        val name = binding.Establishmentname.text.toString()
-                        val longitude = binding.Establishmentlongitude.text.toString()
-                        val latitude = binding.Establishmentlatitude.text.toString()
-                        val location = binding.Establishmentlocation.text.toString()
-                        val picture = binding.Establishmentpicture.text.toString()
-                        val about = binding.Establishmentabout.text.toString()
+                        val name = binding.etEstablishmentname.text.toString()
+                        val longitude = binding.etEstablishmentname.text.toString()
+                        val latitude = binding.etEstablishmentname.text.toString()
+                        val location = binding.etEstablishmentname.text.toString()
+                        val picture = binding.etEstablishmentname.text.toString()
+                        val about = binding.etEstablishmentname.text.toString()
                         val owner = auth.currentUser?.email.toString()
                         val featured = "False"
                         val popular = "False"

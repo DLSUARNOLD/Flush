@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -15,6 +22,10 @@ import com.example.mobdeveapplication.databinding.ActivityScannerQrBinding
 
 private const val CAMERA_CODE = 101
 private lateinit var binding: ActivityScannerQrBinding
+
+/**
+ * Represents the activity screen of scanning the QR codes that are used to Redirect the user in order to rate an establishment
+ */
 class QrScanner : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
@@ -60,7 +71,7 @@ class QrScanner : AppCompatActivity() {
     }
     private fun codeScanner()
     {
-        codeScanner = CodeScanner(this,binding.scannerView)
+        codeScanner = CodeScanner(this,binding.csvScanner)
 
         codeScanner.apply {
             camera = CodeScanner.CAMERA_BACK
@@ -75,13 +86,13 @@ class QrScanner : AppCompatActivity() {
             decodeCallback = DecodeCallback {
                 runOnUiThread {
                     if(useRegex(it.text)) {
-                        binding.ScanText.text = it.text
+                        binding.tvScantext.text = it.text
                         val intentforrate = Intent(this@QrScanner, RatingScreen::class.java)
                         intentforrate.putExtra("establishment", it.text)
                         startActivity(intentforrate)
                     }
                     else
-                        binding.ScanText.text = it.text
+                        binding.tvScantext.text = it.text
                     //binding.ScanText.text = it.text
                 }
             }

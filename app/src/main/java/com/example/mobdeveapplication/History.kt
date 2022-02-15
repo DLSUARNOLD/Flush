@@ -1,4 +1,12 @@
 package com.example.mobdeveapplication
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -20,21 +28,24 @@ import com.google.firebase.database.ValueEventListener
 
 private lateinit var binding: ActivityHistoryBinding
 private lateinit var auth: FirebaseAuth
+
+/**
+ * Represents the activity screen in which the user is show a list of establishments that they have previously rated.
+ */
 class History : AppCompatActivity() {
     private lateinit var Adapter : HistoryAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
-        FacebookSdk.sdkInitialize(applicationContext)
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         readData(object : Callbacker {
             override fun returnvalue(value: ArrayList<Historyobject>) {
                 Adapter = HistoryAdapter(applicationContext, value,this@History)
-                binding.historyRecycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-                binding.historyRecycler.adapter = Adapter
+                binding.rvHistory.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+                binding.rvHistory.adapter = Adapter
             }
         })
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
@@ -74,7 +85,11 @@ class History : AppCompatActivity() {
         fun returnvalue(value: ArrayList<Historyobject>){
         }
     }
-    fun readData(callbackobject : Callbacker) {
+
+    /**
+     *
+     */
+    private fun readData(callbackobject : Callbacker) {
         val universal = Globals()
         val database = universal.firebaseDatabase
         val ref = database.reference

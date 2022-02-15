@@ -9,7 +9,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularRecycler"
+        android:id="@+id/rv_popular_list"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
@@ -23,7 +23,7 @@
         tools:listitem="@layout/activity_homepage_item" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/featuredRecycler"
+        android:id="@+id/rv_featured_list"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
@@ -34,12 +34,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popularRecycler"
+        app:layout_constraintTop_toBottomOf="@+id/rv_popular_list"
         app:layout_constraintVertical_bias="0.391"
         tools:listitem="@layout/activity_homepage_item" />
 
     <TextView
-        android:id="@+id/popularlabel"
+        android:id="@+id/tv_popular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -48,7 +48,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/popularRecycler"
+        app:layout_constraintBottom_toTopOf="@+id/rv_popular_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.889" />
 
     <TextView
-        android:id="@+id/featurelabel"
+        android:id="@+id/tv_featured"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
@@ -64,11 +64,11 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/featuredRecycler"
+        app:layout_constraintBottom_toTopOf="@+id/rv_featured_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popularRecycler"
+        app:layout_constraintTop_toBottomOf="@+id/rv_popular_list"
         app:layout_constraintVertical_bias="0.584" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -83,7 +83,7 @@
         app:menu="@menu/nav_menu"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_results"
+        android:id="@+id/rv_results"
         android:layout_width="414dp"
         android:layout_height="675dp"
         android:background="#99C0C0C0"

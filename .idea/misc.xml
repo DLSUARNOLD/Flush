@@ -6,44 +6,48 @@
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/drawable/ic_history.xml" value="0.353" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/drawable/ic_profile.xml" value="0.216" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/drawable/ic_settings.xml" value="0.337" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_add_establishment.xml" value="0.5" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_delete_establishment.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_delete_establishment_item.xml" value="0.3087719298245614" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_edit_establishment.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_edit_establishment_item.xml" value="0.3087719298245614" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_edit_specific_establishment.xml" value="0.25" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_establishment.xml" value="0.22" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filter_item.xml" value="0.3087719298245614" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filterscategories.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filtersnearme.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_history.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_history_item.xml" value="0.3087719298245614" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_homepage.xml" value="0.25" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_homepage_item.xml" value="0.5" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_loginform.xml" value="0.3087719298245614" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_profile.xml" value="0.25" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_rating_screen.xml" value="0.33" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_registerform.xml" value="0.3087719298245614" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_request_access.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_scanner_qr.xml" value="0.1" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_search_item.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_add_establishment.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_delete_establishment.xml" value="0.3007246376811594" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_edit_establishment.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_edit_specific_establishment.xml" value="0.1" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filterscategories.xml" value="0.33" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filtersnearme.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_rating_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_request_access.xml" value="0.3087719298245614" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/establishment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/establishmentdelete.xml" value="0.3087719298245614" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/establishmentitem.xml" value="0.33" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/establishmentitem.xml" value="0.3087719298245614" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/filteritem.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/history.xml" value="0.25" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/history.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/historyitem.xml" value="0.25" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/homepage.xml" value="0.33" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/homepageitem.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/loginform.xml" value="0.33" />
-        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/profile.xml" value="0.33" />
+        <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/profile.xml" value="0.25" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/registerform.xml" value="0.33" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/scanner_qr.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/RYZEN/AndroidStudioProjects/Flush/app/src/main/res/layout/searchitem.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_add_establishment.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_delete_establishment.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_delete_establishment_item.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_edit_establishment.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_edit_establishment_item.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_establishment.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filter_item.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filterscategories.xml" value="0.33" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_filtersnearme.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_history.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_history_item.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_homepage.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_homepage_item.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_loginform.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_profile.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_rating_screen.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_registerform.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_request_access.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_scanner_qr.xml" value="0.3625" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_search_item.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/establishment.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/facebook.xml" value="0.2957427536231884" />
@@ -53,7 +57,7 @@
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/homepage.xml" value="0.33" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/homepagefeatured.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/homepageitem.xml" value="0.3625" />
-        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/loginform.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/loginform.xml" value="0.5" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/profile.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/registerform.xml" value="0.3625" />
         <entry key="..\:/Users/iphon/AndroidStudioProjects/Flush/app/src/main/res/layout/scanner_qr.xml" value="0.3625" />

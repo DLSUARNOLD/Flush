@@ -1,4 +1,12 @@
 package com.example.mobdeveapplication
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -13,6 +21,10 @@ import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 
 
 private lateinit var binding : ActivityLoginformBinding
+
+/**
+ * Represents the Login screen of the app
+ */
 class Loginform : AppCompatActivity()  {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,22 +39,22 @@ class Loginform : AppCompatActivity()  {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
-        binding.registerredirect.setOnClickListener {
+        binding.tvRegisterRedirect.setOnClickListener {
             val intent = Intent(this, Registerform::class.java)
             startActivity(intent)
             finish()
         }
-        binding.SigninButton.setOnClickListener {
+        binding.btnSignin.setOnClickListener {
             try {
-                if (binding.Emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty())
-                    binding.Errordisplay.text = "Email or Password is not provided"
+                if (binding.etEmail.text.toString().isEmpty() || binding.etPassword.text.toString().isEmpty())
+                    Toast.makeText(this,"Email or Password is not provided",Toast.LENGTH_SHORT).show()
                 else{
-                    auth.signInWithEmailAndPassword(binding.Emailbox.text.toString(),binding.Passwordbox.text.toString()).addOnCompleteListener(this) { task ->
+                    auth.signInWithEmailAndPassword(binding.etEmail.text.toString(),binding.etPassword.text.toString()).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            binding.Errordisplay.text = "Sign In successfull. "
+                            Toast.makeText(this,"Sign In successfull. ",Toast.LENGTH_SHORT).show()
                             updateUI()
                         } else
-                            binding.Errordisplay.text = "Invalid Email or Password"
+                            Toast.makeText(this,"Invalid Email or Password",Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener{ Toast.makeText(this, "This Email and password combination does not exist", Toast.LENGTH_LONG).show()}
                     }
             }

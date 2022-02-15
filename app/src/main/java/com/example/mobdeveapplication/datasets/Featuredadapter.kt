@@ -27,9 +27,9 @@ class Featuredadapter(private val context: Context, private var listing: ArrayLi
     inner class ViewHolder(private val binding: ActivityHomepageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binder(item: Listingobject, index: Int) {
-            binding.descriptiontext.text = item.name
-            Picasso.get().load(item.picture).fit().into(binding.displaypicture)
-            binding.displaypicture.setOnClickListener {
+            binding.tvDescription.text = item.name
+            Picasso.get().load(item.picture).fit().into(binding.ibDisplaypicture)
+            binding.ibDisplaypicture.setOnClickListener {
                 val selectedlisting = Intent(context, Establishment::class.java)
                 selectedlisting.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 selectedlisting.putExtra("name", item.name)

@@ -8,7 +8,7 @@
     android:background="@color/colorbrandsecondary">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nearmeRecycler"
+        android:id="@+id/rv_nearmeresults"
         android:layout_width="412dp"
         android:layout_height="678dp"
         android:layout_centerHorizontal="true"

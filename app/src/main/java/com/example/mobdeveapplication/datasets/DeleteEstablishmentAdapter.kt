@@ -30,7 +30,7 @@ class DeleteEstablishmentAdapter (private val context: Context, private val esta
         {
             binding.tvEstablishmentname.text = item.Name
             binding.tvOwner.text = item.Owner
-            binding.deleteEstablishment.setOnClickListener {
+            binding.btnDeleteEstablishment.setOnClickListener {
                 val db = Globals().db
                 db.collection("Establishments").whereEqualTo("Name", item.Name).get()
                     .addOnSuccessListener {

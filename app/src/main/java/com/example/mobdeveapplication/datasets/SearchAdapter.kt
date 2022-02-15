@@ -37,7 +37,7 @@ class SearchAdapter(private val context: Context, private var searchlist: ArrayL
             }
         }
         fun binder(item: Searchobject, index: Int){
-            binding.titleHistory.text = item.name
+            binding.tvHistoryItemTitle.text = item.name
         }
     }
 }

@@ -16,7 +16,7 @@
 
 
         <TextView
-            android:id="@+id/title_history"
+            android:id="@+id/tv_history_item_title"
             android:layout_width="370dp"
             android:layout_height="58dp"
             android:layout_marginStart="15dp"

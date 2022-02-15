@@ -12,14 +12,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.ActivityHomepageBinding
 import com.example.mobdeveapplication.datasets.*
 import com.google.firebase.auth.FirebaseAuth
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 
 private lateinit var binding: ActivityHomepageBinding
-
+/**
+ * Represents the homepage of the app
+ */
 class Homepage : AppCompatActivity(){
     private lateinit var auth: FirebaseAuth
     private lateinit var searchAdapter: SearchAdapter
-
     @SuppressLint("SetTextI18n")
     private lateinit var Featuredadapter: Featuredadapter
 
@@ -65,17 +73,17 @@ class Homepage : AppCompatActivity(){
         readhome(object : Homepagecallback {
             override fun returnvalue(value: ArrayList<Listingobject>) {
                 Featuredadapter = Featuredadapter(applicationContext, value)
-                binding.featuredRecycler.layoutManager =
+                binding.rvFeaturedList.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-                binding.featuredRecycler.adapter = Featuredadapter
+                binding.rvFeaturedList.adapter = Featuredadapter
             }
         },"Featured")
         readhome(object : Homepagecallback {
             override fun returnvalue(value: ArrayList<Listingobject>) {
                 Featuredadapter = Featuredadapter(applicationContext, value)
-                binding.popularRecycler.layoutManager =
+                binding.rvPopularList.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-                binding.popularRecycler.adapter = Featuredadapter
+                binding.rvPopularList.adapter = Featuredadapter
             }
         },"Popular")
 
@@ -89,10 +97,22 @@ class Homepage : AppCompatActivity(){
         }
 
     }
+
+    /**
+     * callback interface for returning an arraylist for the selected recycler view to use
+     */
     interface Homepagecallback {
         fun returnvalue(value: ArrayList<Listingobject>){
         }
     }
+
+    /**
+     *  this function evaluates all documents in the firestore database to collect all establishments
+     *  that match the given filter. It is then put into an arraylist and is sent to the callback for the recycler view to use
+     *
+     *  @param homecallback - callback interface to be used
+     *  @param filter - filter word to be compared to
+     */
     private fun readhome(homecallback : Homepagecallback, filter: String) {
         val universal = Globals()
         val database = universal.db
@@ -112,19 +132,19 @@ class Homepage : AppCompatActivity(){
         val item = menu?.findItem(R.id.cloud_search)
         val searchview = item?.actionView as SearchView
         searchview.setOnCloseListener {
-            binding.searchResults.visibility = View.INVISIBLE
+            binding.rvResults.visibility = View.INVISIBLE
             false
         }
         searchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.searchResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-                binding.searchResults.adapter = searchAdapter
+                binding.rvResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+                binding.rvResults.adapter = searchAdapter
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 val db = Globals().db
-                binding.searchResults.visibility = View.VISIBLE
+                binding.rvResults.visibility = View.VISIBLE
                 val arrayrecycler  = ArrayList<Searchobject>()
                 db.collection("Establishments").whereEqualTo("Name",newText!!).get().addOnSuccessListener{ documents ->
                     for (document in documents)
@@ -133,8 +153,8 @@ class Homepage : AppCompatActivity(){
                     }
                 }
                 searchAdapter = SearchAdapter(applicationContext,arrayrecycler)
-                binding.searchResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-                binding.searchResults.adapter = searchAdapter
+                binding.rvResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+                binding.rvResults.adapter = searchAdapter
                 searchAdapter.setOnItemClickListener(object : SearchAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
                         val searchresultintent = Intent(applicationContext, Establishment::class.java)

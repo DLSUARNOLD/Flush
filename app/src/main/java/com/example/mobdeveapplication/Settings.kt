@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
@@ -12,7 +19,9 @@ import com.google.firebase.auth.FirebaseAuth
 
 private lateinit var binding: ActivitySettingsBinding
 
-
+/**
+ * Represents the activity screen in which the can add/edit/delete their own establishments given that they have such privileges in their account
+ */
 class Settings : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     @SuppressLint("SetTextI18n")
@@ -53,7 +62,7 @@ class Settings : AppCompatActivity() {
                 else -> {throw IllegalStateException("Error")}
             }
         }
-        binding.addEstablishment.setOnClickListener {
+        binding.btnAddEstablishment.setOnClickListener {
 
             val email = auth.currentUser?.email
 
@@ -73,7 +82,7 @@ class Settings : AppCompatActivity() {
             }
         }
 
-        binding.editEstablishment.setOnClickListener {
+        binding.btnEditEstablishment.setOnClickListener {
             val email = auth.currentUser?.email
 
             db.collection("AdminAccess").whereEqualTo("email", email).get()
@@ -92,7 +101,7 @@ class Settings : AppCompatActivity() {
                 }
         }
 
-        binding.deleteEstablishment.setOnClickListener{
+        binding.btnDeleteEstablishment.setOnClickListener{
             val email = auth.currentUser?.email
 
             db.collection("AdminAccess").whereEqualTo("email", email).get()
@@ -111,7 +120,7 @@ class Settings : AppCompatActivity() {
                 }
         }
 
-        binding.requestAccess.setOnClickListener {
+        binding.btnRequestAccess.setOnClickListener {
 
             val email = auth.currentUser?.email
 
@@ -135,7 +144,7 @@ class Settings : AppCompatActivity() {
                 }
         }
 
-        binding.logout.setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             auth.signOut()
             val registerIntent = Intent(this, Registerform::class.java)
             startActivity(registerIntent)

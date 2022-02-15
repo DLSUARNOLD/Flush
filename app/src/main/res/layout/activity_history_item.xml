@@ -16,7 +16,7 @@
 
 
         <TextView
-            android:id="@+id/title_history"
+            android:id="@+id/tv_history_item_title"
             android:layout_width="80dp"
             android:textColor = "@color/black"
             android:layout_height="41dp"
@@ -27,7 +27,7 @@
             android:text="" />
 
         <RatingBar
-            android:id="@+id/ratingbar"
+            android:id="@+id/rb_history_item_rating"
             style="?android:attr/ratingBarStyleIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
 
 
         <Button
-            android:id="@+id/share_btn"
+            android:id="@+id/btn_history_item_share"
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="30dp"
             android:layout_height="30dp"

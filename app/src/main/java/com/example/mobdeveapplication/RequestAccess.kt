@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +16,9 @@ import com.example.mobdeveapplication.databinding.ActivityRequestAccessBinding
 
 private lateinit var binding: ActivityRequestAccessBinding
 
+/**
+ * Represents the activity screen for requesting elevated privileges that are needed for users to post their own establishments onto the app
+ */
 class RequestAccess : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +57,10 @@ class RequestAccess : AppCompatActivity() {
             }
         }
 
-        binding.sendEmail.setOnClickListener {
+        binding.btnSendEmail.setOnClickListener {
             val email = "FlushApplication@gmail.com"
-            val subject = binding.editSubject.text.toString()
-            val message = binding.editMessage.text.toString()
+            val subject = binding.etEditSubject.text.toString()
+            val message = binding.etEditMessage.text.toString()
 
             val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")

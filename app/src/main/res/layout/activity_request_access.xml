@@ -19,7 +19,7 @@
         app:menu="@menu/nav_menu"/>
 
     <TextView
-        android:id="@+id/text_subject"
+        android:id="@+id/tv_text_subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -33,17 +33,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_subject"
+        android:id="@+id/et_edit_subject"
         android:layout_marginTop="10dp"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_subject"
+        app:layout_constraintTop_toBottomOf="@id/tv_text_subject"
         android:inputType="text"/>
 
     <TextView
-        android:id="@+id/text_message"
+        android:id="@+id/tv_text_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -53,21 +53,21 @@
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_subject" />
+        app:layout_constraintTop_toBottomOf="@id/et_edit_subject" />
 
     <EditText
-        android:id="@+id/edit_message"
+        android:id="@+id/et_edit_message"
         android:layout_width="360dp"
         android:layout_height="100dp"
         android:gravity="start|bottom"
         android:hint="@string/reason"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_message"
+        app:layout_constraintTop_toBottomOf="@id/tv_text_message"
         android:inputType="textMultiLine"/>
 
     <Button
-        android:id="@+id/send_email"
+        android:id="@+id/btn_send_email"
         android:layout_width="154dp"
         android:layout_height="48dp"
         android:layout_marginBottom="70dp"

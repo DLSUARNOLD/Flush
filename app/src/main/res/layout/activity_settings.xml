@@ -19,7 +19,7 @@
         app:menu="@menu/nav_menu"/>
 
     <TextView
-        android:id="@+id/text_admin"
+        android:id="@+id/tv_text_admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/add_establishment"
+        android:id="@+id/btn_add_establishment"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -39,22 +39,22 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_admin" />
+        app:layout_constraintTop_toBottomOf="@id/tv_text_admin" />
 
     <Button
-        android:id="@+id/edit_establishment"
+        android:id="@+id/btn_edit_establishment"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/edit_establishment"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/add_establishment"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_establishment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button
-        android:id="@+id/delete_establishment"
+        android:id="@+id/btn_delete_establishment"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -62,10 +62,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_establishment" />
+        app:layout_constraintTop_toBottomOf="@id/btn_edit_establishment" />
 
     <TextView
-        android:id="@+id/text_customer"
+        android:id="@+id/tv_text_customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
@@ -74,21 +74,21 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/delete_establishment" />
+        app:layout_constraintTop_toBottomOf="@id/btn_delete_establishment" />
 
     <Button
-        android:id="@+id/request_access"
+        android:id="@+id/btn_request_access"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/request_access"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_customer"
+        app:layout_constraintTop_toBottomOf="@id/tv_text_customer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/btn_logout"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -96,7 +96,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/request_access" />
+        app:layout_constraintTop_toBottomOf="@id/btn_request_access" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,9 +20,11 @@ import com.google.firebase.auth.FirebaseAuth
 private lateinit var binding: ActivityDeleteEstablishmentBinding
 private lateinit var auth: FirebaseAuth
 
-
+/**
+ * represents the activity in which a privileged user can delete an existing listing that they have made.
+ */
 class DeleteEstablishment : AppCompatActivity() {
-    private lateinit var Establishmentadapter: DeleteEstablishmentAdapter
+    private lateinit var establishmentadapter: DeleteEstablishmentAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDeleteEstablishmentBinding.inflate(layoutInflater)
@@ -55,9 +64,9 @@ class DeleteEstablishment : AppCompatActivity() {
 
         readestablishment(object : Establishmentcallback {
             override fun returnvalue(value: ArrayList<Establishmentobject>) {
-                Establishmentadapter = DeleteEstablishmentAdapter(applicationContext, value)
-                binding.establishmentrecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-                binding.establishmentrecycler.adapter = Establishmentadapter
+                establishmentadapter = DeleteEstablishmentAdapter(applicationContext, value)
+                binding.rvEstablishments.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+                binding.rvEstablishments.adapter = establishmentadapter
             }
         })
     }

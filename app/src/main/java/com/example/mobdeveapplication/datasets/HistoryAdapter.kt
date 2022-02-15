@@ -30,9 +30,9 @@ class HistoryAdapter(private val context: Context, private var historylist: Arra
         RecyclerView.ViewHolder(binding.root) {
 
         fun binder(item: Historyobject, index: Int) {
-            binding.titleHistory.text = item.location
-            val shareBtn = binding.shareBtn
-            binding.ratingbar.rating = item.rating
+            binding.tvHistoryItemTitle.text = item.location
+            val shareBtn = binding.btnHistoryItemShare
+            binding.rbHistoryItemRating.rating = item.rating
             shareBtn.setOnClickListener {
                 shareBtn.setOnClickListener {
                     val db = Globals().db

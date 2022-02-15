@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/save_name"
+        android:id="@+id/btn_save_name"
         android:layout_width="155dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -17,10 +17,10 @@
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_text_name" />
 
     <EditText
-        android:id="@+id/text_name"
+        android:id="@+id/et_text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -32,10 +32,10 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilepicture" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_profilepicture" />
 
     <TextView
-        android:id="@+id/text_profile"
+        android:id="@+id/tv_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -62,7 +62,7 @@
         app:menu="@menu/nav_menu" />
 
     <ImageView
-        android:id="@+id/profilepicture"
+        android:id="@+id/iv_profilepicture"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_marginTop="1dp"
@@ -70,11 +70,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Greetingbox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_greeting"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/Greetingbox"
+        android:id="@+id/tv_greeting"
         android:layout_width="256dp"
         android:layout_height="39dp"
         android:layout_marginTop="76dp"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_accountsettings"
+        android:id="@+id/tv_account_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -97,10 +97,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/save_name" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_save_name" />
 
     <Button
-        android:id="@+id/savepassword"
+        android:id="@+id/btn_savepassword"
         android:layout_width="155dp"
         android:layout_height="48dp"
         android:layout_marginTop="25dp"
@@ -108,10 +108,10 @@
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_accountsettings" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_account_settings" />
 
     <Button
-        android:id="@+id/delete_account"
+        android:id="@+id/btn_delete_account"
         android:layout_width="155dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -119,6 +119,6 @@
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/savepassword" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_savepassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

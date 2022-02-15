@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/Titletext"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="40dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_profile"
         android:layout_width="303dp"
         android:layout_height="164dp"
         android:layout_marginTop="40dp"
@@ -33,7 +33,7 @@
         android:maxHeight="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Titletext"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         tools:srcCompat="@tools:sample/avatars" />
 
 
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingbar"
+        android:id="@+id/rb_history_item_rating"
         style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,10 +71,10 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
     <EditText
-        android:id="@+id/comments"
+        android:id="@+id/et_comments"
         android:layout_width="336dp"
         android:layout_height="115dp"
         android:layout_marginBottom="70dp"

@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,7 +24,9 @@ import kotlin.collections.ArrayList
 private lateinit var binding: ActivityFilterscategoriesBinding
 
 
-
+/**
+ * Represents the activity screen in which the user can toggle categories and be shown a list of establishments that conform to the filter.
+ */
 class Filterscategories : AppCompatActivity() {
     private lateinit var filteradapter: Filteradapter
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -29,8 +38,8 @@ class Filterscategories : AppCompatActivity() {
         updatereadcategories(object : Filtercategories {
             override fun returnvalue(value: ArrayList<Listingobject>) {
                 filteradapter = Filteradapter(applicationContext, value)
-                binding.filterRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-                binding.filterRecycler.adapter = filteradapter
+                binding.rvFilterresults.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+                binding.rvFilterresults.adapter = filteradapter
             }
         })
 

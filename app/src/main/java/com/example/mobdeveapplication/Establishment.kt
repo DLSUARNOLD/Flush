@@ -1,4 +1,12 @@
 package com.example.mobdeveapplication
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobdeveapplication.databinding.ActivityEstablishmentBinding
@@ -13,6 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 
 
@@ -20,7 +29,9 @@ private lateinit var binding: ActivityEstablishmentBinding
 private lateinit var auth: FirebaseAuth
 private lateinit var mMap: GoogleMap
 
-
+/**
+ * Represents the activity screen in which the user can view all important information about a specific listing
+ */
 class Establishment : AppCompatActivity(), OnMapReadyCallback {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,17 +76,17 @@ class Establishment : AppCompatActivity(), OnMapReadyCallback {
             }
         }
         val intent = intent
-        binding.Titletext.text = intent.getStringExtra("name")
-        binding.descriptiontext.text = intent.getStringExtra("description")
-        Picasso.get().load(intent.getStringExtra("picture")).fit().into(binding.imageView)
-        binding.ratingbar.rating = intent.getDoubleExtra("rating", 0.0).toFloat()
+        binding.tvTitle.text = intent.getStringExtra("name")
+        binding.tvDescription.text = intent.getStringExtra("description")
+        Picasso.get().load(intent.getStringExtra("picture")).fit().into(binding.ivProfile)
+        binding.rbHistoryItemRating.rating = intent.getDoubleExtra("rating", 0.0).toFloat()
         var directionslink = ""
-        firestore.collection("Establishments").whereEqualTo("Name", binding.Titletext.text).get()
+        firestore.collection("Establishments").whereEqualTo("Name", binding.tvTitle.text).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     directionslink = document.data["Location"].toString()
                 }
-                binding.directionsbutton.setOnClickListener {
+                binding.btnDirections.setOnClickListener {
                     val mapsintent = Intent(Intent.ACTION_VIEW, Uri.parse(directionslink))
                     startActivity(mapsintent)
                 }
@@ -84,7 +95,7 @@ class Establishment : AppCompatActivity(), OnMapReadyCallback {
     }
     override fun onMapReady(googleMap: GoogleMap) {
         val firestore = Globals().db
-        firestore.collection("Establishments").whereEqualTo("Name", binding.Titletext.text).get()
+        firestore.collection("Establishments").whereEqualTo("Name", binding.tvTitle.text).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     mMap = googleMap

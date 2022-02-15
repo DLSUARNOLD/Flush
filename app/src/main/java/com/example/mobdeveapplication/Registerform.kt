@@ -1,5 +1,12 @@
 package com.example.mobdeveapplication
-
+/**
+ * @author Quiros, Arnold Luigi G.
+ * @author Ty, Sam Allyson O.
+ *
+ * MOBDEVE S11
+ * 16/02/2022
+ * Version 1.0
+ */
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +20,10 @@ import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 
 private lateinit var binding: ActivityRegisterformBinding
+
+/**
+ * Represents the account registration page of the app
+ */
 class Registerform : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?)
@@ -22,7 +33,7 @@ class Registerform : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterformBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.LoginRedirect.setOnClickListener {
+        binding.tvLoginRedirect.setOnClickListener {
             val intent = Intent(this, Loginform::class.java)
             startActivity(intent)
             finish()
@@ -35,14 +46,14 @@ class Registerform : AppCompatActivity() {
         }
 
 
-        binding.createAccount.setOnClickListener{
-            if (binding.Emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty() || binding.Namebox.text.toString().isEmpty())
-                binding.Errordisplay.text = "Email Address or Password is not provided"
+        binding.btnCreateAccount.setOnClickListener{
+            if (binding.etEmail.text.toString().isEmpty() || binding.etPassword.text.toString().isEmpty() || binding.Namebox.text.toString().isEmpty())
+                binding.tvErrorDisplay.text = "Email Address or Password is not provided"
             else {
-                    auth.createUserWithEmailAndPassword(binding.Emailbox.text.toString(), binding.Passwordbox.text.toString()).addOnCompleteListener(this)
+                    auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString()).addOnCompleteListener(this)
                     { task ->
                                 if (task.isSuccessful) {
-                                    binding.Errordisplay.text = "Sign Up successful. Click Sign in to Continue"
+                                    binding.tvErrorDisplay.text = "Sign Up successful. Click Sign in to Continue"
                                     val user = auth.currentUser
                                     val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
                                         ref.child(auth.currentUser!!.uid)
@@ -50,18 +61,18 @@ class Registerform : AppCompatActivity() {
                                         displayName = binding.Namebox.text.toString()
                                         photoUri = Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png")
 
-                                    val email = binding.Emailbox.text.toString()
+                                    val email = binding.etEmail.text.toString()
                                     val access = "No"
                                     adminaccess(email, access)
                                 }
                                 user?.updateProfile(profileupdate)!!
                             } else
                             {
-                                if(binding.Passwordbox.length()<6)
+                                if(binding.etPassword.length()<6)
                                 {
-                                    binding.Errordisplay.text = "Sign Up Error: Password must be atleast 6 characters"
+                                    binding.tvErrorDisplay.text = "Sign Up Error: Password must be atleast 6 characters"
                                 }
-                                else binding.Errordisplay.text = "Sign Up Error: Please chose a different Email"
+                                else binding.tvErrorDisplay.text = "Sign Up Error: Please chose a different Email"
                             }
                     }
 

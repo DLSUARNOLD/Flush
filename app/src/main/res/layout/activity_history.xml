@@ -7,7 +7,7 @@
     android:background="@color/colorbrandsecondary">
 
     <TextView
-        android:id="@+id/text_history"
+        android:id="@+id/tv_historytitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/historyRecycler"
+        android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="585dp"
         android:layout_marginTop="10dp"
@@ -29,7 +29,7 @@
         android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_history"
+        app:layout_constraintTop_toBottomOf="@+id/tv_historytitle"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/activity_history_item" />
 
