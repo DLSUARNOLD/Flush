@@ -9,12 +9,12 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mobdeveapplication.databinding.HomepageBinding
+import com.example.mobdeveapplication.databinding.ActivityHomepageBinding
 import com.example.mobdeveapplication.datasets.*
 import com.google.firebase.auth.FirebaseAuth
 
 
-private lateinit var binding: HomepageBinding
+private lateinit var binding: ActivityHomepageBinding
 
 class Homepage : AppCompatActivity(){
     private lateinit var auth: FirebaseAuth
@@ -27,7 +27,7 @@ class Homepage : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Globals().auth
-        binding = HomepageBinding.inflate(layoutInflater)
+        binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
@@ -63,19 +63,19 @@ class Homepage : AppCompatActivity(){
 
 
         readhome(object : Homepagecallback {
-            override fun returnvalueplx(value: ArrayList<Listingobject>) {
+            override fun returnvalue(value: ArrayList<Listingobject>) {
                 Featuredadapter = Featuredadapter(applicationContext, value)
-                binding.featuredcarousel.layoutManager =
+                binding.featuredRecycler.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-                binding.featuredcarousel.adapter = Featuredadapter
+                binding.featuredRecycler.adapter = Featuredadapter
             }
         },"Featured")
         readhome(object : Homepagecallback {
-            override fun returnvalueplx(value: ArrayList<Listingobject>) {
+            override fun returnvalue(value: ArrayList<Listingobject>) {
                 Featuredadapter = Featuredadapter(applicationContext, value)
-                binding.popularcarousel.layoutManager =
+                binding.popularRecycler.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-                binding.popularcarousel.adapter = Featuredadapter
+                binding.popularRecycler.adapter = Featuredadapter
             }
         },"Popular")
 
@@ -90,7 +90,7 @@ class Homepage : AppCompatActivity(){
 
     }
     interface Homepagecallback {
-        fun returnvalueplx(value: ArrayList<Listingobject>){
+        fun returnvalue(value: ArrayList<Listingobject>){
         }
     }
     private fun readhome(homecallback : Homepagecallback, filter: String) {
@@ -103,14 +103,14 @@ class Homepage : AppCompatActivity(){
                     val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                     featuredlist.add(list)
                 }
-                homecallback.returnvalueplx(featuredlist)
+                homecallback.returnvalue(featuredlist)
             }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main,menu)
-        val itemz = menu?.findItem(R.id.cloud_search)
-        val searchview = itemz?.actionView as SearchView
+        val item = menu?.findItem(R.id.cloud_search)
+        val searchview = item?.actionView as SearchView
         searchview.setOnCloseListener {
             binding.searchResults.visibility = View.INVISIBLE
             false
@@ -131,9 +131,7 @@ class Homepage : AppCompatActivity(){
                     {
                         arrayrecycler.add(Searchobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString()))
                     }
-                }.addOnFailureListener{
-                    // do something with e (aka error)
-                    }
+                }
                 searchAdapter = SearchAdapter(applicationContext,arrayrecycler)
                 binding.searchResults.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
                 binding.searchResults.adapter = searchAdapter

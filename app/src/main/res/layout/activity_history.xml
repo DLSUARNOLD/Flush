@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primarywhite">
+    android:background="@color/colorbrandsecondary">
 
     <TextView
         android:id="@+id/text_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="History"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/history"
         android:textSize="40sp"
         android:textColor = "?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,22 +21,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="411dp"
+        android:id="@+id/historyRecycler"
+        android:layout_width="match_parent"
         android:layout_height="585dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_history"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/historyitem" />
+        tools:listitem="@layout/activity_history_item" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:theme="@style/Theme.Apirtayo"
+        android:theme="@style/Theme.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:labelVisibilityMode="labeled"

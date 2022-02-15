@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RequestAccess"
-    android:background="@color/primarywhite">
+    android:background="@color/colorbrandsecondary">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:theme="@style/Theme.Apirtayo"
+        android:theme="@style/Theme.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,29 +22,33 @@
         android:id="@+id/text_subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
-        android:text="Subject:"
+        android:layout_marginTop="70dp"
+        android:text="@string/subject"
         android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edit_subject"
-        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_subject"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:inputType="text"/>
 
     <TextView
         android:id="@+id/text_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        android:text="Message:"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/message"
         android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -53,26 +57,25 @@
 
     <EditText
         android:id="@+id/edit_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_message"
+        android:layout_width="360dp"
+        android:layout_height="100dp"
+        android:gravity="start|bottom"
+        android:hint="@string/reason"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:lines="10"
-        android:hint="  State your reason for admin request..."
-        android:gravity="start"/>
+        app:layout_constraintTop_toBottomOf="@id/text_message"
+        android:inputType="textMultiLine"/>
 
     <Button
         android:id="@+id/send_email"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginTop="100dp"
-        android:text="send"
-        android:textSize="11sp"
-        app:layout_constraintTop_toBottomOf="@id/edit_message"
+        android:layout_marginBottom="70dp"
+        android:text="@string/send"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

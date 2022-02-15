@@ -27,10 +27,10 @@ class Filterscategories : AppCompatActivity() {
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         updatereadcategories(object : Filtercategories {
-            override fun returnvalueplx(value: ArrayList<Listingobject>) {
+            override fun returnvalue(value: ArrayList<Listingobject>) {
                 filteradapter = Filteradapter(applicationContext, value)
-                binding.popularcarousel.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-                binding.popularcarousel.adapter = filteradapter
+                binding.filterRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+                binding.filterRecycler.adapter = filteradapter
             }
         })
 
@@ -62,13 +62,13 @@ class Filterscategories : AppCompatActivity() {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
     }
 }
 interface Filtercategories {
-    fun returnvalueplx(value: ArrayList<Listingobject>){
+    fun returnvalue(value: ArrayList<Listingobject>){
     }
 }
 private fun updatereadcategories(homecallback : Filtercategories) {
@@ -98,7 +98,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swBidet.isChecked && binding.swAircon.isChecked && binding.swAirdryer.isChecked){
@@ -108,7 +108,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swAircon.isChecked && binding.swAirdryer.isChecked && binding.swPowerflush.isChecked){
@@ -118,7 +118,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swBidet.isChecked && binding.swAircon.isChecked){
@@ -128,7 +128,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swBidet.isChecked && binding.swPowerflush.isChecked){
@@ -138,7 +138,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swBidet.isChecked && binding.swAirdryer.isChecked){
@@ -148,7 +148,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swAircon.isChecked && binding.swAirdryer.isChecked){
@@ -158,7 +158,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swAircon.isChecked && binding.swPowerflush.isChecked){
@@ -168,7 +168,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swPowerflush.isChecked && binding.swAirdryer.isChecked){
@@ -178,7 +178,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swAirdryer.isChecked){
@@ -188,7 +188,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swBidet.isChecked){
@@ -198,7 +198,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swPowerflush.isChecked){
@@ -208,7 +208,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else if(binding.swAircon.isChecked){
@@ -218,7 +218,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
     else{
@@ -228,7 +228,7 @@ private fun Updatelist(homecallback : Filtercategories)
                 val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
                 filterlist.add(list)
             }
-            homecallback.returnvalueplx(filterlist)
+            homecallback.returnvalue(filterlist)
         }
     }
 

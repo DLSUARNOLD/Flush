@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobdeveapplication.databinding.ActivityRatingScreenBinding
-import com.example.mobdeveapplication.datasets.Adapter
 import com.example.mobdeveapplication.datasets.Globals
-import com.example.mobdeveapplication.datasets.Historyobject
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -39,13 +36,44 @@ class RatingScreen : AppCompatActivity() {
                 "How would you rate your experience with " + documents.data!!["Name"].toString()
         }
 
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+            when (menu.itemId) {
+                R.id.homenavbar -> {
+                    val homepageIntent = Intent(this, Homepage::class.java)
+                    startActivity(homepageIntent)
+                    true
+                }
+                R.id.historynavbar -> {
+                    val historyIntent = Intent(this, History::class.java)
+                    startActivity(historyIntent)
+                    true
+                }
+                R.id.qrnavbar -> {
+                    val qrIntent = Intent(this, QrScanner::class.java)
+                    startActivity(qrIntent)
+                    true
+                }
+                R.id.profilenavbar -> {
+                    val profileIntent = Intent(this, Profile::class.java)
+                    startActivity(profileIntent)
+                    true
+                }
+                R.id.settingsnavbar -> {
+                    val settingIntent = Intent(this, Settings::class.java)
+                    startActivity(settingIntent)
+                    true
+                }
+                else -> {throw IllegalStateException("something bad happened")}
+            }
+        }
 
         binding.btnSubmit.setOnClickListener {
             val ratingsdatabase = universal.firebaseDatabase
             val map: MutableMap<String, String> = HashMap()
             map["Place"] = binding.Titletext.text.toString()
             map["Rating"] = binding.ratingbar.rating.toString()
-            map["Comments"] = binding.editTextTextMultiLine.text.toString()
+            map["Comments"] = binding.comments.text.toString()
             ratingsdatabase.reference.child(auth.uid.toString()).setValue(map)
             updateratings()
         }

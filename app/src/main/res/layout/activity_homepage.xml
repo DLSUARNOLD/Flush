@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primarywhite">
+    android:background="@color/colorbrandsecondary">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularcarousel"
+        android:id="@+id/popularRecycler"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
@@ -20,10 +20,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/homepageitem" />
+        tools:listitem="@layout/activity_homepage_item" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/featuredcarousel"
+        android:id="@+id/featuredRecycler"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
@@ -34,9 +34,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popularcarousel"
+        app:layout_constraintTop_toBottomOf="@+id/popularRecycler"
         app:layout_constraintVertical_bias="0.391"
-        tools:listitem="@layout/homepageitem" />
+        tools:listitem="@layout/activity_homepage_item" />
 
     <TextView
         android:id="@+id/popularlabel"
@@ -44,11 +44,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
-        android:text="Popular"
+        android:text="@string/popular"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/popularcarousel"
+        app:layout_constraintBottom_toTopOf="@+id/popularRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,26 +56,26 @@
         app:layout_constraintVertical_bias="0.889" />
 
     <TextView
-        android:id="@+id/popularlabel2"
+        android:id="@+id/featurelabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Featured"
+        android:text="@string/featured"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/featuredcarousel"
+        app:layout_constraintBottom_toTopOf="@+id/featuredRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popularcarousel"
+        app:layout_constraintTop_toBottomOf="@+id/popularRecycler"
         app:layout_constraintVertical_bias="0.584" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:theme="@style/Theme.Apirtayo"
+        android:theme="@style/Theme.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
-        android:text="Categories"
+        android:text="@string/categories"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,7 +114,8 @@
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
-        android:text="Near Me"
+        android:text="@string/nearme"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -9,8 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorbrandprimary">#B22222</color>
     <color name="primarywhite">#FFF9EC</color>
-    <color name="colorbrandsecondary">#FFC8C9</color>
+    <color name="colorbrandsecondary">#FBDCE7</color>
     <color name="colorbrandtertiary">#f5f5dc</color>
-    <color name="warmgray">#9e9a9a</color>
+    <color name="hintcolor">#616161</color>
     <color name="midnightblue">#242526</color>
 </resources>

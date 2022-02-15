@@ -5,15 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.mobdeveapplication.databinding.ActivityAddEstablishmentBinding
-import com.example.mobdeveapplication.datasets.Establishmentobject
 import com.example.mobdeveapplication.datasets.Globals
-import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.IO
 
 private lateinit var binding: ActivityAddEstablishmentBinding
 
 class AddEstablishment : AppCompatActivity() {
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddEstablishmentBinding.inflate(layoutInflater)
@@ -47,63 +43,58 @@ class AddEstablishment : AppCompatActivity() {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
         binding.submitEstablishment.setOnClickListener {
-
-            val database = Globals().db
-            val auth = Globals().auth
-            val name = binding.Establishmentname.text.toString()
-            val rating = "0"
-            val longitude = binding.Establishmentlongitude.text.toString()
-            val latitude = binding.Establishmentlatitude.text.toString()
-            val location = binding.Establishmentlocation.text.toString()
-            val picture = binding.Establishmentpicture.text.toString()
-            val about = binding.Establishmentabout.text.toString()
-            val owner = auth.currentUser?.email.toString()
-            val featured = "False"
-            val popular = "False"
-            var aircon = "No"
-            var bidet = "No"
-            var dryer = "No"
-            var flush = "No"
-
-                if (binding.swAircon.isChecked)
-                    aircon = "Yes"
-                if (binding.swAirdryer.isChecked)
-                    dryer = "Yes"
-                if (binding.swBidet.isChecked)
-                    bidet = "Yes"
-                if (binding.swPowerflush.isChecked)
-                    flush = "Yes"
-
-                if (name.isEmpty() || rating.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty())
-                {
-                    Toast.makeText(applicationContext, "Please fill up all fields.", Toast.LENGTH_SHORT).show()
-                }
-                else
-                {
-                    CoroutineScope(IO).launch {
-                        val job1 = async { isSame(name) }
-                        val job2 = async { saveEstablishment(name, rating, longitude, latitude, location, picture, about, owner, featured, popular, aircon, bidet, dryer, flush) }
-
-                        if(job1.await())
-                        {
-                            job2.cancel()
-                            Toast.makeText(applicationContext, "Establishment name is already registered.", Toast.LENGTH_SHORT).show()
-                        }
+            val db = Globals().db
+            db.collection("Establishments")
+                .whereEqualTo("Name", binding.Establishmentname.text.toString())
+                .get().addOnCompleteListener { result ->
+                    if (result.result.isEmpty) {
+                        val auth = Globals().auth
+                        val name = binding.Establishmentname.text.toString()
+                        val longitude = binding.Establishmentlongitude.text.toString()
+                        val latitude = binding.Establishmentlatitude.text.toString()
+                        val location = binding.Establishmentlocation.text.toString()
+                        val picture = binding.Establishmentpicture.text.toString()
+                        val about = binding.Establishmentabout.text.toString()
+                        val owner = auth.currentUser?.email.toString()
+                        val featured = "False"
+                        val popular = "False"
+                        var aircon = "No"
+                        var bidet = "No"
+                        var dryer = "No"
+                        var flush = "No"
+                        val rating = "0"
+                        if (binding.swAircon.isChecked)
+                            aircon = "Yes"
+                        if (binding.swAirdryer.isChecked)
+                            dryer = "Yes"
+                        if (binding.swBidet.isChecked)
+                            bidet = "Yes"
+                        if (binding.swPowerflush.isChecked)
+                            flush = "Yes"
+                        if (name.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty())
+                            Toast.makeText(
+                                applicationContext,
+                                "Please fill up all fields.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         else
-                            job2.await()
-                    }
+                        {
+                            saveEstablishment(name,rating,longitude,latitude,location,picture,about,owner,featured,popular,aircon,bidet,dryer,flush)
+                            val settingIntent = Intent(this, Settings::class.java)
+                            startActivity(settingIntent)
+                        }
+                    } else
+                        Toast.makeText(this, "This Establishment already exists.", Toast.LENGTH_SHORT).show()
                 }
-
         }
     }
 
-    private suspend fun saveEstablishment(name: String, rating: String, longitude: String, latitude: String, location: String, picture: String, about: String, owner: String, featured: String, popular: String, aircon: String, bidet: String, dryer: String, flush: String)
+    private fun saveEstablishment(name: String, rating: String, longitude: String, latitude: String, location: String, picture: String, about: String, owner: String, featured: String, popular: String, aircon: String, bidet: String, dryer: String, flush: String)
     {
-            delay(1700)
             val db = Globals().db
             val establishment: MutableMap<String, Any> = HashMap()
             establishment["About"] = about
@@ -132,33 +123,5 @@ class AddEstablishment : AppCompatActivity() {
 
             val settingIntent = Intent(this, Settings::class.java)
             startActivity(settingIntent)
-    }
-
-    private suspend fun isSame(name: String): Boolean {
-        delay(100)
-        val db = Globals().db
-        var isSame = false
-
-        db.collection("Establishments").get()
-            .addOnSuccessListener { result ->
-                val establishmentlist = ArrayList<String>()
-                for (document in result){
-                    val establishmentname = document.data["Name"].toString()
-                    establishmentlist.add(establishmentname)
-                }
-                for (names in establishmentlist)
-                {
-                    if (names == name) {
-                        isSame = true
-                        Toast.makeText(applicationContext, "SAMEEE $isSame", Toast.LENGTH_SHORT).show()
-                    }
-                    else
-                        Toast.makeText(applicationContext, "NOTSAMEEE", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .addOnFailureListener {
-                Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
-            }
-        return isSame
     }
 }

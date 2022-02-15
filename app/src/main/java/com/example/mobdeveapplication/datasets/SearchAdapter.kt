@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobdeveapplication.databinding.SearchitemBinding
+import com.example.mobdeveapplication.databinding.ActivitySearchItemBinding
 
 
 class SearchAdapter(private val context: Context, private var searchlist: ArrayList<Searchobject>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
@@ -18,7 +18,7 @@ class SearchAdapter(private val context: Context, private var searchlist: ArrayL
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
-        val binding = SearchitemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ActivitySearchItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(mListener,binding)
     }
 
@@ -29,7 +29,7 @@ class SearchAdapter(private val context: Context, private var searchlist: ArrayL
 
 
 
-    inner class ViewHolder(listener: onItemClickListener,private val binding  : SearchitemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(listener: onItemClickListener,private val binding  : ActivitySearchItemBinding) : RecyclerView.ViewHolder(binding.root)
     {
         init {
             itemView.setOnClickListener {

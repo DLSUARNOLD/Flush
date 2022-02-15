@@ -3,7 +3,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mobdeveapplication.databinding.ProfileBinding
+import com.example.mobdeveapplication.databinding.ActivityProfileBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlin.coroutines.*
 
 
-private lateinit var binding: ProfileBinding
+private lateinit var binding: ActivityProfileBinding
 private lateinit var auth: FirebaseAuth
 
 class Profile : AppCompatActivity() {
@@ -22,7 +22,7 @@ class Profile : AppCompatActivity() {
         val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
-        binding = ProfileBinding.inflate(layoutInflater)
+        binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
@@ -52,10 +52,9 @@ class Profile : AppCompatActivity() {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
-        val firebaseDatabase = Globals().firebaseDatabase
                     binding.textName.setText(auth.currentUser?.displayName)
                     binding.Greetingbox.text = "Hello ${auth.currentUser?.email}"
         binding.saveName.setOnClickListener {
@@ -88,9 +87,7 @@ class Profile : AppCompatActivity() {
             for (document in it)
                 db.collection("Establishments").document(document.id).delete()
         }
-            .addOnFailureListener {
-                Toast.makeText(applicationContext, "YOOO", Toast.LENGTH_SHORT).show()
-            }
+
         db.collection("AdminAccess").whereEqualTo("email", auth.currentUser?.email).get()
             .addOnSuccessListener { result ->
                 Toast.makeText(applicationContext, auth.currentUser?.email.toString(), Toast.LENGTH_SHORT).show()
@@ -98,9 +95,6 @@ class Profile : AppCompatActivity() {
                 {
                     db.collection("AdminAccess").document(document.id).delete()
                 }
-            }
-            .addOnFailureListener {
-                Toast.makeText(applicationContext, "YOOO2", Toast.LENGTH_SHORT).show()
             }
     }
      private suspend fun logoutanddelete(){

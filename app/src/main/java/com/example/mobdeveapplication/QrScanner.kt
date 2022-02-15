@@ -9,19 +9,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
-import com.example.mobdeveapplication.databinding.ScannerQrBinding
+import com.example.mobdeveapplication.databinding.ActivityScannerQrBinding
 
 //import kotlinx.android.synthetic.main.scanner_qr.*
 
 private const val CAMERA_CODE = 101
-private lateinit var binding: ScannerQrBinding
+private lateinit var binding: ActivityScannerQrBinding
 class QrScanner : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ScannerQrBinding.inflate(layoutInflater)
+        binding = ActivityScannerQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
@@ -51,7 +51,7 @@ class QrScanner : AppCompatActivity() {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
 
