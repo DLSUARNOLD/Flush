@@ -2,19 +2,18 @@ package com.example.mobdeveapplication.datasets
 
 import android.content.Context
 import android.content.Intent
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveapplication.Establishment
-import com.example.mobdeveapplication.databinding.HomepageitemBinding
+import com.example.mobdeveapplication.databinding.ActivityHomepageItemBinding
 import com.squareup.picasso.Picasso
 
 class Featuredadapter(private val context: Context, private var listing: ArrayList<Listingobject>) : RecyclerView.Adapter<Featuredadapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Featuredadapter.ViewHolder {
-        val binding = HomepageitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ActivityHomepageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -25,10 +24,10 @@ class Featuredadapter(private val context: Context, private var listing: ArrayLi
     override fun getItemCount() = listing.size
 
 
-    inner class ViewHolder(private val binding: HomepageitemBinding) :
+    inner class ViewHolder(private val binding: ActivityHomepageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binder(item: Listingobject, index: Int) {
-            binding.descriptiontxt.text = item.name
+            binding.descriptiontext.text = item.name
             Picasso.get().load(item.picture).fit().into(binding.displaypicture)
             binding.displaypicture.setOnClickListener {
                 val selectedlisting = Intent(context, Establishment::class.java)

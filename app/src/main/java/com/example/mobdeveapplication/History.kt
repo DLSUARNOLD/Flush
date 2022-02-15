@@ -1,11 +1,10 @@
 package com.example.mobdeveapplication
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mobdeveapplication.databinding.HistoryBinding
-import com.example.mobdeveapplication.datasets.Adapter
+import com.example.mobdeveapplication.databinding.ActivityHistoryBinding
+import com.example.mobdeveapplication.datasets.HistoryAdapter
 import com.example.mobdeveapplication.datasets.Globals
 import com.example.mobdeveapplication.datasets.Historyobject
 import com.facebook.FacebookSdk
@@ -19,23 +18,23 @@ import com.google.firebase.database.ValueEventListener
 
 
 
-private lateinit var binding: HistoryBinding
+private lateinit var binding: ActivityHistoryBinding
 private lateinit var auth: FirebaseAuth
 class History : AppCompatActivity() {
-    private lateinit var Adapter : Adapter
+    private lateinit var Adapter : HistoryAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
         FacebookSdk.sdkInitialize(applicationContext)
-        binding = HistoryBinding.inflate(layoutInflater)
+        binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
         readData(object : Callbacker {
-            override fun returnvaluepls(value: ArrayList<Historyobject>) {
-                Adapter = Adapter(applicationContext, value,this@History)
-                binding.recycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-                binding.recycler.adapter = Adapter
+            override fun returnvalue(value: ArrayList<Historyobject>) {
+                Adapter = HistoryAdapter(applicationContext, value,this@History)
+                binding.historyRecycler.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+                binding.historyRecycler.adapter = Adapter
             }
         })
         binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
@@ -65,14 +64,14 @@ class History : AppCompatActivity() {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
 
 
     }
     interface Callbacker {
-        fun returnvaluepls(value: ArrayList<Historyobject>){
+        fun returnvalue(value: ArrayList<Historyobject>){
         }
     }
     fun readData(callbackobject : Callbacker) {
@@ -83,7 +82,6 @@ class History : AppCompatActivity() {
                 var templist  = ArrayList<Historyobject>()
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (ds in dataSnapshot.children) {
-                        //Log.i("resultstab",ds.child("Reviewer").value.toString())
                         if(ds.key.toString() == auth.uid)
                         {
                             val list =
@@ -91,7 +89,7 @@ class History : AppCompatActivity() {
                             templist.add(list)
                         }
                     }
-                    callbackobject.returnvaluepls(templist)
+                    callbackobject.returnvalue(templist)
                 }
                 override fun onCancelled(databaseError: DatabaseError) {}
             })

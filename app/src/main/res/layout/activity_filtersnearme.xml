@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Filtersnearme">
+    tools:context=".Filtersnearme"
+    android:background="@color/colorbrandsecondary">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularcarousel"
+        android:id="@+id/nearmeRecycler"
         android:layout_width="412dp"
         android:layout_height="678dp"
         android:layout_centerHorizontal="true"
@@ -18,13 +19,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/filteritem" />
+        tools:listitem="@layout/activity_filter_item" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:theme="@style/Theme.Apirtayo"
+        android:theme="@style/Theme.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

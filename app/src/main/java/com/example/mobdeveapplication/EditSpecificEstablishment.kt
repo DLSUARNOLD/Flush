@@ -46,7 +46,7 @@ class EditSpecificEstablishment : AppCompatActivity() {
                     true
                 }
                 else -> {
-                    throw IllegalStateException("something bad happened")
+                    throw IllegalStateException("Error")
                 }
             }
         }
@@ -54,7 +54,6 @@ class EditSpecificEstablishment : AppCompatActivity() {
 
         val db = Globals().db
         var Name = ""
-        var Rating = ""
         var Longitude = ""
         var Latitude = ""
         var Location = ""
@@ -73,7 +72,6 @@ class EditSpecificEstablishment : AppCompatActivity() {
 
             for (document in it) {
                 Name = document.data.getValue("Name").toString()
-                Rating = document.data.getValue("Rating").toString()
                 Longitude = document.data.getValue("Longitude").toString()
                 Latitude = document.data.getValue("Latitude").toString()
                 Location = document.data.getValue("Location").toString()
@@ -88,7 +86,6 @@ class EditSpecificEstablishment : AppCompatActivity() {
                 Owner = document.data.getValue("Owner").toString()
             }
             binding.Establishmentname.setText(Name)
-            binding.Establishmentrating.setText(Rating)
             binding.Establishmentlongitude.setText(Longitude)
             binding.Establishmentlatitude.setText(Latitude)
             binding.Establishmentlocation.setText(Location)
@@ -115,7 +112,6 @@ class EditSpecificEstablishment : AppCompatActivity() {
                 establishment["Name"] = binding.Establishmentname.text.toString()
                 establishment["Owner"] = Owner
                 establishment["Popular"] = Popular
-                establishment["Rating"] = binding.Establishmentrating.text.toString()
                 establishment["link"] = binding.Establishmentpicture.text.toString()
 
                 if (binding.swAircon.isChecked)

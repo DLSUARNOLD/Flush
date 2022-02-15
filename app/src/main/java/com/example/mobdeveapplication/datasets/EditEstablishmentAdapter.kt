@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveapplication.EditSpecificEstablishment
-import com.example.mobdeveapplication.databinding.EstablishmentitemBinding
+import com.example.mobdeveapplication.databinding.ActivityEditEstablishmentItemBinding
 
 
 class EditEstablishmentAdapter (private val context: Context, private val establishmentList: ArrayList<Establishmentobject>) : RecyclerView.Adapter<EditEstablishmentAdapter.ViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditEstablishmentAdapter.ViewHolder {
-        val binding = EstablishmentitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ActivityEditEstablishmentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -24,7 +24,7 @@ class EditEstablishmentAdapter (private val context: Context, private val establ
        return establishmentList.size
     }
 
-    inner class ViewHolder(private val binding: EstablishmentitemBinding) :
+    inner class ViewHolder(private val binding: ActivityEditEstablishmentItemBinding) :
         RecyclerView.ViewHolder(binding.root){
             fun binder(item: Establishmentobject, index: Int)
             {

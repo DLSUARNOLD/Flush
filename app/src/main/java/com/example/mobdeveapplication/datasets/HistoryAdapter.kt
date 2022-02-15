@@ -3,21 +3,20 @@ package com.example.mobdeveapplication.datasets
 import android.app.Activity
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobdeveapplication.databinding.HistoryitemBinding
+import com.example.mobdeveapplication.databinding.ActivityHistoryItemBinding
 import com.facebook.share.model.ShareHashtag
 import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareDialog
 
 
-class Adapter(private val context: Context, private var historylist: ArrayList<Historyobject>,private val activity : Activity) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class HistoryAdapter(private val context: Context, private var historylist: ArrayList<Historyobject>, private val activity : Activity) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.ViewHolder {
-        val binding = HistoryitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryAdapter.ViewHolder {
+        val binding = ActivityHistoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -27,7 +26,7 @@ class Adapter(private val context: Context, private var historylist: ArrayList<H
 
     override fun getItemCount() = historylist.size
 
-    inner class ViewHolder(val binding: HistoryitemBinding) :
+    inner class ViewHolder(val binding: ActivityHistoryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun binder(item: Historyobject, index: Int) {

@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Establishment Name:"
+                android:text="@string/establishment_name"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_establishmentname"
                 android:layout_marginStart="8dp"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
@@ -48,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Owner:"
+                android:text="@string/owner_establishment"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_owner"
                 android:layout_marginStart="8dp"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
@@ -74,10 +74,10 @@
                 android:id="@+id/edit_establishment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit"
-                android:backgroundTint="@color/colorbrandsecondary"
+                android:text="@string/edit"
+                android:backgroundTint="@color/colorbrandprimary"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/primarywhite"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

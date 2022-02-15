@@ -5,14 +5,14 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.mobdeveapplication.databinding.RegisterformBinding
+import com.example.mobdeveapplication.databinding.ActivityRegisterformBinding
 import com.example.mobdeveapplication.datasets.Globals
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 
-private lateinit var binding: RegisterformBinding
+private lateinit var binding: ActivityRegisterformBinding
 class Registerform : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?)
@@ -20,7 +20,7 @@ class Registerform : AppCompatActivity() {
         val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
-        binding = RegisterformBinding.inflate(layoutInflater)
+        binding = ActivityRegisterformBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.LoginRedirect.setOnClickListener {
             val intent = Intent(this, Loginform::class.java)
@@ -35,13 +35,11 @@ class Registerform : AppCompatActivity() {
         }
 
 
-        binding.Submitbutt.setOnClickListener{
-            //val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            //inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-            if (binding.emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty() || binding.namebox.text.toString().isEmpty())
+        binding.createAccount.setOnClickListener{
+            if (binding.Emailbox.text.toString().isEmpty() || binding.Passwordbox.text.toString().isEmpty() || binding.Namebox.text.toString().isEmpty())
                 binding.Errordisplay.text = "Email Address or Password is not provided"
             else {
-                    auth.createUserWithEmailAndPassword(binding.emailbox.text.toString(), binding.Passwordbox.text.toString()).addOnCompleteListener(this)
+                    auth.createUserWithEmailAndPassword(binding.Emailbox.text.toString(), binding.Passwordbox.text.toString()).addOnCompleteListener(this)
                     { task ->
                                 if (task.isSuccessful) {
                                     binding.Errordisplay.text = "Sign Up successful. Click Sign in to Continue"
@@ -49,15 +47,14 @@ class Registerform : AppCompatActivity() {
                                     val ref = FirebaseDatabase.getInstance("https://mobdeve-application-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
                                         ref.child(auth.currentUser!!.uid)
                                     val profileupdate = userProfileChangeRequest {
-                                        displayName = binding.namebox.text.toString()
+                                        displayName = binding.Namebox.text.toString()
                                         photoUri = Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png")
 
-                                    val email = binding.emailbox.text.toString()
+                                    val email = binding.Emailbox.text.toString()
                                     val access = "No"
                                     adminaccess(email, access)
                                 }
                                 user?.updateProfile(profileupdate)!!
-                                //updateUI(user)
                             } else
                             {
                                 if(binding.Passwordbox.length()<6)
@@ -70,8 +67,6 @@ class Registerform : AppCompatActivity() {
 
                 }
         }
-    }
-    fun updateUI(currentUser: FirebaseUser?) {
     }
 
     fun adminaccess(email: String, access: String)

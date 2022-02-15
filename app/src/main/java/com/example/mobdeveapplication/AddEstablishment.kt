@@ -43,74 +43,85 @@ class AddEstablishment : AppCompatActivity() {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
         binding.submitEstablishment.setOnClickListener {
-
-            val auth = Globals().auth
-            val name = binding.Establishmentname.text.toString()
-            val rating = binding.Establishmentrating.text.toString()
-            val longitude = binding.Establishmentlongitude.text.toString()
-            val latitude = binding.Establishmentlatitude.text.toString()
-            val location = binding.Establishmentlocation.text.toString()
-            val picture = binding.Establishmentpicture.text.toString()
-            val about = binding.Establishmentabout.text.toString()
-            val owner = auth.currentUser?.email.toString()
-            val featured = "False"
-            val popular = "False"
-            var aircon = "No"
-            var bidet = "No"
-            var dryer = "No"
-            var flush = "No"
-
-                if (binding.swAircon.isChecked)
-                    aircon = "Yes"
-                if (binding.swAirdryer.isChecked)
-                    dryer = "Yes"
-                if (binding.swBidet.isChecked)
-                    bidet = "Yes"
-                if (binding.swPowerflush.isChecked)
-                    flush = "Yes"
-
-                if (name.isEmpty() || rating.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty())
-                    Toast.makeText(applicationContext, "Please fill up all fields.", Toast.LENGTH_SHORT).show()
-                else
-                {
-                    saveEstablishment(name, rating, longitude, latitude, location, picture, about, owner, featured, popular, aircon, bidet, dryer, flush)
-                    val settingIntent = Intent(this, Settings::class.java)
-                    startActivity(settingIntent)
+            val db = Globals().db
+            db.collection("Establishments")
+                .whereEqualTo("Name", binding.Establishmentname.text.toString())
+                .get().addOnCompleteListener { result ->
+                    if (result.result.isEmpty) {
+                        val auth = Globals().auth
+                        val name = binding.Establishmentname.text.toString()
+                        val longitude = binding.Establishmentlongitude.text.toString()
+                        val latitude = binding.Establishmentlatitude.text.toString()
+                        val location = binding.Establishmentlocation.text.toString()
+                        val picture = binding.Establishmentpicture.text.toString()
+                        val about = binding.Establishmentabout.text.toString()
+                        val owner = auth.currentUser?.email.toString()
+                        val featured = "False"
+                        val popular = "False"
+                        var aircon = "No"
+                        var bidet = "No"
+                        var dryer = "No"
+                        var flush = "No"
+                        val rating = "0"
+                        if (binding.swAircon.isChecked)
+                            aircon = "Yes"
+                        if (binding.swAirdryer.isChecked)
+                            dryer = "Yes"
+                        if (binding.swBidet.isChecked)
+                            bidet = "Yes"
+                        if (binding.swPowerflush.isChecked)
+                            flush = "Yes"
+                        if (name.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty())
+                            Toast.makeText(
+                                applicationContext,
+                                "Please fill up all fields.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        else
+                        {
+                            saveEstablishment(name,rating,longitude,latitude,location,picture,about,owner,featured,popular,aircon,bidet,dryer,flush)
+                            val settingIntent = Intent(this, Settings::class.java)
+                            startActivity(settingIntent)
+                        }
+                    } else
+                        Toast.makeText(this, "This Establishment already exists.", Toast.LENGTH_SHORT).show()
                 }
-
         }
     }
 
-    fun saveEstablishment(name: String, rating: String, longitude: String, latitude: String, location: String, picture: String, about: String, owner: String, featured: String, popular: String, aircon: String, bidet: String, dryer: String, flush: String)
+    private fun saveEstablishment(name: String, rating: String, longitude: String, latitude: String, location: String, picture: String, about: String, owner: String, featured: String, popular: String, aircon: String, bidet: String, dryer: String, flush: String)
     {
-        val db = Globals().db
-        val establishment: MutableMap<String, Any> = HashMap()
-        establishment["About"] = about
-        establishment["AirDryer"] = dryer
-        establishment["Aircon"] = aircon
-        establishment["Bidet"] = bidet
-        establishment["Featured"] = featured
-        establishment["Latitude"] = latitude
-        establishment["Location"] = location
-        establishment["Longitude"] = longitude
-        establishment["Name"] = name
-        establishment["Owner"] = owner
-        establishment["Popular"] = popular
-        establishment["PowerFlush"] = flush
-        establishment["Rating"] = rating
-        establishment["link"] = picture
+            val db = Globals().db
+            val establishment: MutableMap<String, Any> = HashMap()
+            establishment["About"] = about
+            establishment["AirDryer"] = dryer
+            establishment["Aircon"] = aircon
+            establishment["Bidet"] = bidet
+            establishment["Featured"] = featured
+            establishment["Latitude"] = latitude
+            establishment["Location"] = location
+            establishment["Longitude"] = longitude
+            establishment["Name"] = name
+            establishment["Owner"] = owner
+            establishment["Popular"] = popular
+            establishment["PowerFlush"] = flush
+            establishment["Rating"] = rating
+            establishment["link"] = picture
 
-        db.collection("Establishments")
-            .add(establishment)
-            .addOnSuccessListener {
-                Toast.makeText(applicationContext, "Establishment added successfully", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(applicationContext, "Establishment failed to add", Toast.LENGTH_SHORT).show()
-            }
+            db.collection("Establishments")
+                .add(establishment)
+                .addOnSuccessListener {
+                    Toast.makeText(applicationContext, "Establishment added successfully", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(applicationContext, "Establishment failed to add", Toast.LENGTH_SHORT).show()
+                }
+
+            val settingIntent = Intent(this, Settings::class.java)
+            startActivity(settingIntent)
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Apirtayo" parent="Theme.MaterialComponents">
+    <style name="Theme.Primary" parent="Theme.MaterialComponents">
         <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
         <item name="colorPrimary">@color/colorbrandprimary</item>
         <item name="colorOnPrimary">@color/primarywhite</item>

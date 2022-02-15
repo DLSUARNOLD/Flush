@@ -34,10 +34,10 @@ class Filtersnearme : AppCompatActivity() {
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         readfilter(object : Filternearinterface {
-            override fun returnvalueplx(value: ArrayList<Listingobject>) {
+            override fun returnvalue(value: ArrayList<Listingobject>) {
                 filteradapter = Filteradapter(applicationContext, value)
-                binding.popularcarousel.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-                binding.popularcarousel.adapter = filteradapter
+                binding.nearmeRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+                binding.nearmeRecycler.adapter = filteradapter
             }
         },this)
 
@@ -69,7 +69,7 @@ class Filtersnearme : AppCompatActivity() {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
     }
@@ -84,7 +84,7 @@ class Filtersnearme : AppCompatActivity() {
     }
 }
 interface Filternearinterface {
-    fun returnvalueplx(value: ArrayList<Listingobject>){
+    fun returnvalue(value: ArrayList<Listingobject>){
     }
 }
 private fun readfilter(homecallback : Filternearinterface, activity : Activity) {
@@ -107,7 +107,7 @@ private fun readfilter(homecallback : Filternearinterface, activity : Activity) 
                         filterlist.add(list)
                     }
                 }
-                homecallback.returnvalueplx(filterlist)
+                homecallback.returnvalue(filterlist)
             }
         }
 }

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddEstablishment"
-    android:background="@color/primarywhite">
+    android:background="@color/colorbrandsecondary">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:theme="@style/Theme.Apirtayo"
+        android:theme="@style/Theme.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/text_establishment"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="40dp"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -42,6 +42,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textSize="15sp"
+        android:textColorHint="@color/hintcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,36 +50,22 @@
         app:layout_constraintTop_toBottomOf="@id/text_establishment" />
 
     <EditText
-        android:id="@+id/Establishmentrating"
-        android:layout_width="308dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="@string/rating_establishment"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentname" />
-
-    <EditText
         android:id="@+id/Establishmentlongitude"
         android:layout_width="308dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/longitude_establishment"
+        android:layout_marginTop="10dp"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:textSize="15sp"
+        android:textColorHint="@color/hintcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentrating" />
+        tools:layout_editor_absoluteY="176dp"
+        app:layout_constraintTop_toBottomOf="@id/Establishmentname"/>
 
     <EditText
         android:id="@+id/Establishmentlatitude"
@@ -90,6 +77,7 @@
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:textSize="15sp"
+        android:textColorHint="@color/hintcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -106,6 +94,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textSize="15sp"
+        android:textColorHint="@color/hintcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -122,6 +111,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textSize="15sp"
+        android:textColorHint="@color/hintcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -132,26 +122,36 @@
         android:id="@+id/sw_bidet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:text="Bidet"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sw_aircon" />
+        android:layout_marginEnd="42dp"
+        android:text="@string/bidet"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintStart_toEndOf="@+id/sw_aircon"
+        app:layout_constraintTop_toBottomOf="@id/Establishmentpicture" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_powerflush"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:text="Power Flush"
+        android:layout_marginEnd="42dp"
+        android:text="@string/powerflush"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sw_airdryer" />
+        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintStart_toEndOf="@+id/sw_airdryer"
+        app:layout_constraintTop_toBottomOf="@id/sw_bidet" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/sw_aircon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
-        android:text="Air Conditioned"
+        android:text="@string/aircon"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Establishmentpicture" />
 
@@ -159,32 +159,37 @@
         android:id="@+id/sw_airdryer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:text="Air Dryer"
-        app:layout_constraintStart_toEndOf="@id/sw_aircon"
-        app:layout_constraintTop_toBottomOf="@id/Establishmentpicture" />
+        android:layout_marginStart="42dp"
+        android:text="@string/dryer"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sw_aircon" />
 
     <EditText
         android:id="@+id/Establishmentabout"
-        android:layout_width="308dp"
-        android:layout_height="115dp"
+        android:layout_width="309dp"
+        android:layout_height="85dp"
         android:ems="10"
-        android:gravity="start|top"
-        android:hint="Enter establishment details"
+        android:gravity="start|bottom"
+        android:hint="@string/establishment_details"
         android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/sw_bidet"
+        android:textColorHint="@color/hintcolor"
+        app:layout_constraintBottom_toTopOf="@+id/submit_establishment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sw_airdryer" />
 
     <Button
         android:id="@+id/submit_establishment"
         android:layout_width="154dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/submit_form"
-        android:layout_marginTop="10dp"
         android:textSize="11sp"
-        app:layout_constraintTop_toBottomOf="@+id/Establishmentabout"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />

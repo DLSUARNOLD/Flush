@@ -7,47 +7,54 @@
     tools:context=".Registerform"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp"
-    android:background="@color/primarywhite">
-
-    <EditText
-        android:id="@+id/emailbox"
-        android:layout_width="308dp"
-        android:layout_height="57dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Errordisplay"
-        android:autofillHints="emailAddress" />
-
-
-    <EditText
-        android:id="@+id/namebox"
-        android:layout_width="313dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="20dp"
-        android:autofillHints="name"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/Submitbutt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.278" />
+    android:background="@color/colorbrandsecondary">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/emailInputLayout"
         android:layout_width="310dp"
-        android:layout_height="49dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Errordisplay">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Emailbox"
+            android:layout_width="310dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/primarywhite"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/hintcolor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInputLayout"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="140dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Errordisplay">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Namebox"
+            android:layout_width="310dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/primarywhite"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:textColorHint="@color/hintcolor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordInputLayout"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
         android:layout_marginTop="80dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,24 +69,25 @@
             android:backgroundTint="@color/primarywhite"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColorHint="#616161" />
+            android:textColorHint="@color/hintcolor" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/Submitbutt"
+        android:id="@+id/create_account"
         android:layout_width="259dp"
         android:layout_height="56dp"
         android:layout_marginBottom="160dp"
         android:text="@string/create_account"
         android:textSize="15sp"
-        android:backgroundTint="@color/colorbrandprimary"
-        android:textColor="@color/primarywhite"
+        android:backgroundTint="@color/primarywhite"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_register"
         android:textColor = "@color/black"
         android:layout_width="326dp"
         android:layout_height="92dp"
@@ -105,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_register"
         app:layout_constraintVertical_bias="0.84" />
 
     <TextView
@@ -122,7 +130,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Submitbutt" />
+        app:layout_constraintTop_toBottomOf="@+id/create_account" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

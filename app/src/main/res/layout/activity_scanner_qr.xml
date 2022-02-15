@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QrScanner"
-    android:background="@color/primarywhite">
+    android:background="@color/colorbrandsecondary">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -14,7 +14,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="141dp"
         android:layout_marginBottom="0dp"
-        android:theme="@style/Theme.Apirtayo"
+        android:theme="@style/Theme.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +41,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:text="Scan QR Code"
-        android:textSize="20dp"
+        android:text="@string/qr"
+        android:textSize="20sp"
         android:textColor="@color/black" />
 
 
