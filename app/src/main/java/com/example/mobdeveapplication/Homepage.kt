@@ -37,39 +37,39 @@ class Homepage : AppCompatActivity(){
         auth = Globals().auth
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
-        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true) // displays the bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu -> // redirects user to a new page depending on what button is pressed
             when (menu.itemId) {
-                R.id.homenavbar -> {
+                R.id.homenavbar -> { // redirects user to homepage
                     val homepageIntent = Intent(this, Homepage::class.java)
                     startActivity(homepageIntent)
                     true
                 }
-                R.id.historynavbar -> {
+                R.id.historynavbar -> { // redirects user to history page
                     val historyIntent = Intent(this, History::class.java)
                     startActivity(historyIntent)
                     true
                 }
-                R.id.qrnavbar -> {
+                R.id.qrnavbar -> { // redirects user to qr scanner page
                     val qrIntent = Intent(this, QrScanner::class.java)
                     startActivity(qrIntent)
                     true
                 }
-                R.id.profilenavbar -> {
+                R.id.profilenavbar -> { // redirects user to profile page
                     val profileIntent = Intent(this, Profile::class.java)
                     startActivity(profileIntent)
                     true
                 }
-                R.id.settingsnavbar -> {
+                R.id.settingsnavbar -> { // redirects user to settings page
                     val settingIntent = Intent(this, Settings::class.java)
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("something bad happened")}
+                else -> {throw IllegalStateException("Error")}
             }
         }
-
-
+        
         readhome(object : Homepagecallback {
             override fun returnvalue(value: ArrayList<Listingobject>) {
                 Featuredadapter = Featuredadapter(applicationContext, value)

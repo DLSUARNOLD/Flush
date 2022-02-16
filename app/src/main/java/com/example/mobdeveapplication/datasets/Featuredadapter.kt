@@ -9,6 +9,7 @@ import com.example.mobdeveapplication.Establishment
 import com.example.mobdeveapplication.databinding.ActivityHomepageItemBinding
 import com.squareup.picasso.Picasso
 
+//Adapter class for Recycler View
 class Featuredadapter(private val context: Context, private var listing: ArrayList<Listingobject>) : RecyclerView.Adapter<Featuredadapter.ViewHolder>() {
 
 

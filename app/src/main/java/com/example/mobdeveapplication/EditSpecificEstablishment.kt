@@ -27,39 +27,38 @@ class EditSpecificEstablishment : AppCompatActivity() {
         binding = ActivityEditSpecificEstablishmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavigationView.menu.setGroupCheckable(0, false, true)
-        binding.bottomNavigationView.setOnItemSelectedListener { menu ->
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true) // displays the bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu -> // redirects user to a new page depending on what button is pressed
             when (menu.itemId) {
-                R.id.homenavbar -> {
+                R.id.homenavbar -> { // redirects user to homepage
                     val homepageIntent = Intent(this, Homepage::class.java)
                     startActivity(homepageIntent)
                     true
                 }
-                R.id.historynavbar -> {
+                R.id.historynavbar -> { // redirects user to history page
                     val historyIntent = Intent(this, History::class.java)
                     startActivity(historyIntent)
                     true
                 }
-                R.id.qrnavbar -> {
+                R.id.qrnavbar -> { // redirects user to qr scanner page
                     val qrIntent = Intent(this, QrScanner::class.java)
                     startActivity(qrIntent)
                     true
                 }
-                R.id.profilenavbar -> {
+                R.id.profilenavbar -> { // redirects user to profile page
                     val profileIntent = Intent(this, Profile::class.java)
                     startActivity(profileIntent)
                     true
                 }
-                R.id.settingsnavbar -> {
+                R.id.settingsnavbar -> { // redirects user to settings page
                     val settingIntent = Intent(this, Settings::class.java)
                     startActivity(settingIntent)
                     true
                 }
-                else -> {
-                    throw IllegalStateException("Error")
-                }
+                else -> {throw IllegalStateException("Error")}
             }
         }
+
         val name = intent.getStringExtra("Name")
 
         val db = Globals().db
@@ -80,7 +79,7 @@ class EditSpecificEstablishment : AppCompatActivity() {
         db.collection("Establishments").whereEqualTo("Name", name).get().addOnSuccessListener {
 
 
-            for (document in it) {
+            for (document in it) { // reads the database so that the fields would be pre-filled with the current data from the database
                 Name = document.data.getValue("Name").toString()
                 Longitude = document.data.getValue("Longitude").toString()
                 Latitude = document.data.getValue("Latitude").toString()
@@ -91,9 +90,6 @@ class EditSpecificEstablishment : AppCompatActivity() {
                 Bidet = document.data.getValue("Bidet").toString()
                 PowerFlush = document.data.getValue("PowerFlush").toString()
                 About = document.data.getValue("About").toString()
-                Featured = document.data.getValue("Featured").toString()
-                Popular = document.data.getValue("Popular").toString()
-                Owner = document.data.getValue("Owner").toString()
             }
             binding.etEstablishmentname.setText(Name)
             binding.etEstablishmentlongitude.setText(Longitude)
@@ -111,17 +107,14 @@ class EditSpecificEstablishment : AppCompatActivity() {
             binding.etEstablishmentabout.setText(About)
         }
 
-        binding.saveChanges.setOnClickListener {
+        binding.saveChanges.setOnClickListener { //saves the changes made and puts it in a map to update the current data in the database using merge
 
                 val establishment: MutableMap<String, Any> = HashMap()
                 establishment["About"] = binding.etEstablishmentabout.text.toString()
-                establishment["Featured"] = Featured
                 establishment["Latitude"] = binding.etEstablishmentlatitude.text.toString()
                 establishment["Location"] = binding.etEstablishmentlocation.text.toString()
                 establishment["Longitude"] = binding.etEstablishmentlongitude.text.toString()
                 establishment["Name"] = binding.etEstablishmentname.text.toString()
-                establishment["Owner"] = Owner
-                establishment["Popular"] = Popular
                 establishment["link"] = binding.etEstablishmentpicture.text.toString()
 
                 if (binding.swAircon.isChecked)

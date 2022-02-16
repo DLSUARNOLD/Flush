@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveapplication.DeleteEstablishment
 import com.example.mobdeveapplication.databinding.ActivityDeleteEstablishmentItemBinding
 
-
+//Adapter class for Recycler View
 class DeleteEstablishmentAdapter (private val context: Context, private val establishmentList: ArrayList<Establishmentobject>) : RecyclerView.Adapter<DeleteEstablishmentAdapter.ViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeleteEstablishmentAdapter.ViewHolder {

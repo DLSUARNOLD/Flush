@@ -11,7 +11,7 @@ import com.facebook.share.model.ShareHashtag
 import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareDialog
 
-
+//Adapter class for Recycler View
 class HistoryAdapter(private val context: Context, private var historylist: ArrayList<Historyobject>, private val activity : Activity) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
 

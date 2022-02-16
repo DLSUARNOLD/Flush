@@ -34,30 +34,31 @@ class QrScanner : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScannerQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
-        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true) // displays the bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu -> // redirects user to a new page depending on what button is pressed
             when (menu.itemId) {
-                R.id.homenavbar -> {
+                R.id.homenavbar -> { // redirects user to homepage
                     val homepageIntent = Intent(this, Homepage::class.java)
                     startActivity(homepageIntent)
                     true
                 }
-                R.id.historynavbar -> {
+                R.id.historynavbar -> { // redirects user to history page
                     val historyIntent = Intent(this, History::class.java)
                     startActivity(historyIntent)
                     true
                 }
-                R.id.qrnavbar -> {
+                R.id.qrnavbar -> { // redirects user to qr scanner page
                     val qrIntent = Intent(this, QrScanner::class.java)
                     startActivity(qrIntent)
                     true
                 }
-                R.id.profilenavbar -> {
+                R.id.profilenavbar -> { // redirects user to profile page
                     val profileIntent = Intent(this, Profile::class.java)
                     startActivity(profileIntent)
                     true
                 }
-                R.id.settingsnavbar -> {
+                R.id.settingsnavbar -> { // redirects user to settings page
                     val settingIntent = Intent(this, Settings::class.java)
                     startActivity(settingIntent)
                     true
@@ -69,20 +70,21 @@ class QrScanner : AppCompatActivity() {
         setupPermissions()
         codeScanner()
     }
-    private fun codeScanner()
+    private fun codeScanner() // declares all of the permissions and modes that will be used by the qr scanner
     {
         codeScanner = CodeScanner(this,binding.csvScanner)
 
         codeScanner.apply {
-            camera = CodeScanner.CAMERA_BACK
-            formats = CodeScanner.ALL_FORMATS
+            camera = CodeScanner.CAMERA_BACK // access the back camera
+            formats = CodeScanner.ALL_FORMATS // scans all formats qr code, bar code, etc.
 
-            autoFocusMode = AutoFocusMode.SAFE
-            scanMode = ScanMode.CONTINUOUS
+            autoFocusMode = AutoFocusMode.SAFE // autofocuses on the qr
+            scanMode = ScanMode.CONTINUOUS // continuous scanning so the user does not need to click to scan
 
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
+                //scans the qr code and redirects it to the establishment that was scanned for rating
             decodeCallback = DecodeCallback {
                 runOnUiThread {
                     if(useRegex(it.text)) {
@@ -93,7 +95,6 @@ class QrScanner : AppCompatActivity() {
                     }
                     else
                         binding.tvScantext.text = it.text
-                    //binding.ScanText.text = it.text
                 }
             }
 
@@ -122,7 +123,7 @@ class QrScanner : AppCompatActivity() {
         super.onPause()
     }
 
-    private fun setupPermissions()
+    private fun setupPermissions() // asks for permission if the camera is not granted
     {
         val permission:Int = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
 
