@@ -31,30 +31,31 @@ class Settings : AppCompatActivity() {
         val db = Globals().db
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
-        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true) // displays the bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu -> // redirects user to a new page depending on what button is pressed
             when (menu.itemId) {
-                R.id.homenavbar -> {
+                R.id.homenavbar -> { // redirects user to homepage
                     val homepageIntent = Intent(this, Homepage::class.java)
                     startActivity(homepageIntent)
                     true
                 }
-                R.id.historynavbar -> {
+                R.id.historynavbar -> { // redirects user to history page
                     val historyIntent = Intent(this, History::class.java)
                     startActivity(historyIntent)
                     true
                 }
-                R.id.qrnavbar -> {
+                R.id.qrnavbar -> { // redirects user to qr scanner page
                     val qrIntent = Intent(this, QrScanner::class.java)
                     startActivity(qrIntent)
                     true
                 }
-                R.id.profilenavbar -> {
+                R.id.profilenavbar -> { // redirects user to profile page
                     val profileIntent = Intent(this, Profile::class.java)
                     startActivity(profileIntent)
                     true
                 }
-                R.id.settingsnavbar -> {
+                R.id.settingsnavbar -> { // redirects user to settings page
                     val settingIntent = Intent(this, Settings::class.java)
                     startActivity(settingIntent)
                     true
@@ -62,7 +63,7 @@ class Settings : AppCompatActivity() {
                 else -> {throw IllegalStateException("Error")}
             }
         }
-        binding.btnAddEstablishment.setOnClickListener {
+        binding.btnAddEstablishment.setOnClickListener { // allows the current user to add an establishment to the database given that they have admin access
 
             val email = auth.currentUser?.email
 
@@ -82,7 +83,7 @@ class Settings : AppCompatActivity() {
             }
         }
 
-        binding.btnEditEstablishment.setOnClickListener {
+        binding.btnEditEstablishment.setOnClickListener { // allows the current user to edit an establishment that they own to the database given that they have admin access
             val email = auth.currentUser?.email
 
             db.collection("AdminAccess").whereEqualTo("email", email).get()
@@ -101,7 +102,7 @@ class Settings : AppCompatActivity() {
                 }
         }
 
-        binding.btnDeleteEstablishment.setOnClickListener{
+        binding.btnDeleteEstablishment.setOnClickListener{// allows the current user to delete an establishment that they own to the database given that they have admin access
             val email = auth.currentUser?.email
 
             db.collection("AdminAccess").whereEqualTo("email", email).get()
@@ -120,7 +121,7 @@ class Settings : AppCompatActivity() {
                 }
         }
 
-        binding.btnRequestAccess.setOnClickListener {
+        binding.btnRequestAccess.setOnClickListener { // allows the current user to ask for admin access, but only if they do not have one
 
             val email = auth.currentUser?.email
 
@@ -144,7 +145,7 @@ class Settings : AppCompatActivity() {
                 }
         }
 
-        binding.btnLogout.setOnClickListener {
+        binding.btnLogout.setOnClickListener { // logs out the current user
             auth.signOut()
             val registerIntent = Intent(this, Registerform::class.java)
             startActivity(registerIntent)

@@ -46,7 +46,7 @@ class Registerform : AppCompatActivity() {
         }
 
 
-        binding.btnCreateAccount.setOnClickListener{
+        binding.btnCreateAccount.setOnClickListener{ // stores user details on the database if all fields are complete and meet the requirements
             if (binding.etEmail.text.toString().isEmpty() || binding.etPassword.text.toString().isEmpty() || binding.Namebox.text.toString().isEmpty())
                 binding.tvErrorDisplay.text = "Email Address or Password is not provided"
             else {
@@ -80,7 +80,7 @@ class Registerform : AppCompatActivity() {
         }
     }
 
-    fun adminaccess(email: String, access: String)
+    fun adminaccess(email: String, access: String) //creates admin access for everyone who registers and puts the default to No in the database
     {
         val db = Globals().db
         val admin: MutableMap<String, Any> = HashMap()

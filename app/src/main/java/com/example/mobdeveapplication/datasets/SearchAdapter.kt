@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveapplication.databinding.ActivitySearchItemBinding
 
-
+//Adapter class for Recycler View
 class SearchAdapter(private val context: Context, private var searchlist: ArrayList<Searchobject>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     private  lateinit var  mListener : onItemClickListener
 

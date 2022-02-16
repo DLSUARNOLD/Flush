@@ -25,30 +25,30 @@ class AddEstablishment : AppCompatActivity() {
         binding = ActivityAddEstablishmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
-        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true) // displays the bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu -> // redirects user to a new page depending on what button is pressed
             when (menu.itemId) {
-                R.id.homenavbar -> {
+                R.id.homenavbar -> { // redirects user to homepage
                     val homepageIntent = Intent(this, Homepage::class.java)
                     startActivity(homepageIntent)
                     true
                 }
-                R.id.historynavbar -> {
+                R.id.historynavbar -> { // redirects user to history page
                     val historyIntent = Intent(this, History::class.java)
                     startActivity(historyIntent)
                     true
                 }
-                R.id.qrnavbar -> {
+                R.id.qrnavbar -> { // redirects user to qr scanner page
                     val qrIntent = Intent(this, QrScanner::class.java)
                     startActivity(qrIntent)
                     true
                 }
-                R.id.profilenavbar -> {
+                R.id.profilenavbar -> { // redirects user to profile page
                     val profileIntent = Intent(this, Profile::class.java)
                     startActivity(profileIntent)
                     true
                 }
-                R.id.settingsnavbar -> {
+                R.id.settingsnavbar -> { // redirects user to settings page
                     val settingIntent = Intent(this, Settings::class.java)
                     startActivity(settingIntent)
                     true
@@ -57,18 +57,19 @@ class AddEstablishment : AppCompatActivity() {
             }
         }
         binding.submitEstablishment.setOnClickListener {
-            val db = Globals().db
-            db.collection("Establishments")
+            val db = Globals().db // initializes a firestore instance
+            db.collection("Establishments") // searches establishment database to check if the name given already exists or not
                 .whereEqualTo("Name", binding.etEstablishmentname.text.toString())
                 .get().addOnCompleteListener { result ->
-                    if (result.result.isEmpty) {
-                        val auth = Globals().auth
+                    if (result.result.isEmpty) // if the query did not find the given name in the establishment database then the establishment would be added to the database, otherwise it would tell the user to enter another name
+                    {
+                        val auth = Globals().auth // initializes a firebase to set the owner of the establishment
                         val name = binding.etEstablishmentname.text.toString()
-                        val longitude = binding.etEstablishmentname.text.toString()
-                        val latitude = binding.etEstablishmentname.text.toString()
-                        val location = binding.etEstablishmentname.text.toString()
-                        val picture = binding.etEstablishmentname.text.toString()
-                        val about = binding.etEstablishmentname.text.toString()
+                        val longitude = binding.etEstablishmentlongitude.text.toString()
+                        val latitude = binding.etEstablishmentlatitude.text.toString()
+                        val location = binding.etEstablishmentlocation.text.toString()
+                        val picture = binding.etEstablishmentpicture.text.toString()
+                        val about = binding.etEstablishmentabout.text.toString()
                         val owner = auth.currentUser?.email.toString()
                         val featured = "False"
                         val popular = "False"
@@ -85,26 +86,23 @@ class AddEstablishment : AppCompatActivity() {
                             bidet = "Yes"
                         if (binding.swPowerflush.isChecked)
                             flush = "Yes"
-                        if (name.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty())
-                            Toast.makeText(
-                                applicationContext,
-                                "Please fill up all fields.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        else
+                        if (name.isEmpty() || longitude.isEmpty() || latitude.isEmpty() || location.isEmpty() || picture.isEmpty() || about.isEmpty()) // Checker to avoid null values
+                            Toast.makeText(applicationContext, "Please fill up all fields.", Toast.LENGTH_SHORT).show()
+                        else// if details are complete the program will save the establishment in the database and redirect to the settings page
                         {
                             saveEstablishment(name,rating,longitude,latitude,location,picture,about,owner,featured,popular,aircon,bidet,dryer,flush)
                             val settingIntent = Intent(this, Settings::class.java)
                             startActivity(settingIntent)
                         }
-                    } else
-                        Toast.makeText(this, "This Establishment already exists.", Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                        Toast.makeText(this, "This establishment already exists.", Toast.LENGTH_SHORT).show()
                 }
         }
     }
 
     private fun saveEstablishment(name: String, rating: String, longitude: String, latitude: String, location: String, picture: String, about: String, owner: String, featured: String, popular: String, aircon: String, bidet: String, dryer: String, flush: String)
-    {
+    { // function to save establishment in the database by creating a map and assigning the values to their corresponding fields in the database
             val db = Globals().db
             val establishment: MutableMap<String, Any> = HashMap()
             establishment["About"] = about
@@ -122,7 +120,7 @@ class AddEstablishment : AppCompatActivity() {
             establishment["Rating"] = rating
             establishment["link"] = picture
 
-            db.collection("Establishments")
+            db.collection("Establishments") // add the created establishment to the database
                 .add(establishment)
                 .addOnSuccessListener {
                     Toast.makeText(applicationContext, "Establishment added successfully", Toast.LENGTH_SHORT).show()
@@ -132,6 +130,6 @@ class AddEstablishment : AppCompatActivity() {
                 }
 
             val settingIntent = Intent(this, Settings::class.java)
-            startActivity(settingIntent)
+            startActivity(settingIntent) // redirects to the settings page
     }
 }

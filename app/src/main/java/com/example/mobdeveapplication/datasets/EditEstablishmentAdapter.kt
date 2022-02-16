@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveapplication.EditSpecificEstablishment
 import com.example.mobdeveapplication.databinding.ActivityEditEstablishmentItemBinding
 
-
+//Adapter class for Recycler View
 class EditEstablishmentAdapter (private val context: Context, private val establishmentList: ArrayList<Establishmentobject>) : RecyclerView.Adapter<EditEstablishmentAdapter.ViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditEstablishmentAdapter.ViewHolder {

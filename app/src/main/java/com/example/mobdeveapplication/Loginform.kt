@@ -44,7 +44,7 @@ class Loginform : AppCompatActivity()  {
             startActivity(intent)
             finish()
         }
-        binding.btnSignin.setOnClickListener {
+        binding.btnSignin.setOnClickListener { // checks if the user exists and signs them in if the given values are in the database
             try {
                 if (binding.etEmail.text.toString().isEmpty() || binding.etPassword.text.toString().isEmpty())
                     Toast.makeText(this,"Email or Password is not provided",Toast.LENGTH_SHORT).show()
@@ -61,7 +61,7 @@ class Loginform : AppCompatActivity()  {
             catch(e: Exception){ Toast.makeText(this,"Invalid Email or password. Try Again",Toast.LENGTH_LONG).show() }
         }
     }
-    private fun updateUI() {
+    private fun updateUI() { //redirects user to homepage
         val intent = Intent(this, Homepage::class.java)
         startActivity(intent)
         finish()

@@ -28,37 +28,38 @@ private lateinit var auth: FirebaseAuth
  * Represents the profile page of the app in which they can change their name, change their password, or even delete their account
  */
 class Profile : AppCompatActivity() {
-   //@OptIn(DelicateCoroutinesApi::class)
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         val universal = Globals()
         auth = universal.auth
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true)
-        binding.bottomNavigationView.setOnItemSelectedListener{ menu ->
+
+        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true) // displays the bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener{ menu -> // redirects user to a new page depending on what button is pressed
             when (menu.itemId) {
-                R.id.homenavbar -> {
+                R.id.homenavbar -> { // redirects user to homepage
                     val homepageIntent = Intent(this, Homepage::class.java)
                     startActivity(homepageIntent)
                     true
                 }
-                R.id.historynavbar -> {
+                R.id.historynavbar -> { // redirects user to history page
                     val historyIntent = Intent(this, History::class.java)
                     startActivity(historyIntent)
                     true
                 }
-                R.id.qrnavbar -> {
+                R.id.qrnavbar -> { // redirects user to qr scanner page
                     val qrIntent = Intent(this, QrScanner::class.java)
                     startActivity(qrIntent)
                     true
                 }
-                R.id.profilenavbar -> {
+                R.id.profilenavbar -> { // redirects user to profile page
                     val profileIntent = Intent(this, Profile::class.java)
                     startActivity(profileIntent)
                     true
                 }
-                R.id.settingsnavbar -> {
+                R.id.settingsnavbar -> { // redirects user to settings page
                     val settingIntent = Intent(this, Settings::class.java)
                     startActivity(settingIntent)
                     true
@@ -90,7 +91,7 @@ class Profile : AppCompatActivity() {
         }
         Picasso.get().load(auth.currentUser?.photoUrl).fit().into(binding.ivProfilepicture)
     }
-     private suspend fun deleteuserinfo(){
+     private suspend fun deleteuserinfo(){ // deletes all the establishments owned by the user (if any) from the database
          delay(100)
         val db = Globals().db
         db.collection("Establishments").whereEqualTo("Owner", auth.currentUser?.email).get().addOnSuccessListener {
@@ -108,7 +109,7 @@ class Profile : AppCompatActivity() {
                 }
             }
     }
-     private suspend fun logoutanddelete(){
+     private suspend fun logoutanddelete(){ // deletes the user account from the database and signs out
          delay(1700)
         auth.currentUser?.delete()
         auth.signOut()
