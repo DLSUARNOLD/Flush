@@ -110,9 +110,9 @@ private fun readfilter(homecallback : Filternearinterface, activity : Activity) 
                 for (document in result) {
                     val currentloc = LatLng(location!!.latitude,location.longitude)
                     val restroomlocation = LatLng(document.data["Latitude"].toString().toDouble(), document.data["Longitude"].toString().toDouble())
-                    if(SphericalUtil.computeDistanceBetween(currentloc,restroomlocation)<=25.0)
+                    if(SphericalUtil.computeDistanceBetween(currentloc,restroomlocation)>=25.0)
                     {
-                        val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                        val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                         filterlist.add(list)
                     }
                 }

@@ -104,7 +104,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("Aircon","Yes").whereEqualTo("AirDryer","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -114,7 +114,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("Bidet","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -124,7 +124,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("AirDryer","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -134,7 +134,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("Aircon","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -144,7 +144,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -154,7 +154,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Bidet","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -164,7 +164,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -174,7 +174,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Aircon","Yes").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -184,7 +184,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("PowerFlush","Yes").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -194,7 +194,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("AirDryer","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -204,7 +204,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Bidet","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -214,7 +214,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("PowerFlush","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -224,7 +224,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").whereEqualTo("Aircon","Yes").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)
@@ -234,7 +234,7 @@ private fun Updatelist(homecallback : Filtercategories)
         database.collection("Establishments").get().addOnSuccessListener { result ->
             val filterlist = ArrayList<Listingobject>()
             for (document in result) {
-                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                val list = Listingobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                 filterlist.add(list)
             }
             homecallback.returnvalue(filterlist)

@@ -120,7 +120,7 @@ class Homepage : AppCompatActivity(){
             .addOnSuccessListener { result ->
                 val featuredlist = ArrayList<Listingobject>()
                 for (document in result) {
-                    val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString())
+                    val list = Listingobject(document.data["Name"].toString(),document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString())
                     featuredlist.add(list)
                 }
                 homecallback.returnvalue(featuredlist)
@@ -149,7 +149,7 @@ class Homepage : AppCompatActivity(){
                 db.collection("Establishments").whereEqualTo("Name",newText!!).get().addOnSuccessListener{ documents ->
                     for (document in documents)
                     {
-                        arrayrecycler.add(Searchobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString()))
+                        arrayrecycler.add(Searchobject(document.data["Name"].toString(), document.data["Rating"].toString().toDouble(), document.data["link"].toString(),document.data["About"].toString(),document.data["Latitude"].toString(),document.data["Longitude"].toString()))
                     }
                 }
                 searchAdapter = SearchAdapter(applicationContext,arrayrecycler)
@@ -162,6 +162,8 @@ class Homepage : AppCompatActivity(){
                         searchresultintent.putExtra("rating", arrayrecycler[position].rating)
                         searchresultintent.putExtra("description",arrayrecycler[position].description)
                         searchresultintent.putExtra("picture", arrayrecycler[position].picture)
+                        searchresultintent.putExtra("latitude",arrayrecycler[position].latitude)
+                        searchresultintent.putExtra("longitude", arrayrecycler[position].longitude)
                         startActivity(searchresultintent)
                     }
 

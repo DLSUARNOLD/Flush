@@ -19,7 +19,7 @@ class Featuredadapter(private val context: Context, private var listing: ArrayLi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binder(listing[position], position)
+        holder.binder(listing[position])
     }
 
     override fun getItemCount() = listing.size
@@ -27,7 +27,7 @@ class Featuredadapter(private val context: Context, private var listing: ArrayLi
 
     inner class ViewHolder(private val binding: ActivityHomepageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun binder(item: Listingobject, index: Int) {
+        fun binder(item: Listingobject) {
             binding.tvDescription.text = item.name
             Picasso.get().load(item.picture).fit().into(binding.ibDisplaypicture)
             binding.ibDisplaypicture.setOnClickListener {
@@ -37,6 +37,8 @@ class Featuredadapter(private val context: Context, private var listing: ArrayLi
                 selectedlisting.putExtra("rating", item.rating)
                 selectedlisting.putExtra("description",item.description)
                 selectedlisting.putExtra("picture", item.picture)
+                selectedlisting.putExtra("latitude", item.latitude)
+                selectedlisting.putExtra("longitude", item.longitude)
                 context.startActivity(selectedlisting)
             }
 

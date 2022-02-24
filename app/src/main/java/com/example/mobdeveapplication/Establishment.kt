@@ -16,13 +16,18 @@ import com.squareup.picasso.Picasso
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.*
+import org.json.JSONObject
+import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 private lateinit var binding: ActivityEstablishmentBinding
@@ -33,6 +38,8 @@ private lateinit var mMap: GoogleMap
  * Represents the activity screen in which the user can view all important information about a specific listing
  */
 class Establishment : AppCompatActivity(), OnMapReadyCallback {
+    @OptIn(DelicateCoroutinesApi::class)
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         val universal = Globals()
@@ -41,11 +48,16 @@ class Establishment : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityEstablishmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val mapFragment = supportFragmentManager.findFragmentById(binding.Map.id) as SupportMapFragment
+        val mapFragment =
+            supportFragmentManager.findFragmentById(binding.Map.id) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        binding.bottomNavigationView.menu.setGroupCheckable(0,false,true) // displays the bottom navigation
-        binding.bottomNavigationView.setOnItemSelectedListener{ menu -> // redirects user to a new page depending on what button is pressed
+        binding.bottomNavigationView.menu.setGroupCheckable(
+            0,
+            false,
+            true
+        ) // displays the bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener { menu -> // redirects user to a new page depending on what button is pressed
             when (menu.itemId) {
                 R.id.homenavbar -> { // redirects user to homepage
                     val homepageIntent = Intent(this, Homepage::class.java)
@@ -72,11 +84,18 @@ class Establishment : AppCompatActivity(), OnMapReadyCallback {
                     startActivity(settingIntent)
                     true
                 }
-                else -> {throw IllegalStateException("Error")}
+                else -> {
+                    throw IllegalStateException("Error")
+                }
             }
         }
+
+
+
         //sets the value for the displays in the Establishment page
         val intent = intent
+        val lat = intent.getStringExtra("latitude")
+        val long = intent.getStringExtra("longitude")
         binding.tvTitle.text = intent.getStringExtra("name")
         binding.tvDescription.text = intent.getStringExtra("description")
         Picasso.get().load(intent.getStringExtra("picture")).fit().into(binding.ivProfile)
@@ -92,20 +111,40 @@ class Establishment : AppCompatActivity(), OnMapReadyCallback {
                     startActivity(mapsintent)
                 }
             }
+        GlobalScope.launch(Dispatchers.IO) {
+            val response = URL("https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=614150d059399dcba5bdf9329aeaa0ec").readText(
+                Charsets.UTF_8)
+            val json = JSONObject(response)
+            val main = json.getJSONObject("main")
+            val wind = json.getJSONObject("wind")
+            val weather = json.getJSONArray("weather").getJSONObject(0)
+            val updatedat: Long = json.getLong("dt")
+            val updatedtext = "Updated at: " + SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(Date(updatedat * 1000))
+            val temp = main.getString("temp") + "°C"
+            val windspeed = wind.getString("speed")
+            val weatherdescription = weather.getString("description")
+            binding.tvWeather.text = "Current weather: " + weatherdescription + "\n" + temp + "    " + windspeed + "mph\n" + updatedtext
+        }
 
     }
+
     override fun onMapReady(googleMap: GoogleMap) {
         val firestore = Globals().db
         firestore.collection("Establishments").whereEqualTo("Name", binding.tvTitle.text).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     mMap = googleMap
-                    val location = LatLng(document.data["Latitude"].toString().toDouble(),document.data["Longitude"].toString().toDouble())
-                    mMap.addMarker(MarkerOptions().position(location).title("Marker in Sydney"))
+                    val location = LatLng(
+                        document.data["Latitude"].toString().toDouble(),
+                        document.data["Longitude"].toString().toDouble()
+                    )
+                    mMap.addMarker(MarkerOptions().position(location).title("Restroom here"))
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
                     mMap.setMinZoomPreference(15.0f)
                     mMap.setMaxZoomPreference(18.0f)
+
                 }
             }
     }
+
 }
